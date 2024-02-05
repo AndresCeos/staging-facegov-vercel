@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  main {
+    @apply bg-white max-w-[1240px] mx-auto px-4 py-4;
+  }
+}

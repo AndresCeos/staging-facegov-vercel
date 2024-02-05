@@ -1,3 +1,4 @@
+import Navbar from './components/Navbar';
 import ClientProvider from './context/ClientProvider';
 import './globals.css';
 
@@ -15,6 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ClientProvider>
+          <Navbar />
           {children}
         </ClientProvider>
       </body>
