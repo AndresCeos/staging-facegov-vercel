@@ -1,7 +1,16 @@
+'use client';
+
+import usePoliticalFigures from './api/political-figures';
+import QueryResult from './components/QueryResult';
+import PoliticalFiguresList from './features/home/PoliticalFiguresList';
+
 function Home() {
+  const politicalFigures = usePoliticalFigures();
   return (
     <main>
-      <h2 className="text-2xl font-bold">Hello, world!</h2>
+      <QueryResult query={politicalFigures}>
+        <PoliticalFiguresList politicalFigures={politicalFigures?.data?.results ?? []} />
+      </QueryResult>
     </main>
   );
 }
