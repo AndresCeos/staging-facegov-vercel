@@ -1,14 +1,16 @@
-"use client";
+'use client';
 
-import { PropsWithChildren } from "react";
-import QueryClientWrapper from "../libs/QueryClientWrapper";
+import { PropsWithChildren } from 'react';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import QueryClientWrapper from '../libs/QueryClientWrapper';
 
-export const ClientProvider = ({ children }: PropsWithChildren) => {
+function ClientProvider({ children }: PropsWithChildren) {
   return (
     <QueryClientWrapper>
       {children}
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientWrapper>
   );
-};
+}
+
+export default ClientProvider;

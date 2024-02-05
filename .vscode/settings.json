@@ -1,0 +1,31 @@
+{
+  "files.eol": "\n",
+  "editor.tabSize": 2,
+  "eslint.options": {
+    "overrideConfigFile": ".eslintrc"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#0f6ec3",
+    "activityBar.background": "#0f6ec3",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#760943",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "commandCenter.border": "#e7e7e799",
+    "sash.hoverBorder": "#0f6ec3",
+    "statusBar.background": "#0b5394",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#0f6ec3",
+    "statusBarItem.remoteBackground": "#0b5394",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#0b5394",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#0b539499",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  },
+  "peacock.color": "#0b5394"
+}
