@@ -25,13 +25,17 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
               <div className="absolute bottom-0">
                 <div className="grid grid-cols-7 w-full col bg-white bg-opacity-15 place-items-center">
                   <span />
-                  {Array.from({ length: Math.ceil(politicalFigure.rating) }).map((_, index) => (
-                    <MdOutlineStar key={`star${index}`} className="text-5xl text-yellow-500" />
-                  ))}
-                  {Array.from({ length: 5 - Math.ceil(politicalFigure.rating) }).map((_, index) => (
-                    <MdOutlineStar key={`no-start-${index}`} className="text-5xl text-gray-500" />
-                  ))}
-                  <span className="text-sm">{politicalFigure.rating}</span>
+                  {Number(politicalFigure.rating) !== 0 && (
+                    <>
+                      {Array.from({ length: Math.ceil(politicalFigure.rating) }).map((_, index) => (
+                        <MdOutlineStar key={`star${index}`} className="text-5xl text-yellow-500" />
+                      ))}
+                      {Array.from({ length: 5 - Math.ceil(politicalFigure.rating) }).map((_, index) => (
+                        <MdOutlineStar key={`no-start-${index}`} className="text-5xl text-gray-500" />
+                      ))}
+                      <span className="text-sm">{politicalFigure.rating}</span>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
@@ -39,7 +43,11 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
               <h2 className="font-medium pb-2">{`${politicalFigure.firstName} ${politicalFigure.lastName}`}</h2>
               <div className="flex justify-between items-center">
                 <p className="text-sm text-gray-500">{politicalFigure.politicalParty.acronym}</p>
-                <p className="text-sm text-gray-500">{`${politicalFigure.city.name}, ${politicalFigure.city.state.name}`}</p>
+                <p className="text-sm text-gray-500 text-right">
+                  {`${politicalFigure.city.name}`}
+                  <br />
+                  {`${politicalFigure.city.state.name}`}
+                </p>
               </div>
             </div>
           </Link>
