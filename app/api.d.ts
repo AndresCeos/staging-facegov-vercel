@@ -43,6 +43,7 @@ declare namespace Api {
     politicalParty: PoliticalParty;
     city: City;
     canUserComment: boolean;
+    rating: number;
   }
 
   interface Comment {

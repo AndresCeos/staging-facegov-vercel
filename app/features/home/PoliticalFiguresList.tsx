@@ -1,5 +1,6 @@
+/* eslint-disable react/no-array-index-key */
 import Link from 'next/link';
-import { MdOutlineStar, MdOutlineStarHalf } from 'react-icons/md';
+import { MdOutlineStar } from 'react-icons/md';
 
 type PoliticalFiguresListProps = {
   politicalFigures: Api.PoliticalFigure[];
@@ -22,13 +23,15 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
                 className="w-full h-auto"
               />
               <div className="absolute bottom-0">
-                <span className="sr-only">Rating: 4.5</span>
-                <div className="grid grid-cols-7 w-full col bg-white bg-opacity-15">
-                  <MdOutlineStar className="text-5xl text-yellow-500 col-start-2" />
-                  <MdOutlineStar className="text-5xl text-yellow-500" />
-                  <MdOutlineStar className="text-5xl text-yellow-500" />
-                  <MdOutlineStar className="text-5xl text-yellow-500" />
-                  <MdOutlineStarHalf className="text-5xl text-yellow-500" />
+                <div className="grid grid-cols-7 w-full col bg-white bg-opacity-15 place-items-center">
+                  <span />
+                  {Array.from({ length: Math.ceil(politicalFigure.rating) }).map((_, index) => (
+                    <MdOutlineStar key={`star${index}`} className="text-5xl text-yellow-500" />
+                  ))}
+                  {Array.from({ length: 5 - Math.ceil(politicalFigure.rating) }).map((_, index) => (
+                    <MdOutlineStar key={`no-start-${index}`} className="text-5xl text-gray-500" />
+                  ))}
+                  <span className="text-sm">{politicalFigure.rating}</span>
                 </div>
               </div>
             </div>

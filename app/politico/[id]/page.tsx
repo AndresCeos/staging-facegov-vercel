@@ -1,6 +1,8 @@
+/* eslint-disable react/no-array-index-key */
+
 'use client';
 
-import { MdOutlineStar, MdOutlineStarHalf } from 'react-icons/md';
+import { MdOutlineStar } from 'react-icons/md';
 
 import { usePoliticalFigureById } from '@/api/political-figures';
 import QueryResult from '@/components/QueryResult';
@@ -31,12 +33,15 @@ function Page({ params }: Props) {
                 />
                 <div className="absolute bottom-0 w-full">
                   <span className="sr-only">Rating: 4.5</span>
-                  <div className="grid grid-cols-7 w-full col bg-white bg-opacity-15 py-2">
-                    <MdOutlineStar className="text-5xl text-yellow-500 col-start-2" />
-                    <MdOutlineStar className="text-5xl text-yellow-500" />
-                    <MdOutlineStar className="text-5xl text-yellow-500" />
-                    <MdOutlineStar className="text-5xl text-yellow-500" />
-                    <MdOutlineStarHalf className="text-5xl text-yellow-500" />
+                  <div className="grid grid-cols-7 w-full col bg-white bg-opacity-15 py-2 place-items-center">
+                    <span />
+                    {Array.from({ length: Math.ceil(politicalFigure.data?.results?.rating ?? 0) }).map((_, index) => (
+                      <MdOutlineStar key={`star${index}`} className="text-5xl text-yellow-500" />
+                    ))}
+                    {Array.from({ length: 5 - Math.ceil(politicalFigure.data?.results?.rating ?? 0) }).map((_, index) => (
+                      <MdOutlineStar key={`no-start-${index}`} className="text-5xl text-gray-500" />
+                    ))}
+                    <span className="text-sm">{politicalFigure.data?.results?.rating}</span>
                   </div>
                 </div>
               </div>
