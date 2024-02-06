@@ -34,6 +34,10 @@ declare namespace Api {
     acronym: string;
   }
 
+  type Media = {
+    featured: string;
+  };
+
   interface PoliticalFigure {
     id: number;
     firstName: string;
@@ -44,6 +48,7 @@ declare namespace Api {
     city: City;
     canUserComment: boolean;
     rating: number;
+    media: Media[];
   }
 
   interface Comment {

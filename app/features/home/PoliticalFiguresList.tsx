@@ -18,7 +18,7 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
           <Link href={`/politico/${politicalFigure.id}`}>
             <div className="relative">
               <img
-                src="https://placehold.co/400"
+                src={politicalFigure?.media?.[0]?.featured ? politicalFigure.media[0].featured : 'https://placehold.co/400'}
                 alt={`${politicalFigure.firstName} ${politicalFigure.lastName}`}
                 className="w-full h-auto"
               />

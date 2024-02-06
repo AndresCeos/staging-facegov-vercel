@@ -27,7 +27,7 @@ function Page({ params }: Props) {
             <div className="shadow-md rounded-lg overflow-hidden">
               <div className="relative">
                 <img
-                  src="https://placehold.co/400"
+                  src={politicalFigure?.data?.results?.media?.[0]?.featured ? politicalFigure.data.results.media[0].featured : 'https://placehold.co/400'}
                   alt={`${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName}`}
                   className="w-full h-auto"
                 />
