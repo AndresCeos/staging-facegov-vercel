@@ -4,6 +4,13 @@ declare namespace Api {
     results: T;
   }
 
+  type AuthStatus = {
+    authenticated: false;
+  } | {
+    authenticated: true;
+    user: User;
+  };
+
   interface State {
     id: number;
     name: string;
@@ -11,8 +18,8 @@ declare namespace Api {
 
   interface User {
     id: number;
-    firstName: string;
-    lastName: string;
+    firstName: string | null;
+    lastName: string | null;
   }
 
   interface City {

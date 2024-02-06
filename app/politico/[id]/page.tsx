@@ -15,7 +15,7 @@ type Props = {
 function Page({ params }: Props) {
   const { id } = params;
 
-  const politicalFigure = usePoliticalFigureById(id);
+  const politicalFigure = usePoliticalFigureById(Number(id));
 
   return (
     <main>

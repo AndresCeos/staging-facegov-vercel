@@ -1,16 +1,18 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState } from 'react';
 
-import { useIsSignedIn } from '@/api/autentication';
+import { useIsSignedIn } from '@/api/authentication';
 import mutateComment from '@/api/comments';
 import QueryResult from '@/components/QueryResult';
 import RatingControl from '@/components/RatingControl';
+import LoginModal from '../login/LoginModal';
 
 type PoliticalFigureCommentFormProps = {
   politicalFigure: Api.PoliticalFigure;
 };
 
 function PoliticalFigureCommentForm({ politicalFigure }: PoliticalFigureCommentFormProps) {
+  const [showModal, setShowModal] = useState(false);
   const [rating, setRating] = useState(0);
   const [text, setText] = useState('');
   const isSignedIn = useIsSignedIn();
@@ -40,20 +42,29 @@ function PoliticalFigureCommentForm({ politicalFigure }: PoliticalFigureCommentF
           </label>
           <textarea
             rows={6}
-            className="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none  "
+            className="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none"
             placeholder="Escribe un comentario..."
             required
             value={text}
             onChange={(e) => setText(e.target.value)}
           />
         </div>
-        <button
-          type="submit"
-          className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200  hover:bg-blue-800"
-        >
-          Publicar comentario
-        </button>
+        {isSignedIn.data?.data?.authenticated === true ? (
+          <button
+            type="submit"
+            className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200  hover:bg-blue-800"
+          >
+            Publicar comentario
+          </button>
+        ) : null }
       </form>
+      {isSignedIn.data?.data?.authenticated === false ? (
+        <LoginModal
+          title="Publicar comentario"
+          showModal={showModal}
+          setShowModal={setShowModal}
+        />
+      ) : null }
     </QueryResult>
   );
 }

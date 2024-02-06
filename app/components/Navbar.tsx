@@ -1,6 +1,5 @@
-'use client';
-
 import Link from 'next/link';
+import UserDropdown from './UserDropDown';
 
 function Navbar() {
   return (
@@ -9,7 +8,7 @@ function Navbar() {
         <Link href="/">
           <h1 className="w-full text-3xl font-bold">Sexenio Faces</h1>
         </Link>
-        <span>user</span>
+        <UserDropdown />
       </div>
     </div>
   );
