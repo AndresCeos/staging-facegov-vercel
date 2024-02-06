@@ -9,6 +9,12 @@ declare namespace Api {
     name: string;
   }
 
+  interface User {
+    id: number;
+    firstName: string;
+    lastName: string;
+  }
+
   interface City {
     id: number;
     name: string;
@@ -29,5 +35,13 @@ declare namespace Api {
     biography: string;
     politicalParty: PoliticalParty;
     city: City;
+  }
+
+  interface Comment {
+    id: number;
+    text: string;
+    rating: number;
+    createdAt: Date;
+    user: User;
   }
 }

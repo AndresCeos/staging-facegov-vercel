@@ -5,7 +5,7 @@ import Loader from './Loader';
 type QueryResultProps = {
   children: ReactNode;
   query: UseQueryResult;
-  isFullScreenLoader?: boolean;
+  isFullScreenLoader: boolean;
 };
 
 function QueryResult({ children, query, isFullScreenLoader = false }: QueryResultProps) {
@@ -34,9 +34,5 @@ function QueryResult({ children, query, isFullScreenLoader = false }: QueryResul
 
   return <Loader />;
 }
-
-QueryResult.defaultProps = {
-  isFullScreenLoader: false,
-};
 
 export default QueryResult;

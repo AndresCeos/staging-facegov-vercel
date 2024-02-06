@@ -33,7 +33,7 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
               </div>
             </div>
             <div className="p-4">
-              <h2 className="font-medium">{`${politicalFigure.firstName} ${politicalFigure.lastName}`}</h2>
+              <h2 className="font-medium pb-2">{`${politicalFigure.firstName} ${politicalFigure.lastName}`}</h2>
               <div className="flex justify-between items-center">
                 <p className="text-sm text-gray-500">{politicalFigure.politicalParty.acronym}</p>
                 <p className="text-sm text-gray-500">{`${politicalFigure.city.name}, ${politicalFigure.city.state.name}`}</p>

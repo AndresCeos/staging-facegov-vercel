@@ -2,7 +2,7 @@ import cx from 'classnames';
 import { RiLoader3Fill } from 'react-icons/ri';
 
 type LoaderProps = {
-  isFullHeight?: boolean;
+  isFullHeight: boolean;
 };
 
 function Loader({ isFullHeight = false }: LoaderProps) {
@@ -22,9 +22,5 @@ function Loader({ isFullHeight = false }: LoaderProps) {
     </div>
   );
 }
-
-Loader.defaultProps = {
-  isFullHeight: false,
-};
 
 export default Loader;
