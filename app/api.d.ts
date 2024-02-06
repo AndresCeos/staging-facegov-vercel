@@ -35,6 +35,7 @@ declare namespace Api {
     biography: string;
     politicalParty: PoliticalParty;
     city: City;
+    canUserComment: boolean;
   }
 
   interface Comment {

@@ -7,11 +7,11 @@ import QueryResult from '@/components/QueryResult';
 import PoliticalFigureCommentRating from './PoliticalFigureCommentRating';
 
 type PoliticalFigureCommentsListProps = {
-  politicalFigureId: string;
+  politicalFigure: Api.PoliticalFigure;
 };
 
-function PoliticalFigureCommentsList({ politicalFigureId }: PoliticalFigureCommentsListProps) {
-  const comments = usePoliticalFigureComments(politicalFigureId);
+function PoliticalFigureCommentsList({ politicalFigure }: PoliticalFigureCommentsListProps) {
+  const comments = usePoliticalFigureComments(politicalFigure.id);
 
   return (
     <QueryResult query={comments} isFullScreenLoader={false}>

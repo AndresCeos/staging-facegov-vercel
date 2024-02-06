@@ -49,7 +49,7 @@ function Page({ params }: Props) {
               </div>
             </div>
           </div>
-          <PoliticalFigureComments politicalFigureId={id} />
+          {politicalFigure?.data?.results && <PoliticalFigureComments politicalFigure={politicalFigure?.data?.results} />}
         </div>
       </QueryResult>
     </main>

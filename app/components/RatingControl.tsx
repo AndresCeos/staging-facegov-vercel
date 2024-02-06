@@ -19,7 +19,7 @@ function Stars({
 }: StarsProps) {
   return (
     <MdOutlineStar
-      className={cx('text-2xl cursor-pointer', isFilled ? 'text-yellow-500' : 'text-gray-300')}
+      className={cx('text-5xl cursor-pointer', isFilled ? 'text-yellow-500' : 'text-gray-300')}
       onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
