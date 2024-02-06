@@ -80,7 +80,6 @@ function UserDropdown() {
             <div
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
               role="menuitem"
-              onClick={handleLogout}
             >
               Perfil
             </div>
@@ -88,7 +87,7 @@ function UserDropdown() {
             <div
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
               role="menuitem"
-              onClick={() => handleLogout.mutate({})}
+              onClick={handleLogout}
             >
               Cerrar sesión
             </div>

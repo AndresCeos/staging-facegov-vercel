@@ -10,6 +10,9 @@ type PoliticalFigureCommentsListProps = {
   politicalFigure: Api.PoliticalFigure;
 };
 
+// eslint-disable-next-line max-len
+const profileAcronym = (firstName: string | null, lastName: string | null) => ((firstName === null || lastName == null) ? 'S' : `${firstName.charAt(0) ?? ''}${lastName.charAt(0) ?? 'S'}`.toUpperCase());
+
 function PoliticalFigureCommentsList({ politicalFigure }: PoliticalFigureCommentsListProps) {
   const comments = usePoliticalFigureComments(politicalFigure.id);
 
@@ -20,11 +23,7 @@ function PoliticalFigureCommentsList({ politicalFigure }: PoliticalFigureComment
           <footer className="flex justify-between items-center mb-2">
             <div className="flex items-center">
               <p className="inline-flex items-center mr-3 text-sm text-gray-900  font-semibold">
-                <img
-                  className="mr-2 w-6 h-6 rounded-full"
-                  src="https://placehold.co/40"
-                  alt="Michael Gough"
-                />
+                <img src={`https://placehold.co/80?text=${profileAcronym(comment.user.firstName, comment.user.lastName)}`} alt="profile" className="mr-2 w-6 h-6 rounded-full" />
                 {`${comment.user.firstName} ${comment.user.lastName}`}
               </p>
               <p className="text-sm text-gray-600 ">
