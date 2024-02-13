@@ -7,6 +7,7 @@ import { MdOutlineStar } from 'react-icons/md';
 import { usePoliticalFigureById } from '@/api/political-figures';
 import QueryResult from '@/components/QueryResult';
 import PoliticalFigureComments from '@/features/politicalFigures/PoliticalFigureComments';
+import PoliticalFigureRelatedList from '@/features/politicalFigures/PoliticalFigureRelatedList';
 
 type Props = {
   params: {
@@ -51,12 +52,23 @@ function Page({ params }: Props) {
                   <p className="text-sm text-gray-500">{politicalFigure.data?.results?.politicalParty.acronym}</p>
                   <p className="text-sm text-gray-500">{`${politicalFigure.data?.results?.city.name}, ${politicalFigure.data?.results?.city.state.name}`}</p>
                 </div>
+                <p className="mt-2">
+                  {politicalFigure.data?.results?.tags?.map((tag, index) => (
+                    <span key={index} className="text-xs bg-blue-200 text-blue-800 rounded-sm px-2 py-1 mr-2">
+                      {`#${tag}`}
+                    </span>
+                  ))}
+                </p>
               </div>
             </div>
           </div>
           {politicalFigure?.data?.results && <PoliticalFigureComments politicalFigure={politicalFigure?.data?.results} />}
         </div>
       </QueryResult>
+      <div className="my-10">
+        <h2 className="text-4xl mt-5 mb-3">Otros políticos</h2>
+        <PoliticalFigureRelatedList politicalFigureId={Number(id)} />
+      </div>
     </main>
   );
 }

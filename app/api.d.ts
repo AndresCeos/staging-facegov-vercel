@@ -49,6 +49,7 @@ declare namespace Api {
     canUserComment: boolean;
     rating: number;
     media: Media[];
+    tags: string[];
   }
 
   interface Comment {
