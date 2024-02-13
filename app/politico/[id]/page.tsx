@@ -2,12 +2,15 @@
 
 'use client';
 
+import moment from 'moment';
+
 import { MdOutlineStar } from 'react-icons/md';
 
 import { usePoliticalFigureById } from '@/api/political-figures';
 import QueryResult from '@/components/QueryResult';
 import PoliticalFigureComments from '@/features/politicalFigures/PoliticalFigureComments';
 import PoliticalFigureRelatedList from '@/features/politicalFigures/PoliticalFigureRelatedList';
+import formatMoney from '@/utils/formatMoney';
 
 type Props = {
   params: {
@@ -47,18 +50,53 @@ function Page({ params }: Props) {
                 </div>
               </div>
               <div className="p-4">
-                <h2 className="font-medium">{`${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName}`}</h2>
-                <div className="flex justify-between items-center">
-                  <p className="text-sm text-gray-500">{politicalFigure.data?.results?.politicalParty.acronym}</p>
-                  <p className="text-sm text-gray-500">{`${politicalFigure.data?.results?.city.name}, ${politicalFigure.data?.results?.city.state.name}`}</p>
+                <h2 className="font-medium pb-2">{`${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName}`}</h2>
+                <div className="text-sm text-gray-500 font-medium">
+                  <span className="font-normal text-gray-500 mr-1">
+                    Partido Político:
+                  </span>
+                  {politicalFigure?.data?.results?.politicalParty.acronym}
                 </div>
-                <p className="mt-2">
-                  {politicalFigure.data?.results?.tags?.map((tag, index) => (
-                    <span key={index} className="text-xs bg-blue-200 text-blue-800 rounded-sm px-2 py-1 mr-2">
-                      {`#${tag}`}
-                    </span>
-                  ))}
-                </p>
+                { politicalFigure?.data?.results?.employmentHistory?.[0] && (
+                <div className="text-sm text-gray-500 font-medium">
+                  <span className="font-normal text-gray-500 mr-1">
+                    Cargo:
+                  </span>
+                    {politicalFigure?.data?.results?.employmentHistory?.[0]?.jobTitle}
+                </div>
+                )}
+                <div className="text-sm text-gray-500 font-medium">
+                  <span className="font-normal text-gray-500 mr-1">
+                    Lugar:
+                  </span>
+                  {`${politicalFigure?.data?.results?.city.name}, ${politicalFigure?.data?.results?.city.state.name}`}
+                </div>
+                { politicalFigure?.data?.results?.employmentHistory?.[0] && (
+                <div className="text-sm text-gray-500 font-medium">
+                  <span className="font-normal text-gray-500 mr-1">
+                    Salario:
+                  </span>
+                    {formatMoney(politicalFigure?.data?.results?.employmentHistory?.[0]?.salary)}
+                </div>
+                )}
+                <div className="text-sm text-gray-500 font-medium">
+                  <span className="font-normal text-gray-500 mr-1">
+                    Edad:
+                  </span>
+                  {`${moment().diff(politicalFigure?.data?.results?.birthDate, 'years')} años`}
+                </div>
+                { politicalFigure?.data?.results?.scholarships?.[0] && (
+                <div className="text-sm text-gray-500 font-medium">
+                  <span className="font-normal text-gray-500 mr-1">
+                    Escolaridad:
+                  </span>
+                    {politicalFigure?.data?.results?.scholarships?.[0]?.name}
+                </div>
+                )}
+                <div>
+                  <h3 className="text-2xl mt-5 mb-3">Biografía</h3>
+                  <p className="text-sm text-gray-500">{politicalFigure.data?.results?.biography}</p>
+                </div>
               </div>
             </div>
           </div>

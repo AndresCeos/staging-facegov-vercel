@@ -38,6 +38,22 @@ declare namespace Api {
     featured: string;
   };
 
+  interface Scholarship {
+    id: number;
+    name: string;
+    slug: string;
+  }
+
+  interface Employment {
+    id: number;
+    jobTitle: string;
+    currentJob: boolean;
+    salary: number;
+    startDate: Date;
+    endDate: Date | null;
+    politicalParty: PoliticalParty;
+  }
+
   interface PoliticalFigure {
     id: number;
     firstName: string;
@@ -50,6 +66,8 @@ declare namespace Api {
     rating: number;
     media: Media[];
     tags: string[];
+    employmentHistory: Employment[];
+    scholarships: Scholarship[];
   }
 
   interface Comment {

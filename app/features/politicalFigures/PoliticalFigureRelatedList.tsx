@@ -7,7 +7,7 @@ function PoliticalFigureRelatedList({ politicalFigureId } : { politicalFigureId:
 
   const politicalFiguresList = (politicalFigures?.data?.results ?? []).filter((politicalFigure) => politicalFigure.id !== politicalFigureId);
 
-  const politicalFiguresRandom = politicalFiguresList.sort(() => Math.random() - 0.5).slice(0, 4);
+  const politicalFiguresRandom = politicalFiguresList.sort(() => Math.random() - 0.5).slice(0, 3);
 
   return (
     <QueryResult query={politicalFigures} isFullScreenLoader={false}>
