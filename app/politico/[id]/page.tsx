@@ -8,7 +8,7 @@ import { MdOutlineStar } from 'react-icons/md';
 
 import { usePoliticalFigureById } from '@/api/political-figures';
 import QueryResult from '@/components/QueryResult';
-import PoliticalFigureComments from '@/features/politicalFigures/PoliticalFigureComments';
+import PoliticalFigureComments from '@/features/politicalFigures/comments/PoliticalFigureComments';
 import PoliticalFigureRelatedList from '@/features/politicalFigures/PoliticalFigureRelatedList';
 import formatMoney from '@/utils/formatMoney';
 

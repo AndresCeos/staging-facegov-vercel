@@ -76,5 +76,7 @@ declare namespace Api {
     rating: number;
     createdAt: Date;
     user: User;
+    utility: number;
+    userUtility: boolean | null;
   }
 }

@@ -2,10 +2,10 @@
 import { useState } from 'react';
 
 import { useIsSignedIn } from '@/api/authentication';
-import mutateComment from '@/api/comments';
+import { mutateComment } from '@/api/comments';
 import QueryResult from '@/components/QueryResult';
 import RatingControl from '@/components/RatingControl';
-import LoginModal from '../login/LoginModal';
+import LoginModal from '@/features/login/LoginModal';
 
 type PoliticalFigureCommentFormProps = {
   politicalFigure: Api.PoliticalFigure;
