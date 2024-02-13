@@ -68,7 +68,7 @@ function UserDropdown() {
       ) : null }
 
       {isOpen && (
-        <div className="origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+        <div className="origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
           <div
             className="py-1"
             role="menu"
