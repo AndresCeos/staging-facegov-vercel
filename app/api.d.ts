@@ -78,5 +78,6 @@ declare namespace Api {
     user: User;
     utility: number;
     userUtility: boolean | null;
+    commentedByUser?: boolean;
   }
 }

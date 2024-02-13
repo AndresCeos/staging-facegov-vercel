@@ -22,53 +22,83 @@ function PoliticalFigureCommentUtility({ comment, politicalFigureId }: Political
     mutate.mutate({ commentId: comment.id, utility, politicalFigureId });
   };
 
+  if (!isSignedIn.data?.data?.authenticated) {
+    return (
+      <div className="flex justify-center items-center">
+        <LoginModal
+          className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500  bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
+          showModal={showModal}
+          setShowModal={setShowModal}
+        >
+          <FiThumbsUp className="text-base" />
+          <span className="sr-only">Comment up</span>
+        </LoginModal>
+        <span className="mx-1 font-bold">{comment?.utility ?? 0}</span>
+        <LoginModal
+          className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500  bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
+          showModal={showModal}
+          setShowModal={setShowModal}
+        >
+          <FiThumbsDown className="text-base" />
+          <span className="sr-only">Comment down</span>
+        </LoginModal>
+      </div>
+    );
+  }
+
+  if (comment.commentedByUser) {
+    return (
+      <div className="flex justify-center items-center">
+        <button
+          className={cx(
+            'inline-flex items-center p-2 text-sm font-medium text-center text-gray-500  bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50',
+          )}
+          type="button"
+          disabled
+        >
+          <FiThumbsUp className="text-base" />
+          <span className="sr-only">Comment up</span>
+        </button>
+        <span className="mx-1 font-bold">{comment?.utility ?? 0}</span>
+        <button
+          className={cx(
+            'inline-flex items-center p-2 text-sm font-medium text-center text-gray-500  bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50',
+          )}
+          type="button"
+          disabled
+        >
+          <FiThumbsDown className="text-base" />
+          <span className="sr-only">Comment down</span>
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className="flex justify-center items-center">
-      {isSignedIn.data?.data?.authenticated === true ? (
-        <button
-          className={cx(
-            'inline-flex items-center p-2 text-sm font-medium text-center text-gray-500  bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50',
-            comment.userUtility === true && 'text-blue-500',
-          )}
-          type="button"
-          onClick={() => handleCommentUtility('true')}
-        >
-          <FiThumbsUp className="text-base" />
-          <span className="sr-only">Comment up</span>
-        </button>
-      ) : (
-        <LoginModal
-          className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500  bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
-          showModal={showModal}
-          setShowModal={setShowModal}
-        >
-          <FiThumbsUp className="text-base" />
-          <span className="sr-only">Comment up</span>
-        </LoginModal>
-      )}
+      <button
+        className={cx(
+          'inline-flex items-center p-2 text-sm font-medium text-center text-gray-500  bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50',
+          comment.userUtility === true && 'text-blue-500',
+        )}
+        type="button"
+        onClick={() => handleCommentUtility('true')}
+      >
+        <FiThumbsUp className="text-base" />
+        <span className="sr-only">Comment up</span>
+      </button>
       <span className="mx-1 font-bold">{comment?.utility ?? 0}</span>
-      {isSignedIn.data?.data?.authenticated === true ? (
-        <button
-          className={cx(
-            'inline-flex items-center p-2 text-sm font-medium text-center text-gray-500  bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50',
-            comment.userUtility === false && 'text-red-500',
-          )}
-          type="button"
-          onClick={() => handleCommentUtility('false')}
-        >
-          <FiThumbsDown className="text-base" />
-          <span className="sr-only">Comment down</span>
-        </button>
-      ) : (
-        <LoginModal
-          className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500  bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
-          showModal={showModal}
-          setShowModal={setShowModal}
-        >
-          <FiThumbsDown className="text-base" />
-          <span className="sr-only">Comment down</span>
-        </LoginModal>
-      )}
+      <button
+        className={cx(
+          'inline-flex items-center p-2 text-sm font-medium text-center text-gray-500  bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50',
+          comment.userUtility === false && 'text-red-500',
+        )}
+        type="button"
+        onClick={() => handleCommentUtility('false')}
+      >
+        <FiThumbsDown className="text-base" />
+        <span className="sr-only">Comment down</span>
+      </button>
     </div>
   );
 }
