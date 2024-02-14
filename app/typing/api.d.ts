@@ -2,6 +2,10 @@ declare namespace Api {
   interface Response<T> {
     status: number;
     results: T;
+    page: number;
+    limit: number;
+    totalItems: number;
+    totalPages: number;
   }
 
   type AuthStatus = {

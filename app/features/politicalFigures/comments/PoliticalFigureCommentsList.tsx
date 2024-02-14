@@ -1,10 +1,10 @@
-import { SortConfig, usePoliticalFigureComments } from '@/api/political-figures';
+import { usePoliticalFigureComments } from '@/api/political-figures';
 import QueryResult from '@/components/QueryResult';
 import PoliticalFigureCommentsListItem from './PoliticalFigureCommentsListItem';
 
 type PoliticalFigureCommentsListProps = {
   politicalFigure: Api.PoliticalFigure;
-  sortConfig: SortConfig;
+  sortConfig: Pagination.SortConfig;
 };
 
 function PoliticalFigureCommentsList({ politicalFigure, sortConfig }: PoliticalFigureCommentsListProps) {

@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 
-import { SortConfig } from '@/api/political-figures';
 import PoliticalFigureCommentForm from './PoliticalFigureCommentForm';
 import PoliticalFigureCommentsList from './PoliticalFigureCommentsList';
 
@@ -12,7 +11,7 @@ type PoliticalFigureCommentsProps = {
 
 function PoliticalFigureComments({ politicalFigure }: PoliticalFigureCommentsProps) {
   const [sort, setSort] = useState('newest');
-  const [sortConfig, setSortConfig] = useState<SortConfig>({ key: 'createdAt', direction: 'desc' });
+  const [sortConfig, setSortConfig] = useState<Pagination.SortConfig>({ key: 'createdAt', direction: 'desc' });
 
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSort(e.target.value);

@@ -3,7 +3,7 @@ import QueryResult from '@/components/QueryResult';
 import PoliticalFiguresList from '../home/PoliticalFiguresList';
 
 function PoliticalFigureRelatedList({ politicalFigureId } : { politicalFigureId: number }) {
-  const politicalFigures = usePoliticalFigures();
+  const politicalFigures = usePoliticalFigures({ page: 1, limit: 9 });
 
   const politicalFiguresList = (politicalFigures?.data?.results ?? []).filter((politicalFigure) => politicalFigure.id !== politicalFigureId);
 
