@@ -24,7 +24,7 @@ function Page({ params }: Props) {
 
   return (
     <main>
-      <QueryResult query={politicalFigure} isFullScreenLoader={false}>
+      <QueryResult query={politicalFigure} isFullScreenLoader>
         <div className="grid grid-cols-3 gap-4">
           <div>
             <div className="shadow-md rounded-lg overflow-hidden">

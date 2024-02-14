@@ -18,7 +18,7 @@ function Home() {
 
   return (
     <main>
-      <QueryResult query={politicalFigures} isFullScreenLoader={false}>
+      <QueryResult query={politicalFigures} isFullScreenLoader>
         <PoliticalFiguresList politicalFigures={politicalFigures?.data?.results ?? []} />
         <div className="flex justify-center mt-8">
           <nav aria-label="Page navigation example">

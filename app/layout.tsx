@@ -1,3 +1,4 @@
+import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import ClientProvider from './context/ClientProvider';
 import './globals.css';
@@ -18,6 +19,7 @@ export default function RootLayout({
         <ClientProvider>
           <Navbar />
           {children}
+          <Footer />
         </ClientProvider>
       </body>
     </html>

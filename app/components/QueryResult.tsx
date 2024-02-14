@@ -32,7 +32,7 @@ function QueryResult({ children, query, isFullScreenLoader = false }: QueryResul
     return <>{children}</>;
   }
 
-  return <Loader />;
+  return <Loader isFullHeight={false} />;
 }
 
 export default QueryResult;
