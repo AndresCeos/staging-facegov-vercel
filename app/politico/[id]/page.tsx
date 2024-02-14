@@ -4,12 +4,11 @@
 
 import moment from 'moment';
 
-import { MdOutlineStar } from 'react-icons/md';
-
 import { usePoliticalFigureById } from '@/api/political-figures';
 import QueryResult from '@/components/QueryResult';
-import PoliticalFigureComments from '@/features/politicalFigures/comments/PoliticalFigureComments';
+import Rating from '@/components/Rating';
 import PoliticalFigureRelatedList from '@/features/politicalFigures/PoliticalFigureRelatedList';
+import PoliticalFigureComments from '@/features/politicalFigures/comments/PoliticalFigureComments';
 import formatMoney from '@/utils/formatMoney';
 
 type Props = {
@@ -35,22 +34,15 @@ function Page({ params }: Props) {
                   alt={`${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName}`}
                   className="w-full h-auto"
                 />
-                <div className="absolute bottom-0 w-full">
-                  <span className="sr-only">Rating: 4.5</span>
-                  <div className="grid grid-cols-7 w-full col bg-white bg-opacity-15 py-2 place-items-center">
-                    <span />
-                    {Array.from({ length: Math.ceil(politicalFigure.data?.results?.rating ?? 0) }).map((_, index) => (
-                      <MdOutlineStar key={`star${index}`} className="text-5xl text-yellow-500" />
-                    ))}
-                    {Array.from({ length: 5 - Math.ceil(politicalFigure.data?.results?.rating ?? 0) }).map((_, index) => (
-                      <MdOutlineStar key={`no-start-${index}`} className="text-5xl text-gray-500" />
-                    ))}
-                    <span className="text-sm">{politicalFigure.data?.results?.rating}</span>
-                  </div>
-                </div>
+                <Rating rating={politicalFigure.data?.results?.rating ?? 0} />
               </div>
               <div className="p-4">
-                <h2 className="font-medium pb-2">{`${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName}`}</h2>
+                <h2 className="font-medium pb-2">
+                  {`${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName}`}
+                  <span className="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded ml-4">
+                    {politicalFigure.data?.results?.rating}
+                  </span>
+                </h2>
                 <div className="text-sm text-gray-500 font-medium">
                   <span className="font-normal text-gray-500 mr-1">
                     Partido Político:

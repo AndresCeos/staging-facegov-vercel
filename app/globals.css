@@ -7,3 +7,17 @@
     @apply bg-white max-w-[1240px] mx-auto px-4 py-4;
   }
 }
+
+.cover {
+  background: white;
+  height: 100%;
+  overflow: hidden;
+  mix-blend-mode: color;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.stars_container svg {
+  fill: #eab307;
+}

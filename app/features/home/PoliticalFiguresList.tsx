@@ -1,8 +1,8 @@
 /* eslint-disable react/no-array-index-key */
 import moment from 'moment';
 import Link from 'next/link';
-import { MdOutlineStar } from 'react-icons/md';
 
+import Rating from '@/components/Rating';
 import formatMoney from '@/utils/formatMoney';
 
 type PoliticalFiguresListProps = {
@@ -25,25 +25,15 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
                 alt={`${politicalFigure.firstName} ${politicalFigure.lastName}`}
                 className="w-full h-auto"
               />
-              <div className="absolute w-full bottom-0">
-                <div className="grid grid-cols-7 w-full col bg-white bg-opacity-15 place-items-center">
-                  <span />
-                  {Number(politicalFigure.rating) !== 0 && (
-                    <>
-                      {Array.from({ length: Math.ceil(politicalFigure.rating) }).map((_, index) => (
-                        <MdOutlineStar key={`star${index}`} className="text-5xl text-yellow-500" />
-                      ))}
-                      {Array.from({ length: 5 - Math.ceil(politicalFigure.rating) }).map((_, index) => (
-                        <MdOutlineStar key={`no-start-${index}`} className="text-5xl text-gray-500" />
-                      ))}
-                      <span className="text-sm">{politicalFigure.rating}</span>
-                    </>
-                  )}
-                </div>
-              </div>
+              <Rating rating={+politicalFigure.rating} />
             </div>
             <div className="p-4">
-              <h2 className="font-medium pb-2">{`${politicalFigure.firstName} ${politicalFigure.lastName}`}</h2>
+              <h2 className="font-medium pb-2">
+                {`${politicalFigure.firstName} ${politicalFigure.lastName}`}
+                <span className="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded ml-4">
+                  {politicalFigure.rating}
+                </span>
+              </h2>
               <div className="text-sm text-gray-500 font-medium">
                 <span className="font-normal text-gray-500 mr-1">
                   Partido Político:
