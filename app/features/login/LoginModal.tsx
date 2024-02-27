@@ -53,12 +53,9 @@ function LoginModal({
           >
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               {/* content */}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+              <div className="border-0 rounded-3xl shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/* header */}
-                <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t gap-10">
-                  <h3 className="text-3xl font-semibold">
-                    Inicio de Sesión
-                  </h3>
+                <div className="flex items-start justify-between p-5 rounded-t gap-10">
                   <button
                     type="button"
                     className="p-1 ml-auto bg-transparent border-0 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
@@ -71,34 +68,34 @@ function LoginModal({
                   </button>
                 </div>
                 {/* body */}
-                <div className="relative p-6 flex-auto">
+                <div className="relative p-6 flex-auto w-full max-w-[34rem] px-16">
+                  <h1 className="w-full text-3xl font-light text-center">FACESGOV</h1>
+                  <p className="text-gray-500 my-9 mb-4 text-center">Aenean consectetur odio in condimentum tristique. Nam hendrerit urna ex, non pretium erat pellentesque eget. Sed ut risus nec augue sagittis convallis.</p>
                   <form id="formPhone" hidden={!!hidden} onSubmit={handleSendOTP}>
                     <div className="mb-4 flex flex-col gap-y-3">
-                      <label htmlFor="telefono">Tu Télefono</label>
+                      <label htmlFor="phone" className="uppercase text-center">Celular</label>
                       <input
-                        id="telefono"
-                        name="telefono"
-                        placeholder="Ingresa tu numero de teléfono"
+                        id="phone"
+                        name="phone"
                         type="tel"
                         pattern="[0-9]{10}"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
-                        className="text-gray-900 text-sm bg-gray-50 border border-gray-300 rounded-md shadow-sm w-full py-2 px-3 sm:text-sm"
+                        className="text-gray-900 text-sm border border-gray-950 rounded-3xl w-full py-3 text-center"
                       />
                     </div>
-
-                    <div className="mb-6">
-                      <button
+                    <div className="mt-10 mb-6 grid place-items-center">
+                      <Button
                         type="submit"
-                        className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200  hover:bg-blue-800"
+                        className="py-6 !px-20 rounded-3xl"
                       >
                         Continuar
-                      </button>
+                      </Button>
                     </div>
                   </form>
                   <form id="formValidate" hidden={!hidden} onSubmit={handleValidateOTP}>
                     <div className="mb-4 flex flex-col gap-y-3">
-                      <label htmlFor="code">Codigo de verificación</label>
+                      <label htmlFor="code" className="uppercase text-center">Codigo de verificación</label>
                       <input
                         id="code"
                         name="code"
@@ -107,17 +104,16 @@ function LoginModal({
                         pattern="[0-9]{6}"
                         value={code}
                         onChange={(e) => setCode(e.target.value)}
-                        className="text-gray-900 text-sm bg-gray-50 border border-gray-300 rounded-md shadow-sm w-full py-2 px-3 sm:text-sm"
+                        className="text-gray-900 text-sm border border-gray-950 rounded-3xl w-full py-3 text-center"
                       />
                     </div>
-
-                    <div className="mb-6">
-                      <button
+                    <div className="mt-10 mb-6 grid place-items-center">
+                      <Button
                         type="submit"
-                        className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200  hover:bg-blue-800"
+                        className="py-6 !px-20 rounded-3xl"
                       >
                         Validar
-                      </button>
+                      </Button>
                     </div>
                   </form>
                 </div>

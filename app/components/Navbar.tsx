@@ -30,8 +30,9 @@ function Navbar() {
           >
             Calificar
           </Button>
+
+          <UserDropdown />
         </div>
-        <UserDropdown />
       </div>
     </header>
   );

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 
 import mutateUserProfile from '@/api/users';
+import Button from '@/components/Button';
 
 type ProfileModalProps = {
   initialUserInformation: {
@@ -27,47 +28,43 @@ function ProfileModal({ initialUserInformation }: ProfileModalProps) {
         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
       >
         <div className="relative w-auto my-6 mx-auto max-w-3xl">
-          <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-            <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
-              <h3 className="text-3xl font-semibold">
-                Completa tu perfil
-              </h3>
-            </div>
-            <div className="relative p-6 flex-auto">
+          {/* content */}
+          <div className="border-0 rounded-3xl shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+            {/* body */}
+            <div className="relative p-6 flex-auto w-full max-w-[34rem] px-16">
+              <h1 className="w-full text-3xl font-light text-center">FACESGOV</h1>
+              <p className="text-gray-500 my-9 mb-4 text-center">Aenean consectetur odio in condimentum tristique. Nam hendrerit urna ex, non pretium erat pellentesque eget. Sed ut risus nec augue sagittis convallis.</p>
               <form onSubmit={handleSendUserInformation}>
                 <div className="mb-4 flex flex-col gap-y-3">
-                  <label htmlFor="firstName">Tu Nombre</label>
+                  <label htmlFor="firstName" className="uppercase text-center">Tu Nombre</label>
                   <input
                     id="firstName"
                     name="firstName"
-                    placeholder="Ingresa tu nombre"
                     type="text"
                     value={userInformation.firstName}
                     onChange={(e) => setUserInformation({ ...userInformation, firstName: e.target.value })}
-                    className="text-gray-900 text-sm bg-gray-50 border border-gray-300 rounded-md shadow-sm w-full py-2 px-3 sm:text-sm"
+                    className="text-gray-900 text-sm border border-gray-950 rounded-3xl w-full py-3 text-center"
                   />
                 </div>
                 <div className="mb-4 flex flex-col gap-y-3">
-                  <label htmlFor="lastName">Tu Apellido</label>
+                  <label htmlFor="lastName" className="uppercase text-center">Tu Apellido</label>
                   <input
                     id="lastName"
                     name="lastName"
-                    placeholder="Ingresa tu apellido"
                     type="text"
                     value={userInformation.lastName}
                     onChange={(e) => setUserInformation({ ...userInformation, lastName: e.target.value })}
-                    className="text-gray-900 text-sm bg-gray-50 border border-gray-300 rounded-md shadow-sm w-full py-2 px-3 sm:text-sm"
+                    className="text-gray-900 text-sm border border-gray-950 rounded-3xl w-full py-3 text-center"
                   />
                 </div>
-
-                <div className="mb-6">
-                  <button
+                <div className="mt-10 mb-6 grid place-items-center">
+                  <Button
                     type="submit"
-                    className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200  hover:bg-blue-800"
+                    className="py-6 !px-20 rounded-3xl"
                     disabled={mutate.isLoading}
                   >
                     Continuar
-                  </button>
+                  </Button>
                 </div>
               </form>
             </div>
