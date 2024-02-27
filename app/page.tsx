@@ -3,10 +3,12 @@
 
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
 import { usePoliticalFigures } from '@/api/political-figures';
+import Button from './components/Button';
 import QueryResult from './components/QueryResult';
 import PoliticalFiguresList from './features/home/PoliticalFiguresList';
 
@@ -16,8 +18,11 @@ function Home() {
 
   const politicalFigures = usePoliticalFigures({ page, limit: 9 });
 
+  console.log(politicalFigures);
+
   return (
     <main>
+      <h2 className="py-36 text-4xl text-center font-light max-w-96 mx-auto">El espacio para calificar políticos</h2>
       <QueryResult query={politicalFigures} isFullScreenLoader>
         <PoliticalFiguresList politicalFigures={politicalFigures?.data?.results ?? []} />
         <div className="flex justify-center mt-8">
@@ -59,7 +64,23 @@ function Home() {
           </nav>
         </div>
       </QueryResult>
-
+      <div className="grid grid-cols-2 my-20">
+        <div className="grid place-items-center">
+          <Button
+            className="py-8 px-20 rounded-3xl"
+          >
+            Cómo funciona FacesGov
+          </Button>
+        </div>
+        <div>
+          <Image
+            src="/como-funciona.jpg"
+            alt="Cómo funciona FacesGov"
+            width={500}
+            height={500}
+          />
+        </div>
+      </div>
     </main>
   );
 }

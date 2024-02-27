@@ -7,7 +7,7 @@ import {
 
 function Footer() {
   return (
-    <div className="bg-white shadow-md mb-2">
+    <footer className="bg-white">
       <div className="flex justify-between h-20 items-center max-w-[1240px]  mx-auto px-4">
         <ul className="p-0 m-0 flex gap-10">
           <li>
@@ -39,7 +39,7 @@ function Footer() {
           </li>
         </ul>
       </div>
-    </div>
+    </footer>
   );
 }
 

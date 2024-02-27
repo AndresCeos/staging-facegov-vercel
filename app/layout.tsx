@@ -4,8 +4,8 @@ import ClientProvider from './context/ClientProvider';
 import './globals.css';
 
 export const metadata = {
-  title: 'Sexenio Faces',
-  description: '',
+  title: 'FACESGOV',
+  description: 'El espacio para calificar políticos',
 };
 
 export default function RootLayout({

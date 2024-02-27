@@ -3,14 +3,13 @@
 
 'use client';
 
-import Link from 'next/link';
 import { useState } from 'react';
 
 function SearchForm() {
   const [search, setSearch] = useState('');
 
   return (
-    <form className="max-w-md mx-auto">
+    <form className="border border-gray-950 rounded-full">
       <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
       <div className="relative">
         <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -21,18 +20,18 @@ function SearchForm() {
         <input
           type="search"
           id="default-search"
-          className="block w-full p-4 ps-10 text-sm text-gray-900 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-          placeholder="Buscar..."
+          className="block w-full min-w-72  py-2 px-4 ps-10 text-sm text-gray-900 rounded-full focus:ring-0 focus:border-0 focus:outline-none"
+          placeholder="Búsqueda de personajes"
           required
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <Link
+        {/* <Link
           href={`/search/?query=${search}`}
           className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
         >
           Buscar
-        </Link>
+        </Link> */}
       </div>
     </form>
 

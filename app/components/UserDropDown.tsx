@@ -30,6 +30,10 @@ function UserDropdown() {
   };
 
   if (!isSignedIn.data?.data?.authenticated || isSignedIn.isLoading) {
+    return null;
+  }
+
+  if (!isSignedIn.data?.data?.authenticated || isSignedIn.isLoading) {
     return (
       <LoginModal
         showModal={showModal}
