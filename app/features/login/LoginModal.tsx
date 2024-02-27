@@ -6,6 +6,7 @@ import { PropsWithChildren, useState } from 'react';
 import { MdClose } from 'react-icons/md';
 
 import { mutateSendOTP, mutateVerifyOTP } from '@/api/authentication';
+import Button from '@/components/Button';
 
 type LoginModalProps = {
   className?: string;
@@ -39,13 +40,12 @@ function LoginModal({
 
   return (
     <>
-      <button
+      <Button
         className={cx(className)}
-        type="button"
         onClick={() => setShowModal(true)}
       >
         {children}
-      </button>
+      </Button>
       {showModal ? (
         <>
           <div

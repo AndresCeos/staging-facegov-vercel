@@ -4,10 +4,13 @@
 
 import moment from 'moment';
 
+import { GrShare } from 'react-icons/gr';
+
 import { usePoliticalFigureById } from '@/api/political-figures';
 import QueryResult from '@/components/QueryResult';
 import Rating from '@/components/Rating';
 import PoliticalFigureRelatedList from '@/features/politicalFigures/PoliticalFigureRelatedList';
+import PoliticalFigureCommentForm from '@/features/politicalFigures/comments/PoliticalFigureCommentForm';
 import PoliticalFigureComments from '@/features/politicalFigures/comments/PoliticalFigureComments';
 import formatMoney from '@/utils/formatMoney';
 
@@ -25,78 +28,83 @@ function Page({ params }: Props) {
   return (
     <main>
       <QueryResult query={politicalFigure} isFullScreenLoader>
-        <div className="grid grid-cols-3 gap-4">
-          <div>
-            <div className="shadow-md rounded-lg overflow-hidden">
-              <div className="relative">
-                <img
-                  src={politicalFigure?.data?.results?.media?.[0]?.featured ? politicalFigure.data.results.media[0].featured : 'https://placehold.co/400'}
-                  alt={`${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName}`}
-                  className="w-full h-auto"
-                />
-                <Rating rating={politicalFigure.data?.results?.rating ?? 0} />
+        <div className="my-14 grid grid-cols-2 relative">
+          <div className="grid place-items-center z-10">
+            <img
+              src={politicalFigure?.data?.results?.media?.[0]?.featured ? politicalFigure.data.results.media[0].featured : 'https://placehold.co/400'}
+              alt={`${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName}`}
+              className="w-[500px] h-[500px] object-cover rounded-lg shadow-md"
+            />
+          </div>
+          <div className="pt-5">
+            <h2 className="text-4xl text-center font-light">
+              {`${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName}`}
+            </h2>
+            <h2 className="text-4xl text-center font-light">
+              {politicalFigure.data?.results?.politicalParty?.acronym}
+            </h2>
+            <div className="my-10 text-4xl text-center">
+              {politicalFigure.data?.results?.rating}
+            </div>
+            <div className="pb-20">
+              <Rating
+                className="w-[220px] mx-auto"
+                rating={politicalFigure.data?.results?.rating ?? 0}
+                ratingSize="5xl"
+              />
+            </div>
+            <div className="text-center flex mx-auto justify-center items-center gap-4 pt-20">
+              <div className="text-xl font-light">
+                Comparte este
+                <br />
+                político
               </div>
-              <div className="p-4">
-                <h2 className="font-medium pb-2">
-                  {`${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName}`}
-                  <span className="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded ml-4">
-                    {politicalFigure.data?.results?.rating}
-                  </span>
-                </h2>
-                <div className="text-sm text-gray-500 font-medium">
-                  <span className="font-normal text-gray-500 mr-1">
-                    Partido Político:
-                  </span>
-                  {politicalFigure?.data?.results?.politicalParty.acronym}
-                </div>
-                { politicalFigure?.data?.results?.employmentHistory?.[0] && (
-                <div className="text-sm text-gray-500 font-medium">
-                  <span className="font-normal text-gray-500 mr-1">
-                    Cargo:
-                  </span>
-                    {politicalFigure?.data?.results?.employmentHistory?.[0]?.jobTitle}
-                </div>
-                )}
-                <div className="text-sm text-gray-500 font-medium">
-                  <span className="font-normal text-gray-500 mr-1">
-                    Lugar:
-                  </span>
-                  {`${politicalFigure?.data?.results?.city.name}, ${politicalFigure?.data?.results?.city.state.name}`}
-                </div>
-                { politicalFigure?.data?.results?.employmentHistory?.[0] && (
-                <div className="text-sm text-gray-500 font-medium">
-                  <span className="font-normal text-gray-500 mr-1">
-                    Salario:
-                  </span>
-                    {formatMoney(politicalFigure?.data?.results?.employmentHistory?.[0]?.salary)}
-                </div>
-                )}
-                <div className="text-sm text-gray-500 font-medium">
-                  <span className="font-normal text-gray-500 mr-1">
-                    Edad:
-                  </span>
-                  {`${moment().diff(politicalFigure?.data?.results?.birthDate, 'years')} años`}
-                </div>
-                { politicalFigure?.data?.results?.scholarships?.[0] && (
-                <div className="text-sm text-gray-500 font-medium">
-                  <span className="font-normal text-gray-500 mr-1">
-                    Escolaridad:
-                  </span>
-                    {politicalFigure?.data?.results?.scholarships?.[0]?.name}
-                </div>
-                )}
-                <div>
-                  <h3 className="text-2xl mt-5 mb-3">Biografía</h3>
-                  <p className="text-sm text-gray-500">{politicalFigure.data?.results?.biography}</p>
-                </div>
-              </div>
+              <GrShare />
             </div>
           </div>
-          {politicalFigure?.data?.results && <PoliticalFigureComments politicalFigure={politicalFigure?.data?.results} />}
+          <div className="h-[1px] bg-black w-full absolute bottom-10" />
         </div>
+        <div className="grid grid-cols-2">
+          <div className="grid grid-cols-2 border-r border-gray-950 px-14">
+            <div className="col-span-2">
+              <h3>
+                {`¿Quién es ${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName}?`}
+              </h3>
+            </div>
+            { politicalFigure?.data?.results?.employmentHistory?.[0] && (
+              <div className="text-sm text-gray-500 font-medium">
+                {formatMoney(politicalFigure?.data?.results?.employmentHistory?.[0]?.salary)}
+              </div>
+            )}
+            <div className="text-sm text-gray-500 font-medium">
+              { politicalFigure?.data?.results?.employmentHistory?.[0] && `${politicalFigure?.data?.results?.employmentHistory?.[0]?.jobTitle}, `}
+              {`${politicalFigure?.data?.results?.city.name}, ${politicalFigure?.data?.results?.city.state.name}`}
+            </div>
+            <div className="text-sm text-gray-500 font-medium">
+              {`${moment().diff(politicalFigure?.data?.results?.birthDate, 'years')} años`}
+            </div>
+            { politicalFigure?.data?.results?.scholarships?.[0] && (
+              <div className="text-sm text-gray-500 font-medium">
+                {politicalFigure?.data?.results?.scholarships?.[0]?.name}
+              </div>
+            )}
+            <div className="col-span-2">
+              <p className="text-sm text-gray-500">{politicalFigure.data?.results?.biography}</p>
+            </div>
+          </div>
+          <div className="px-14">
+            {politicalFigure?.data?.results
+            && (
+              <PoliticalFigureCommentForm
+                politicalFigure={politicalFigure?.data?.results}
+              />
+            )}
+          </div>
+        </div>
+        {politicalFigure?.data?.results && <PoliticalFigureComments politicalFigure={politicalFigure?.data?.results} />}
       </QueryResult>
       <div className="my-10">
-        <h2 className="text-4xl mt-5 mb-3">Otros políticos</h2>
+        <h2 className="text-4xl font-light my-7">Aquí puedes calificar a otros políticos</h2>
         <PoliticalFigureRelatedList politicalFigureId={Number(id)} />
       </div>
     </main>

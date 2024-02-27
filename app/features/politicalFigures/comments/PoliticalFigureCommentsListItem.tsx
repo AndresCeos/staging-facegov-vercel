@@ -1,4 +1,5 @@
 import moment from 'moment';
+import { GrShare } from 'react-icons/gr';
 import PoliticalFigureCommentRating from './PoliticalFigureCommentRating';
 import PoliticalFigureCommentUtility from './PoliticalFigureCommentUtility';
 
@@ -11,24 +12,36 @@ const profileAcronym = (firstName: string | null, lastName: string | null) => ((
 
 function PoliticalFigureCommentsListItem({ comment, politicalFigureId }: PoliticalFigureCommentsListItemProps) {
   return (
-    <article className="p-6 text-base bg-white rounded-lg">
-      <footer className="flex justify-between items-center mb-2">
-        <div className="flex items-center">
-          <p className="inline-flex items-center mr-3 text-sm text-gray-900  font-semibold">
-            <img src={`https://placehold.co/80?text=${profileAcronym(comment.user.firstName, comment.user.lastName)}`} alt="profile" className="mr-2 w-6 h-6 rounded-full" />
+    <article className="my-20 text-base" id={`political-figure-comment-${comment.id}`}>
+      <div className="flex">
+        <div className="flex flex-col items-center border-r-2 border-gray-300 w-full max-w-[13rem] min-h-64">
+          <img
+            src={`https://placehold.co/80?text=${profileAcronym(comment.user.firstName, comment.user.lastName)}`}
+            alt="profile"
+            className="w-20 h-20 rounded-full"
+          />
+          <p className="text-gray-900 font-semibold mt-5 mb-11">
             {`${comment.user.firstName} ${comment.user.lastName}`}
           </p>
-          <p className="text-sm text-gray-600 ">
-            <time>{moment(comment.createdAt).format('MMM Do YYYY')}</time>
-          </p>
+          <span>12 comentarios</span>
         </div>
-        <PoliticalFigureCommentUtility comment={comment} politicalFigureId={politicalFigureId} />
-      </footer>
-      <p className="text-gray-500 ">
-        {comment.text}
-      </p>
-      <div className="flex mt-3">
-        <PoliticalFigureCommentRating rating={comment.rating} />
+        <div className="flex flex-col pl-10">
+          <div className="flex">
+            <PoliticalFigureCommentRating rating={comment.rating} />
+          </div>
+          <p className="text-sm text-gray-500 mt-2 mb-2">
+            <time>{moment(comment.createdAt).format('D MMMM YYYY')}</time>
+          </p>
+          <div className="flex">
+            <PoliticalFigureCommentUtility comment={comment} politicalFigureId={politicalFigureId} />
+            <p className="text-gray-500 ">
+              {comment.text}
+            </p>
+          </div>
+          <div className="flex justify-end">
+            <GrShare className="text-gray-500" />
+          </div>
+        </div>
       </div>
     </article>
   );

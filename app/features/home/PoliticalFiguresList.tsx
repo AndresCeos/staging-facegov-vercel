@@ -30,7 +30,7 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
                 <h2 className="font-medium grow">
                   {`${politicalFigure.firstName} ${politicalFigure.lastName}`}
                 </h2>
-                <Rating className="w-[100px]" rating={+politicalFigure.rating} />
+                <Rating className="w-[100px]" rating={+politicalFigure.rating} ratingSize="2xl" />
               </div>
               <div className="text-sm text-gray-500 font-medium">
                 {politicalFigure.politicalParty.acronym}

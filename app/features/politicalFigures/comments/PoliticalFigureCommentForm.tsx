@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import { useIsSignedIn } from '@/api/authentication';
 import { mutateComment } from '@/api/comments';
+import Button from '@/components/Button';
 import QueryResult from '@/components/QueryResult';
 import RatingControl from '@/components/RatingControl';
 import LoginModal from '@/features/login/LoginModal';
@@ -10,6 +11,8 @@ import LoginModal from '@/features/login/LoginModal';
 type PoliticalFigureCommentFormProps = {
   politicalFigure: Api.PoliticalFigure;
 };
+
+const MAX_COMMENT_LENGTH = 650;
 
 function PoliticalFigureCommentForm({ politicalFigure }: PoliticalFigureCommentFormProps) {
   const [showModal, setShowModal] = useState(false);
@@ -21,22 +24,27 @@ function PoliticalFigureCommentForm({ politicalFigure }: PoliticalFigureCommentF
 
   const handleCommentSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (politicalFigure.canUserComment === false) {
+      return;
+    }
     // eslint-disable-next-line no-alert
     mutate.mutate({ rating, text, politicalFigureId: politicalFigure.id });
   };
 
-  if (politicalFigure.canUserComment === false) {
-    return null;
-  }
+  const handleChangeText = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    if (event.target.value.length <= MAX_COMMENT_LENGTH) {
+      setText(event.target.value);
+    }
+  };
 
   return (
     <QueryResult query={isSignedIn} isFullScreenLoader={false}>
       <form className="mb-6" onSubmit={handleCommentSubmit}>
         <div className="mb-4">
-          <label htmlFor="rating" className="text-sm">Calificación:</label>
+          <label htmlFor="rating" className="sr-only">Calificación:</label>
           <RatingControl rating={rating} setRating={setRating} />
         </div>
-        <div className="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200  ">
+        <div className="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-950">
           <label htmlFor="comment" className="sr-only">
             Tú comentario
           </label>
@@ -46,27 +54,36 @@ function PoliticalFigureCommentForm({ politicalFigure }: PoliticalFigureCommentF
             placeholder="Escribe un comentario..."
             required
             value={text}
-            onChange={(e) => setText(e.target.value)}
+            onChange={handleChangeText}
+            disabled={politicalFigure.canUserComment === false}
           />
+          <div className="text-right">
+            {`${text.length} / ${MAX_COMMENT_LENGTH}`}
+          </div>
         </div>
-        {isSignedIn.data?.data?.authenticated === true ? (
-          <button
-            type="submit"
-            className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200  hover:bg-blue-800"
-          >
-            Publicar comentario
-          </button>
-        ) : null }
+        <div className="flex justify-end">
+          {isSignedIn.data?.data?.authenticated === true ? (
+            <Button
+              type="submit"
+              className="h-14 px-10"
+              disabled={politicalFigure.canUserComment === false}
+            >
+              Calificar
+            </Button>
+          ) : null }
+        </div>
       </form>
-      {isSignedIn.data?.data?.authenticated === false ? (
-        <LoginModal
-          className='"inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200  hover:bg-blue-800"'
-          showModal={showModal}
-          setShowModal={setShowModal}
-        >
-          Publicar comentario
-        </LoginModal>
-      ) : null }
+      <div className="flex justify-end">
+        {isSignedIn.data?.data?.authenticated === false ? (
+          <LoginModal
+            className="h-14 px-10"
+            showModal={showModal}
+            setShowModal={setShowModal}
+          >
+            Calificar
+          </LoginModal>
+        ) : null }
+      </div>
     </QueryResult>
   );
 }
