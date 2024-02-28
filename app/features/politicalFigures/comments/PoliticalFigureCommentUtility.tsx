@@ -75,7 +75,7 @@ function PoliticalFigureCommentUtility({ comment, politicalFigureId }: Political
       <button
         className={cx(
           '!px-1 !py-1 bg-transparent hover:bg-transparent hover:text-gray-700 !outline-none !focus:outline-none !focus:ring-0',
-          comment.userUtility === true && '!text-blue-500',
+          comment.userUtility === true && '!text-green-500',
           comment.userUtility !== true && '!text-gray-500',
         )}
         type="button"

@@ -16,6 +16,9 @@ function ProfileUtilitiesList() {
 
   return (
     <QueryResult query={comments}>
+      {comments.data?.results?.length === 0 && (
+        <h2 className="text-gray-500 text-2xl my-10">No has calificado ningún comentario político aún</h2>
+      )}
       {comments.data?.results?.map((comment) => (
         <div key={comment.id}>
           <div className="flex flex-col md:flex-row">
