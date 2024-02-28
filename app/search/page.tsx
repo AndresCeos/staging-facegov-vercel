@@ -14,6 +14,7 @@ import PoliticalFiguresList from '@/features/home/PoliticalFiguresList';
 function SearchPage() {
   const [page, setPage] = useState(1);
   const [initialData, setInitialData] = useState<Api.PoliticalFigure[]>([]);
+  const [search, setSearch] = useState('' as string);
 
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get('s') || '';
@@ -22,10 +23,12 @@ function SearchPage() {
 
   useEffect(() => {
     if (politicalFigures.status === 'success') {
-      const data = initialData.concat(politicalFigures.data?.results ?? []);
+      console.log(search, searchQuery);
+      const data = (search !== searchQuery ? [] : initialData).concat(politicalFigures.data?.results ?? []);
       setInitialData(data.filter((value, index, self) => self.findIndex((v) => v.id === value.id) === index));
     }
-  }, [politicalFigures.dataUpdatedAt]);
+    setSearch(searchQuery.toString());
+  }, [politicalFigures.dataUpdatedAt, searchQuery, search]);
 
   return (
     <main>
