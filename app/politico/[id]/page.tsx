@@ -1,5 +1,3 @@
-/* eslint-disable react/no-array-index-key */
-
 'use client';
 
 import moment from 'moment';
@@ -43,7 +41,7 @@ function Page({ params }: Props) {
             <h2 className="text-4xl text-center font-light">
               {politicalFigure.data?.results?.politicalParty?.acronym}
             </h2>
-            <div className="my-10 text-4xl text-center">
+            <div className="my-10 text-5xl font-bold text-center">
               {politicalFigure.data?.results?.rating}
             </div>
             <div className="pb-20">
@@ -53,43 +51,43 @@ function Page({ params }: Props) {
                 ratingSize="5xl"
               />
             </div>
-            <div className="text-center flex mx-auto justify-center items-center gap-4 pt-20">
-              <div className="text-xl font-light">
+            <div className="text-center flex mx-auto justify-center items-center gap-5 pt-20">
+              <div className="text-2xl font-light">
                 Comparte este
                 <br />
                 político
               </div>
-              <GrShare />
+              <GrShare className="text-4xl" />
             </div>
           </div>
           <div className="h-[1px] bg-black w-full absolute bottom-10" />
         </div>
         <div className="grid grid-cols-2">
           <div className="grid grid-cols-2 border-r border-gray-950 px-14">
-            <div className="col-span-2">
-              <h3>
+            <div className="col-span-2 mb-16">
+              <h3 className="text-2xl">
                 {`¿Quién es ${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName}?`}
               </h3>
             </div>
             { politicalFigure?.data?.results?.employmentHistory?.[0] && (
-              <div className="text-sm text-gray-500 font-medium">
+              <div className="text-xl text-gray-950">
                 {formatMoney(politicalFigure?.data?.results?.employmentHistory?.[0]?.salary)}
               </div>
             )}
-            <div className="text-sm text-gray-500 font-medium">
+            <div className="text-xl text-gray-950">
               { politicalFigure?.data?.results?.employmentHistory?.[0] && `${politicalFigure?.data?.results?.employmentHistory?.[0]?.jobTitle}, `}
               {`${politicalFigure?.data?.results?.city.name}, ${politicalFigure?.data?.results?.city.state.name}`}
             </div>
-            <div className="text-sm text-gray-500 font-medium">
+            <div className="text-xl text-gray-950">
               {`${moment().diff(politicalFigure?.data?.results?.birthDate, 'years')} años`}
             </div>
             { politicalFigure?.data?.results?.scholarships?.[0] && (
-              <div className="text-sm text-gray-500 font-medium">
+              <div className="text-xl text-gray-950">
                 {politicalFigure?.data?.results?.scholarships?.[0]?.name}
               </div>
             )}
-            <div className="col-span-2">
-              <p className="text-sm text-gray-500">{politicalFigure.data?.results?.biography}</p>
+            <div className="col-span-2 mt-10">
+              <p className="text-xl text-gray-950">{politicalFigure.data?.results?.biography}</p>
             </div>
           </div>
           <div className="px-14">

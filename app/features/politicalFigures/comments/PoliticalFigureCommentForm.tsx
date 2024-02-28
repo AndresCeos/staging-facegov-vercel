@@ -40,11 +40,11 @@ function PoliticalFigureCommentForm({ politicalFigure }: PoliticalFigureCommentF
   return (
     <QueryResult query={isSignedIn} isFullScreenLoader={false}>
       <form className="mb-6" onSubmit={handleCommentSubmit}>
-        <div className="mb-4">
+        <div className="mb-16">
           <label htmlFor="rating" className="sr-only">Calificación:</label>
           <RatingControl rating={rating} setRating={setRating} />
         </div>
-        <div className="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-950">
+        <div className="p-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-950">
           <label htmlFor="comment" className="sr-only">
             Tú comentario
           </label>
@@ -61,11 +61,11 @@ function PoliticalFigureCommentForm({ politicalFigure }: PoliticalFigureCommentF
             {`${text.length} / ${MAX_COMMENT_LENGTH}`}
           </div>
         </div>
-        <div className="flex justify-end">
+        <div className="flex justify-end mt-8">
           {isSignedIn.data?.data?.authenticated === true ? (
             <Button
               type="submit"
-              className="h-14 px-10"
+              className="h-14 !px-12"
               disabled={politicalFigure.canUserComment === false}
             >
               Calificar
@@ -76,7 +76,7 @@ function PoliticalFigureCommentForm({ politicalFigure }: PoliticalFigureCommentF
       <div className="flex justify-end">
         {isSignedIn.data?.data?.authenticated === false ? (
           <LoginModal
-            className="h-14 px-10"
+            className="h-14 !px-12"
             showModal={showModal}
             setShowModal={setShowModal}
           >

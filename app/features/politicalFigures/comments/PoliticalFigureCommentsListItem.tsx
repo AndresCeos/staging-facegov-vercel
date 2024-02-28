@@ -20,10 +20,10 @@ function PoliticalFigureCommentsListItem({ comment, politicalFigureId }: Politic
             alt="profile"
             className="w-20 h-20 rounded-full"
           />
-          <p className="text-gray-900 font-semibold mt-5 mb-11">
+          <p className="text-gray-900 font-bold mt-5 mb-11">
             {`${comment.user.firstName} ${comment.user.lastName}`}
           </p>
-          <span>12 comentarios</span>
+          <span className="text-sm text-gray-500">12 comentarios</span>
         </div>
         <div className="flex flex-col pl-10">
           <div className="flex">
