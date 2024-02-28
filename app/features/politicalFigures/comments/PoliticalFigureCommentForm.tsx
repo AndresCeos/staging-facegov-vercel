@@ -29,6 +29,7 @@ function PoliticalFigureCommentForm({ politicalFigure }: PoliticalFigureCommentF
     }
     // eslint-disable-next-line no-alert
     mutate.mutate({ rating, text, politicalFigureId: politicalFigure.id });
+    setText('');
   };
 
   const handleChangeText = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -55,22 +56,24 @@ function PoliticalFigureCommentForm({ politicalFigure }: PoliticalFigureCommentF
             required
             value={text}
             onChange={handleChangeText}
-            disabled={politicalFigure.canUserComment === false}
           />
           <div className="text-right">
             {`${text.length} / ${MAX_COMMENT_LENGTH}`}
           </div>
         </div>
         <div className="flex justify-end mt-8">
-          {isSignedIn.data?.data?.authenticated === true ? (
+          {(isSignedIn.data?.data?.authenticated === true && politicalFigure.canUserComment === true) ? (
             <Button
               type="submit"
               className="h-14 !px-12"
-              disabled={politicalFigure.canUserComment === false}
+              disabled={mutate.isLoading || rating === 0}
             >
               Calificar
             </Button>
           ) : null }
+          {(isSignedIn.data?.data?.authenticated === true && politicalFigure.canUserComment !== true) && (
+            <div className="bg-gray-200 px-6 py-4 rounded-2xl cursor-not-allowed">Ya has calificado a este político</div>
+          )}
         </div>
       </form>
       <div className="flex justify-end">

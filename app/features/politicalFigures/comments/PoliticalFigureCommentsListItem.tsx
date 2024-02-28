@@ -25,7 +25,7 @@ function PoliticalFigureCommentsListItem({ comment, politicalFigureId }: Politic
           </p>
           <span className="text-sm text-gray-500">12 comentarios</span>
         </div>
-        <div className="flex flex-col pl-10">
+        <div className="flex flex-col pl-10 w-full">
           <div className="flex">
             <PoliticalFigureCommentRating rating={comment.rating} />
           </div>
@@ -34,12 +34,12 @@ function PoliticalFigureCommentsListItem({ comment, politicalFigureId }: Politic
           </p>
           <div className="flex">
             <PoliticalFigureCommentUtility comment={comment} politicalFigureId={politicalFigureId} />
-            <p className="text-gray-500 ">
+            <p className="text-gray-500 w-full">
               {comment.text}
             </p>
           </div>
           <div className="flex justify-end">
-            <GrShare className="text-gray-500" />
+            <GrShare className="text-gray-500 cursor-pointer" />
           </div>
         </div>
       </div>
