@@ -10,7 +10,7 @@ import { useState } from 'react';
 
 import { mutateLogout, useIsSignedIn } from '@/api/authentication';
 import LoginModal from '@/features/login/LoginModal';
-import ProfileModal from '@/features/profile/ProfileModal';
+import ProfileSetupModal from '@/features/profile/modal/ProfileSetupModal';
 import profileAcronym from '@/utils/profileAcronym';
 
 function UserDropdown() {
@@ -63,7 +63,7 @@ function UserDropdown() {
       </div>
 
       {isSignedIn.data?.data?.authenticated === true && (isSignedIn.data?.data?.user?.firstName === null || isSignedIn.data?.data?.user?.lastName === null) ? (
-        <ProfileModal
+        <ProfileSetupModal
           initialUserInformation={{
             firstName: isSignedIn.data?.data?.user?.firstName ?? '',
             lastName: isSignedIn.data?.data?.user?.lastName ?? '',

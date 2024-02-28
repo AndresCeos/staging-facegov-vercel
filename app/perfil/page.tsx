@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 import { useIsSignedIn } from '@/api/authentication';
 import ProfileCommentsList from '@/features/profile/ProfileCommentsList';
+import ProfileEdit from '@/features/profile/ProfileEdit';
 import ProfileUtilitiesList from '@/features/profile/ProfileUtilitiesList';
 import profileAcronym from '@/utils/profileAcronym';
 
@@ -74,6 +75,7 @@ function ProfilePage() {
           <div className="flex flex-col pl-10 w-full">
             {view === 'comments' && <ProfileCommentsList />}
             {view === 'utilities' && <ProfileUtilitiesList />}
+            {view === 'profile' && <ProfileEdit />}
           </div>
         </div>
       </div>
