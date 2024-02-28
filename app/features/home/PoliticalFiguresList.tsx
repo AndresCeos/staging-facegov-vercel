@@ -1,5 +1,6 @@
-/* eslint-disable react/no-array-index-key */
 import Link from 'next/link';
+
+import { HiArrowRight } from 'react-icons/hi';
 
 import Rating from '@/components/Rating';
 import formatMoney from '@/utils/formatMoney';
@@ -27,19 +28,21 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
             </div>
             <div className="p-4">
               <div className="flex justify-between items-start">
-                <h2 className="font-medium grow">
+                <h2 className="font-medium grow min-h-12">
                   {`${politicalFigure.firstName} ${politicalFigure.lastName}`}
                 </h2>
                 <Rating className="w-[100px]" rating={+politicalFigure.rating} ratingSize="2xl" />
               </div>
-              <div className="text-sm text-gray-500 font-medium">
-                {politicalFigure.politicalParty.acronym}
-              </div>
-              { politicalFigure.employmentHistory?.[0] && (
-                <div className="text-sm text-gray-500 font-medium">
-                    {formatMoney(politicalFigure.employmentHistory?.[0]?.salary)}
+              <div className="flex justify-between items-end">
+                <div className="text-gray-500 font-medium flex flex-col">
+                  <span>{politicalFigure.politicalParty.acronym}</span>
+                  {politicalFigure.employmentHistory?.[0] && <span>{formatMoney(politicalFigure.employmentHistory?.[0]?.salary)}</span>}
                 </div>
-              )}
+                <div className="hover:underline">
+                  Calificar
+                  <HiArrowRight className="inline-block" />
+                </div>
+              </div>
             </div>
           </Link>
         </li>
