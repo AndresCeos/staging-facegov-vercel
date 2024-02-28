@@ -15,7 +15,7 @@ type LoginModalProps = {
 } & PropsWithChildren<unknown>;
 
 function LoginModal({
-  showModal, setShowModal, children, className,
+  showModal, setShowModal, children, className = '',
 }: LoginModalProps) {
   const [hidden, setHidden] = useState(false);
   const [phone, setPhone] = useState<string>('');
@@ -126,9 +126,5 @@ function LoginModal({
     </>
   );
 }
-
-LoginModal.defaultProps = {
-  className: '',
-};
 
 export default LoginModal;

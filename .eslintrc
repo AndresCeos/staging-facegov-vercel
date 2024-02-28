@@ -30,6 +30,7 @@
       }
     ],
     "no-console": "off",
-    "react/prefer-stateless-function": "error"
+    "react/prefer-stateless-function": "error",
+    "react/require-default-props": "off"
   }
 }

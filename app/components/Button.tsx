@@ -10,7 +10,7 @@ type ButtonProps = {
   disabled?: boolean;
 };
 function Button({
-  type = 'button', children, onClick, className, disabled,
+  type = 'button', children, onClick = () => {}, className = '', disabled = false,
 }: ButtonProps) {
   return (
     <button
@@ -27,12 +27,5 @@ function Button({
     </button>
   );
 }
-
-Button.defaultProps = {
-  type: 'button',
-  onClick: () => {},
-  className: '',
-  disabled: false,
-};
 
 export default Button;

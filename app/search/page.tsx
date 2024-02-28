@@ -1,18 +1,24 @@
 'use client';
 
-import Image from 'next/image';
+import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-import { usePoliticalFigures } from '@/api/political-figures';
-import Button from './components/Button';
-import QueryResult from './components/QueryResult';
-import PoliticalFiguresList from './features/home/PoliticalFiguresList';
+import { HiXCircle } from 'react-icons/hi';
 
-function Home() {
+import { usePoliticalFigures } from '@/api/political-figures';
+import Button from '@/components/Button';
+import QueryResult from '@/components/QueryResult';
+import PoliticalFiguresList from '@/features/home/PoliticalFiguresList';
+
+function SearchPage() {
   const [page, setPage] = useState(1);
   const [initialData, setInitialData] = useState<Api.PoliticalFigure[]>([]);
 
-  const politicalFigures = usePoliticalFigures({ offset: (page - 1) * 9, limit: 9 });
+  const searchParams = useSearchParams();
+  const searchQuery = searchParams.get('s') || '';
+
+  const politicalFigures = usePoliticalFigures({ offset: (page - 1) * 9, limit: 9, search: searchQuery });
 
   useEffect(() => {
     if (politicalFigures.status === 'success') {
@@ -23,7 +29,16 @@ function Home() {
 
   return (
     <main>
-      <h2 className="py-36 text-4xl text-center max-w-96 mx-auto">El espacio para calificar políticos</h2>
+      <div className="flex gap-1 my-10 items-center">
+        <h2 className="text-2xl">
+          {'Búsqueda: '}
+          <strong>{searchQuery}</strong>
+        </h2>
+        <Link href="/" className="underline text-gray-950 hover:text-gray-500">
+          <span className="sr-only">Limpiar</span>
+          <HiXCircle className="w-6 h-6" />
+        </Link>
+      </div>
       <QueryResult query={politicalFigures} isFullScreenLoader>
         <PoliticalFiguresList politicalFigures={initialData} />
         {politicalFigures.data?.pagination.hasNextPage && (
@@ -33,31 +48,14 @@ function Home() {
               className="py-6 px-22 rounded-[20px]"
               disabled={politicalFigures.isLoading}
             >
-              Ver otros políticos
+              Ver más políticos
               {politicalFigures.isLoading && '...'}
             </Button>
           </div>
         )}
       </QueryResult>
-      <div className="grid grid-cols-2 my-20">
-        <div className="grid place-items-center">
-          <Button
-            className="py-8 px-20 rounded-3xl"
-          >
-            Cómo funciona FacesGov
-          </Button>
-        </div>
-        <div>
-          <Image
-            src="/como-funciona.jpg"
-            alt="Cómo funciona FacesGov"
-            width={500}
-            height={500}
-          />
-        </div>
-      </div>
     </main>
   );
 }
 
-export default Home;
+export default SearchPage;

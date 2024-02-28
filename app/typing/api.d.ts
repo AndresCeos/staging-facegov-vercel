@@ -2,8 +2,15 @@ declare namespace Api {
   interface Response<T> {
     status: number;
     results: T;
-    page: number;
-    limit: number;
+    pagination: Pagination;
+  }
+
+  interface Pagination {
+    currentPage: number;
+    hasNextPage: boolean;
+    hasPreviousPage: boolean;
+    offset: number;
+    pageSize: number;
     totalItems: number;
     totalPages: number;
   }

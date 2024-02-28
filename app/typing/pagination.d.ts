@@ -1,6 +1,6 @@
 declare namespace Pagination {
   interface Config {
-    page: number;
+    offset: number;
     limit: number;
   }
 

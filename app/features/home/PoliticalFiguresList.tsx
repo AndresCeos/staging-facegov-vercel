@@ -10,11 +10,11 @@ type PoliticalFiguresListProps = {
 
 function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
   if (politicalFigures.length === 0) {
-    return <div>No hay datos.</div>;
+    return <h2 className="text-gray-700 text-2xl text-center my-10">No hay coincidencias con tu búsqueda.</h2>;
   }
 
   return (
-    <ul className="grid grid-cols-3 gap-4">
+    <ul className="grid grid-cols-3 gap-16">
       {politicalFigures.map((politicalFigure) => (
         <li key={politicalFigure.id} className="rounded-md shadow-md overflow-hidden hover:shadow-xl w-[375px]">
           <Link href={`/politico/${politicalFigure.id}`}>

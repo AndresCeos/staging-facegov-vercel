@@ -11,7 +11,7 @@ function Navbar() {
       <div className="h-20 flex items-center justify-between max-w-[1240px] mx-auto px-4">
         <div className="">
           <Link href="/">
-            <h1 className="w-full text-3xl font-light">FACESGOV</h1>
+            <h1 className="w-full text-3xl">FACESGOV</h1>
           </Link>
         </div>
         <div className="grow flex items-center gap-10 justify-end">

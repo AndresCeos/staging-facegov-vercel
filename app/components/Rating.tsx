@@ -7,7 +7,7 @@ type Props = {
   ratingSize: string;
 };
 
-function Rating({ rating, className, ratingSize }: Props) {
+function Rating({ rating, className = '', ratingSize }: Props) {
   const rating100 = 100 - (rating * 20);
 
   return (
@@ -27,9 +27,5 @@ function Rating({ rating, className, ratingSize }: Props) {
     </div>
   );
 }
-
-Rating.defaultProps = {
-  className: '',
-};
 
 export default Rating;
