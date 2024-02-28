@@ -26,7 +26,7 @@ function Page({ params }: Props) {
   return (
     <main>
       <QueryResult query={politicalFigure} isFullScreenLoader>
-        <div className="my-14 grid grid-cols-2 relative">
+        <div className="my-14 grid md:grid-cols-2 relative">
           <div className="grid place-items-center z-10">
             <img
               src={politicalFigure?.data?.results?.media?.[0]?.featured ? politicalFigure.data.results.media[0].featured : 'https://placehold.co/400'}
@@ -60,37 +60,37 @@ function Page({ params }: Props) {
               <GrShare className="text-4xl" />
             </div>
           </div>
-          <div className="h-[1px] bg-black w-full absolute bottom-10" />
+          <div className="h-[1px] md:bg-black w-full absolute bottom-10" />
         </div>
-        <div className="grid grid-cols-2">
-          <div className="grid grid-cols-2 border-r border-gray-950 px-14">
-            <div className="col-span-2 mb-16">
+        <div className="grid md:grid-cols-2">
+          <div className="grid gap-2 md:grid-cols-2 md:border-r md:border-gray-950 px-14">
+            <div className="col-span-2 md:mb-16">
               <h3 className="text-2xl">
                 {`¿Quién es ${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName}?`}
               </h3>
             </div>
             { politicalFigure?.data?.results?.employmentHistory?.[0] && (
-              <div className="text-xl text-gray-950">
+              <div className="col-span-2 md:col-span-1 text-xl text-gray-950">
                 {formatMoney(politicalFigure?.data?.results?.employmentHistory?.[0]?.salary)}
               </div>
             )}
-            <div className="text-xl text-gray-950">
+            <div className="col-span-2 md:col-span-1 text-xl text-gray-950">
               { politicalFigure?.data?.results?.employmentHistory?.[0] && `${politicalFigure?.data?.results?.employmentHistory?.[0]?.jobTitle}, `}
               {`${politicalFigure?.data?.results?.city.name}, ${politicalFigure?.data?.results?.city.state.name}`}
             </div>
-            <div className="text-xl text-gray-950">
+            <div className="col-span-2 md:col-span-1 text-xl text-gray-950">
               {`${moment().diff(politicalFigure?.data?.results?.birthDate, 'years')} años`}
             </div>
             { politicalFigure?.data?.results?.scholarships?.[0] && (
-              <div className="text-xl text-gray-950">
+              <div className="col-span-2 md:col-span-1 text-xl text-gray-950">
                 {politicalFigure?.data?.results?.scholarships?.[0]?.name}
               </div>
             )}
-            <div className="col-span-2 mt-10">
-              <p className="text-xl text-gray-950">{politicalFigure.data?.results?.biography}</p>
+            <div className="col-span-2 md:mt-5">
+              <p className="col-span-2 md:col-span-1 text-xl text-gray-950">{politicalFigure.data?.results?.biography}</p>
             </div>
           </div>
-          <div className="px-14">
+          <div className="px-14 mt-20 md:mt-0">
             {politicalFigure?.data?.results
             && (
               <PoliticalFigureCommentForm
