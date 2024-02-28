@@ -91,4 +91,21 @@ declare namespace Api {
     userUtility: boolean | null;
     commentedByUser?: boolean;
   }
+
+  interface UserComment {
+    id: number;
+    text: string;
+    rating: number;
+    createdAt: Date;
+    politicalFigure: PoliticalFigure;
+  }
+
+  interface UserCommentUtility {
+    id: number;
+    text: string;
+    rating: number;
+    user: User;
+    politicalFigure: PoliticalFigure;
+    createdAt: Date;
+  }
 }

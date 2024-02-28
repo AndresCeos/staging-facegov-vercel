@@ -1,5 +1,8 @@
 import moment from 'moment';
+
 import { GrShare } from 'react-icons/gr';
+
+import profileAcronym from '@/utils/profileAcronym';
 import PoliticalFigureCommentRating from './PoliticalFigureCommentRating';
 import PoliticalFigureCommentUtility from './PoliticalFigureCommentUtility';
 
@@ -7,8 +10,6 @@ type PoliticalFigureCommentsListItemProps = {
   comment: Api.Comment;
   politicalFigureId: number;
 };
-// eslint-disable-next-line max-len
-const profileAcronym = (firstName: string | null, lastName: string | null) => ((firstName === null || lastName == null) ? 'S' : `${firstName.charAt(0) ?? ''}${lastName.charAt(0) ?? 'S'}`.toUpperCase());
 
 function PoliticalFigureCommentsListItem({ comment, politicalFigureId }: PoliticalFigureCommentsListItemProps) {
   return (

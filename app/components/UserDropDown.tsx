@@ -5,19 +5,19 @@
 
 /* eslint-disable max-len */
 
+import Link from 'next/link';
 import { useState } from 'react';
 
 import { mutateLogout, useIsSignedIn } from '@/api/authentication';
 import LoginModal from '@/features/login/LoginModal';
 import ProfileModal from '@/features/profile/ProfileModal';
+import profileAcronym from '@/utils/profileAcronym';
 
 function UserDropdown() {
   const isSignedIn = useIsSignedIn();
   const mutateL = mutateLogout();
   const [isOpen, setIsOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
-
-  const profileAcronym = (isSignedIn.data?.data?.authenticated === false ? 'S' : `${isSignedIn.data?.data?.user?.firstName?.charAt(0) ?? ''}${isSignedIn.data?.data?.user?.lastName?.charAt(0) ?? 'S'}`).toUpperCase();
 
   const handleLogout = () => {
     mutateL.mutateAsync({}).then(() => {
@@ -58,7 +58,7 @@ function UserDropdown() {
           className="inline-flex justify-center w-full rounded-full border border-gray-300 shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 overflow-hidden"
           onClick={handleToggle}
         >
-          <img src={`https://placehold.co/80?text=${profileAcronym}`} alt="profile" className="w-8 h-8" />
+          <img src={`https://placehold.co/80?text=${profileAcronym(isSignedIn.data?.data?.user?.firstName, isSignedIn.data?.data?.user?.lastName)}`} alt="profile" className="w-8 h-8" />
         </button>
       </div>
 
@@ -92,7 +92,9 @@ function UserDropdown() {
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
               role="menuitem"
             >
-              Perfil
+              <Link href="/perfil">
+                Perfil
+              </Link>
             </div>
             <hr />
             <div
