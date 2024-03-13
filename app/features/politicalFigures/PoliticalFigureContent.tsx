@@ -2,7 +2,7 @@
 
 import moment from 'moment';
 
-import { GrShare } from 'react-icons/gr';
+import { GrShare, GrValidate } from 'react-icons/gr';
 
 import { usePoliticalFigureById } from '@/api/political-figures';
 import QueryResult from '@/components/QueryResult';
@@ -11,6 +11,8 @@ import PoliticalFigureRelatedList from '@/features/politicalFigures/PoliticalFig
 import PoliticalFigureCommentForm from '@/features/politicalFigures/comments/PoliticalFigureCommentForm';
 import PoliticalFigureComments from '@/features/politicalFigures/comments/PoliticalFigureComments';
 import formatMoney from '@/utils/formatMoney';
+import RightOfReplyModal from './rightOfReplyModal';
+import { useState } from 'react';
 
 type PoliticalFigureContentProps = {
   id: string;
@@ -18,6 +20,7 @@ type PoliticalFigureContentProps = {
 
 function PoliticalFigureContent({ id }: PoliticalFigureContentProps) {
   const politicalFigure = usePoliticalFigureById(Number(id));
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <>
@@ -27,13 +30,14 @@ function PoliticalFigureContent({ id }: PoliticalFigureContentProps) {
             <img
               src={politicalFigure?.data?.results?.media?.[0]?.featured ? politicalFigure.data.results.media[0].featured : 'https://placehold.co/400'}
               alt={`${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName}`}
-              className="w-[500px] h-[500px] object-cover rounded-lg shadow-md"
+              className={`w-[500px] h-[500px] object-cover rounded-lg shadow-md ${politicalFigure.data?.results?.verify && 'border-4 border-cyan-400'}`}
             />
           </div>
           <div className="pt-5">
-            <h2 className="text-4xl text-center font-light">
-              {`${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName}`}
-            </h2>
+            <h2 className="text-4xl text-center font-light flex justify-center align-baseline">
+              {`${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName}`} 
+              {politicalFigure.data?.results?.verify && <GrValidate className='ml-3 text-cyan-400 text-3xl' />}
+            </h2><div className='my-3'></div>
             <h2 className="text-4xl text-center font-light">
               {politicalFigure.data?.results?.politicalParty?.acronym}
             </h2>
@@ -84,6 +88,14 @@ function PoliticalFigureContent({ id }: PoliticalFigureContentProps) {
             )}
             <div className="col-span-2 md:mt-5">
               <p className="col-span-2 md:col-span-1 text-xl text-gray-950">{politicalFigure.data?.results?.biography}</p>
+            </div>
+            <div className='col-span-2 md:mt-5'>
+              <RightOfReplyModal
+                className="h-14 !px-12"
+                showModal={showModal}
+                setShowModal={setShowModal}
+                politicalFigureName={`${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName}`}
+              >Derecho de Replica</RightOfReplyModal>
             </div>
           </div>
           <div className="px-14 mt-20 md:mt-0">

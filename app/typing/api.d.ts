@@ -79,6 +79,7 @@ declare namespace Api {
     tags: string[];
     employmentHistory: Employment[];
     scholarships: Scholarship[];
+    verify: boolean;
   }
 
   interface Comment {
