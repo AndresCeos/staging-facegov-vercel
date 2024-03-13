@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import axios from '@/api/axios';
+import { getPoliticalFigureById } from '@/api/political-figures';
 import PoliticalFigureContent from '@/features/politicalFigures/PoliticalFigureContent';
 
 type Props = {
@@ -15,15 +15,24 @@ export async function generateMetadata(
   // read route params
   const { id } = params;
 
-  // fetch data
-  const product:Api.Response<Api.PoliticalFigure> = await axios.get(`/political-figures/${id}`);
+  try {
+    const politicalFigureId = Number(id);
+    const product:Api.Response<Api.PoliticalFigure> = await getPoliticalFigureById(politicalFigureId);
 
-  return {
-    title: `${product?.results?.firstName} ${product?.results?.lastName} - FACESGOV`,
-    openGraph: {
-      images: [`http://localhost:3000/political-figures/${id}/share-image`],
-    },
-  };
+    return {
+      title: `${product?.results?.firstName} ${product?.results?.lastName} - FACESGOV`,
+      openGraph: {
+        images: [`${process.env.API_URL}/political-figures/${id}/share-image`],
+      },
+    };
+  } catch (error) {
+    return {
+      title: 'FACESGOV',
+      openGraph: {
+        images: [`${process.env.API_URL}/political-figures/${id}/share-image`],
+      },
+    };
+  }
 }
 
 function Page({ params }: Props) {
