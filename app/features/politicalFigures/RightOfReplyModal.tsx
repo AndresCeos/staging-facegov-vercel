@@ -12,11 +12,11 @@ type RightOfReplyModalProps = {
   className?: string;
   showModal: boolean;
   setShowModal: (state: boolean) => void;
-  politicalFigureName: string;
+  politicalFigureName?: string;
 } & PropsWithChildren<unknown>;
 
 function RightOfReplyModal({
-  showModal, setShowModal, children, className = '', politicalFigureName,
+  showModal, setShowModal, children, className = '', politicalFigureName='',
 }: RightOfReplyModalProps) {
   const [hidden, setHidden] = useState(false);
   const [phone, setPhone] = useState<string>('');

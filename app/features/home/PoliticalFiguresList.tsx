@@ -17,13 +17,14 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
   return (
     <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-16">
       {politicalFigures.map((politicalFigure) => (
-        <li key={politicalFigure.id} className="rounded-md shadow-md overflow-hidden hover:shadow-xl  xl:w-[375px]">
+        <li key={politicalFigure.id} className="rounded-md shadow-lg overflow-hidden hover:shadow-xl  xl:w-[375px]">
           <Link href={`/politico/${politicalFigure.id}`}>
             <div>
               <img
                 src={politicalFigure?.media?.[0]?.featured ? politicalFigure.media[0].featured : 'https://placehold.co/375'}
                 alt={`${politicalFigure.firstName} ${politicalFigure.lastName}`}
                 className="w-full lg:w-[375px] lg:h-[375px] object-cover"
+                loading='lazy'
               />
             </div>
             <div className="p-4">
