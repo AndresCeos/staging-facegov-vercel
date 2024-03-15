@@ -40,7 +40,16 @@ function PoliticalFigureCommentsListItem({ comment, politicalFigureId }: Politic
             </p>
           </div>
           <div className="flex justify-end">
-            <GrShare className="text-gray-500 cursor-pointer" />
+            <a
+              className="text-2xl font-light cursor-pointer"
+              target="_blank"
+              rel="noopener noreferrer"
+              // eslint-disable-next-line max-len
+              href={`http://www.facebook.com/sharer.php?u=https://srv489338.hstgr.cloud/politico/${politicalFigureId}/?comment=${comment.id}&t=Acabo de calificar a ${comment.user.firstName} ${comment.user.lastName} en FACESGOV. `}
+            >
+              <span className="sr-only">Compartir</span>
+              <GrShare className="text-gray-500 cursor-pointer" />
+            </a>
           </div>
         </div>
       </div>

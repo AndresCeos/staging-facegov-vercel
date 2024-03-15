@@ -9,11 +9,10 @@ type Props = {
   };
 };
 
-export async function generateMetadata(
-  { params }: Props,
-): Promise<Metadata> {
-  // read route params
-  const { id } = params;
+export async function generateMetadata(context: any): Promise<Metadata> {
+  const { id } = context.params;
+
+  const commentId = context?.searchParams?.comment;
 
   try {
     const politicalFigureId = Number(id);
@@ -29,7 +28,9 @@ export async function generateMetadata(
     return {
       title: 'FACESGOV',
       openGraph: {
-        images: [`${process.env.API_URL}/political-figures/${id}/share-image`],
+        images: [
+          commentId ? `${process.env.API_URL}/political-figures/${id}/comments/${commentId}/share-image` : `${process.env.API_URL}/political-figures/${id}/share-image`,
+        ],
       },
     };
   }
@@ -37,6 +38,8 @@ export async function generateMetadata(
 
 function Page({ params }: Props) {
   const { id } = params;
+
+  console.log({ params, id });
 
   return (
     <main>

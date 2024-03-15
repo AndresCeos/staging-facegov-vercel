@@ -57,7 +57,16 @@ function PoliticalFigureContent({ id }: PoliticalFigureContentProps) {
                 <br />
                 político
               </div>
-              <GrShare className="text-4xl" />
+              <a
+                className="text-2xl font-light cursor-pointer"
+                target="_blank"
+                rel="noopener noreferrer"
+                // eslint-disable-next-line max-len
+                href={`http://www.facebook.com/sharer.php?u=https://srv489338.hstgr.cloud/politico/${politicalFigure.data?.results?.id}&t=Mira a ${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName} en FACESGOV.`}
+              >
+                <span className="sr-only">Compartir</span>
+                <GrShare className="text-4xl" />
+              </a>
             </div>
           </div>
           <div className="h-[1px] md:bg-black w-full absolute bottom-10" />
