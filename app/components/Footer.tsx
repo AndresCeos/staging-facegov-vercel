@@ -1,7 +1,4 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-"use client";
-import RightOfReplyModal from '@/features/politicalFigures/RightOfReplyModal';
-import { useState } from 'react';
 import {
   FaFacebookSquare,
   FaInstagramSquare,
@@ -9,7 +6,6 @@ import {
 } from 'react-icons/fa';
 
 function Footer() {
-  const [showModal, setShowModal] = useState(false);
   return (
     <footer className="bg-white">
       <div className="flex justify-between h-20 items-center max-w-[1240px]  mx-auto px-4">
