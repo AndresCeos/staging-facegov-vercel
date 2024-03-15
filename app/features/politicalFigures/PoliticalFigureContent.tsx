@@ -104,7 +104,7 @@ function PoliticalFigureContent({ id }: PoliticalFigureContentProps) {
                 showModal={showModal}
                 setShowModal={setShowModal}
                 politicalFigureName={`${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName}`}
-              >Derecho de Replica</RightOfReplyModal>
+              >Derecho de Réplica</RightOfReplyModal>
             </div>
           </div>
           <div className="px-14 mt-20 md:mt-0">

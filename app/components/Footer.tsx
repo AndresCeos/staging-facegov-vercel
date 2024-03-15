@@ -17,7 +17,7 @@ function Footer() {
             <a href="/terminos">Términos y Condiciones</a>
           </li>
           <li>
-            <a href="/derecho-de-replica">Derecho de Réplica</a>
+            Derecho de Réplica
           </li>
         </ul>
 
