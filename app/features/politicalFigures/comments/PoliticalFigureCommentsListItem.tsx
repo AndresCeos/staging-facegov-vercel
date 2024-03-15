@@ -6,6 +6,10 @@ import profileAcronym from '@/utils/profileAcronym';
 import PoliticalFigureCommentRating from './PoliticalFigureCommentRating';
 import PoliticalFigureCommentUtility from './PoliticalFigureCommentUtility';
 
+import 'moment/locale/es';
+
+moment.locale('es');
+
 type PoliticalFigureCommentsListItemProps = {
   comment: Api.Comment;
   politicalFigureId: number;
