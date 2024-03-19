@@ -24,7 +24,7 @@ function FormModal({
   const [email, setEmail] = useState<string>('');
   const [name, setName] = useState<string>(politicalFigureName);
 
-
+console.log(title);
 
   const handleSendOTP = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

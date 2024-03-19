@@ -23,7 +23,8 @@ type PoliticalFigureContentProps = {
 
 function PoliticalFigureContent({ id }: PoliticalFigureContentProps) {
   const politicalFigure = usePoliticalFigureById(Number(id));
-  const [showModal, setShowModal] = useState(false);
+  const [showModalReplica, setShowModalReplica] = useState(false);
+  const [showModalVerify, setShowModalVerify] = useState(false);
 
   return (
     <>
@@ -111,9 +112,10 @@ function PoliticalFigureContent({ id }: PoliticalFigureContentProps) {
                 <div className="col-span-1 md:mt-5">
                   <FormModal
                     className="h-14 !px-12"
-                    showModal={showModal}
-                    setShowModal={setShowModal}
+                    showModal={showModalReplica}
+                    setShowModal={setShowModalReplica}
                     politicalFigureName={`${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName}`}
+                    title='Derecho de Réplica'
                   >
                     Derecho de Réplica
                   </FormModal>
@@ -122,8 +124,8 @@ function PoliticalFigureContent({ id }: PoliticalFigureContentProps) {
                   <div className='col-span-1 md:mt-5'>
                     <FormModal
                     className='h-14 !px-12'
-                    showModal={showModal}
-                    setShowModal={setShowModal}
+                    showModal={showModalVerify}
+                    setShowModal={setShowModalVerify}
                     politicalFigureName={`${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName}`}
                     title='Verificar Político'
                     >
