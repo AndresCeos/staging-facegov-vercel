@@ -13,8 +13,8 @@ import PoliticalFigureRelatedList from '@/features/politicalFigures/PoliticalFig
 import PoliticalFigureCommentForm from '@/features/politicalFigures/comments/PoliticalFigureCommentForm';
 import PoliticalFigureComments from '@/features/politicalFigures/comments/PoliticalFigureComments';
 import formatMoney from '@/utils/formatMoney';
-import { useState } from 'react';
-import FormModal from '@/utils/formModal';
+
+import FormModal from '@/utils/FormModal';
 
 
 type PoliticalFigureContentProps = {
@@ -45,13 +45,6 @@ function PoliticalFigureContent({ id }: PoliticalFigureContentProps) {
             <h2 className="text-4xl text-center font-light">
               {politicalFigure.data?.results?.politicalParty?.acronym}
             </h2>
-            {
-              !politicalFigure.data?.results?.verify && (
-              <div className="my-10 text-3xl font-bold text-center">
-                { politicalFigure?.data?.results?.employmentHistory?.[0] && `${politicalFigure?.data?.results?.employmentHistory?.[0]?.jobTitle}`}
-              </div>
-              )
-            }
             <div className="my-10 text-5xl font-bold text-center">
               {politicalFigure.data?.results?.rating}
             </div>
@@ -82,8 +75,6 @@ function PoliticalFigureContent({ id }: PoliticalFigureContentProps) {
           </div>
           <div className="h-[1px] md:bg-black w-full absolute bottom-10" />
         </div>
-        { politicalFigure.data?.results?.verify
-        && (
           <>
             <div className="grid md:grid-cols-2">
               <div className="grid gap-2 md:grid-cols-2 md:border-r md:border-gray-950 px-14">
@@ -92,36 +83,54 @@ function PoliticalFigureContent({ id }: PoliticalFigureContentProps) {
                     {`¿Quién es ${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName}?`}
                   </h3>
                 </div>
-                { politicalFigure?.data?.results?.employmentHistory?.[0] && (
+
+                { (politicalFigure?.data?.results?.employmentHistory?.[0] && politicalFigure?.data?.results?.verify )&& (
                 <div className="col-span-2 md:col-span-1 text-xl text-gray-950">
                   {formatMoney(politicalFigure?.data?.results?.employmentHistory?.[0]?.salary)}
                 </div>
                 )}
-                <div className="col-span-2 md:col-span-1 text-xl text-gray-950">
+                <div className={`col-span-2 ${politicalFigure?.data?.results?.verify && 'md:col-span-1 '} text-xl text-gray-950`}>
                   { politicalFigure?.data?.results?.employmentHistory?.[0] && `${politicalFigure?.data?.results?.employmentHistory?.[0]?.jobTitle}, `}
                   {`${politicalFigure?.data?.results?.city.name}, ${politicalFigure?.data?.results?.city.state.name}`}
                 </div>
+                { politicalFigure?.data?.results?.verify && (
                 <div className="col-span-2 md:col-span-1 text-xl text-gray-950">
                   {`${moment().diff(politicalFigure?.data?.results?.birthDate, 'years')} años`}
                 </div>
-                { politicalFigure?.data?.results?.scholarships?.[0] && (
+                )}
+                { (politicalFigure?.data?.results?.scholarships?.[0] &&  politicalFigure?.data?.results?.verify) &&  (
                 <div className="col-span-2 md:col-span-1 text-xl text-gray-950">
                   {politicalFigure?.data?.results?.scholarships?.[0]?.name}
                 </div>
                 )}
-                <div className="col-span-2 md:mt-5">
-                  <p className="col-span-2 md:col-span-1 text-xl text-gray-950">{politicalFigure.data?.results?.biography}</p>
-                </div>
-                <div className="col-span-2 md:mt-5">
-                  <RightOfReplyModal
+                {  politicalFigure?.data?.results?.verify && (
+                  <div className="col-span-2 md:mt-5">
+                    <p className="col-span-2 md:col-span-1 text-xl text-gray-950">{politicalFigure.data?.results?.biography}</p>
+                  </div>
+                )}
+                <div className="col-span-1 md:mt-5">
+                  <FormModal
                     className="h-14 !px-12"
                     showModal={showModal}
                     setShowModal={setShowModal}
                     politicalFigureName={`${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName}`}
                   >
                     Derecho de Réplica
-                  </RightOfReplyModal>
+                  </FormModal>
                 </div>
+                { !politicalFigure?.data?.results?.verify &&(
+                  <div className='col-span-1 md:mt-5'>
+                    <FormModal
+                    className='h-14 !px-12'
+                    showModal={showModal}
+                    setShowModal={setShowModal}
+                    politicalFigureName={`${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName}`}
+                    title='Verificar Político'
+                    >
+                      <div className='flex align-baseline'>Verificar Político<GrValidate className='ml-3 text-white text-1xl' /></div>
+                    </FormModal>
+                  </div>
+                )}
               </div>
               <div className="px-14 mt-20 md:mt-0">
                 {politicalFigure?.data?.results
@@ -134,7 +143,6 @@ function PoliticalFigureContent({ id }: PoliticalFigureContentProps) {
             </div>
             {politicalFigure?.data?.results && <PoliticalFigureComments politicalFigure={politicalFigure?.data?.results} />}
           </>
-        )}
       </QueryResult>
       <div className="my-10">
         <h2 className="text-4xl font-light my-7">Aquí puedes calificar a otros políticos</h2>
