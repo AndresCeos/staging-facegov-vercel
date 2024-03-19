@@ -13,7 +13,9 @@ import PoliticalFigureRelatedList from '@/features/politicalFigures/PoliticalFig
 import PoliticalFigureCommentForm from '@/features/politicalFigures/comments/PoliticalFigureCommentForm';
 import PoliticalFigureComments from '@/features/politicalFigures/comments/PoliticalFigureComments';
 import formatMoney from '@/utils/formatMoney';
-import RightOfReplyModal from './rightOfReplyModal';
+import { useState } from 'react';
+import FormModal from '@/utils/formModal';
+
 
 type PoliticalFigureContentProps = {
   id: string;
