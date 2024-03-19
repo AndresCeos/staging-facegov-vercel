@@ -11,8 +11,8 @@ import PoliticalFigureRelatedList from '@/features/politicalFigures/PoliticalFig
 import PoliticalFigureCommentForm from '@/features/politicalFigures/comments/PoliticalFigureCommentForm';
 import PoliticalFigureComments from '@/features/politicalFigures/comments/PoliticalFigureComments';
 import formatMoney from '@/utils/formatMoney';
-import RightOfReplyModal from './rightOfReplyModal';
 import { useState } from 'react';
+import FormModal from '@/utils/formModal';
 
 type PoliticalFigureContentProps = {
   id: string;
@@ -98,13 +98,25 @@ function PoliticalFigureContent({ id }: PoliticalFigureContentProps) {
             <div className="col-span-2 md:mt-5">
               <p className="col-span-2 md:col-span-1 text-xl text-gray-950">{politicalFigure.data?.results?.biography}</p>
             </div>
-            <div className='col-span-2 md:mt-5'>
-              <RightOfReplyModal
+            <div className='col-span-1 md:mt-5'>
+              <FormModal
                 className="h-14 !px-12"
                 showModal={showModal}
                 setShowModal={setShowModal}
                 politicalFigureName={`${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName}`}
-              >Derecho de Réplica</RightOfReplyModal>
+                title='Derecho de Réplica'
+              >Derecho de Réplica</FormModal>
+            </div>
+            <div className='col-span-1 md:mt-5'>
+              <FormModal 
+              className='h-14 !px-12'
+              showModal={showModal}
+              setShowModal={setShowModal}
+              politicalFigureName={`${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName}`}
+              title='Verificar Político'
+              >
+                <div className='flex align-baseline'>Verificar Político<GrValidate className='ml-3 text-white text-1xl' /></div>
+              </FormModal>
             </div>
           </div>
           <div className="px-14 mt-20 md:mt-0">
