@@ -90,7 +90,7 @@ function PoliticalFigureContent({ id }: PoliticalFigureContentProps) {
                 </div>
                 )}
                 <div className={`col-span-2 ${politicalFigure?.data?.results?.verify && 'md:col-span-1 '} text-xl text-gray-950`}>
-                  { politicalFigure?.data?.results?.employmentHistory?.[0] && `${politicalFigure?.data?.results?.employmentHistory?.[0]?.jobTitle}, `}
+                  { politicalFigure?.data?.results?.employmentHistory?.[0] && `${politicalFigure?.data?.results.employmentHistory?.[0].candidate ?' Candidato':''} ${politicalFigure?.data?.results?.employmentHistory?.[0]?.jobTitle}, `}
                   {`${politicalFigure?.data?.results?.city.name}, ${politicalFigure?.data?.results?.city.state.name}`}
                 </div>
                 { politicalFigure?.data?.results?.verify && (

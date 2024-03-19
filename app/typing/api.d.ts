@@ -63,6 +63,7 @@ declare namespace Api {
     startDate: Date;
     endDate: Date | null;
     politicalParty: PoliticalParty;
+    candidate: boolean;
   }
 
   interface PoliticalFigure {

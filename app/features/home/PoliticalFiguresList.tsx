@@ -35,8 +35,7 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
               </div>
               <div className="flex justify-between items-end">
                 <div className="text-gray-500 font-medium flex flex-col">
-                  <span>{/* politicalFigure.politicalParty.acronym */}</span>
-                  {politicalFigure.employmentHistory?.[0] ? <span>{politicalFigure.employmentHistory?.[0]?.jobTitle}</span> : 'PENDIENTE'}
+                  {politicalFigure.employmentHistory?.[0] ? <span>{`${(politicalFigure.employmentHistory?.[0].candidate)?'Candidato  ':''} ${politicalFigure.employmentHistory?.[0]?.jobTitle}`}</span> : 'PENDIENTE'}
                 </div>
                 <div className="hover:underline">
                   Calificar
