@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { HiArrowRight } from 'react-icons/hi';
 
 import Rating from '@/components/Rating';
-import formatMoney from '@/utils/formatMoney';
 
 type PoliticalFiguresListProps = {
   politicalFigures: Api.PoliticalFigure[];
@@ -15,16 +14,16 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
   }
 
   return (
-    <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-16">
-      {politicalFigures.map((politicalFigure,index) => (
-        <li key={politicalFigure.id} className={`rounded-md shadow-lg overflow-hidden hover:shadow-xl  xl:w-[375px] ${index%2==0&& 'h-[470px]'} `}>
+    <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-20">
+      {politicalFigures.map((politicalFigure, index) => (
+        <li key={politicalFigure.id} className={`rounded-md shadow-lg overflow-hidden hover:shadow-xl  xl:w-[375px] ${index % 2 == 0 && 'h-[470px]'} `}>
           <Link href={`/politico/${politicalFigure.id}`}>
             <div>
               <img
                 src={politicalFigure?.media?.[0]?.featured ? politicalFigure.media[0].featured : 'https://placehold.co/375'}
                 alt={`${politicalFigure.firstName} ${politicalFigure.lastName}`}
-                className={`w-full lg:w-[375px] l object-cover ${index%2==0&& 'h-[300px]'} `}
-                loading='lazy'
+                className={`w-full lg:w-[375px] l object-cover ${index % 2 == 0 && 'h-[300px]'} `}
+                loading="lazy"
               />
             </div>
             <div className="p-4">
@@ -36,8 +35,8 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
               </div>
               <div className="flex justify-between items-end">
                 <div className="text-gray-500 font-medium flex flex-col">
-                  <span>{politicalFigure.politicalParty.acronym}</span>
-                  {politicalFigure.employmentHistory?.[0] && <span>{formatMoney(politicalFigure.employmentHistory?.[0]?.salary)}</span>}
+                  <span>{/* politicalFigure.politicalParty.acronym */}</span>
+                  {politicalFigure.employmentHistory?.[0] ? <span>{politicalFigure.employmentHistory?.[0]?.jobTitle}</span> : 'PENDIENTE'}
                 </div>
                 <div className="hover:underline">
                   Calificar
