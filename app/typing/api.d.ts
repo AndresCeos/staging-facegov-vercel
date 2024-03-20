@@ -47,6 +47,7 @@ declare namespace Api {
 
   type Media = {
     featured: string;
+    videoVerify: string;
   };
 
   interface Scholarship {

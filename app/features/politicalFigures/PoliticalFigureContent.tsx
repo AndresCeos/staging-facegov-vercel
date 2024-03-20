@@ -15,6 +15,7 @@ import PoliticalFigureComments from '@/features/politicalFigures/comments/Politi
 import formatMoney from '@/utils/formatMoney';
 
 import FormModal from '@/utils/FormModal';
+import VideoModal from '@/utils/VideoModal';
 
 
 type PoliticalFigureContentProps = {
@@ -25,22 +26,40 @@ function PoliticalFigureContent({ id }: PoliticalFigureContentProps) {
   const politicalFigure = usePoliticalFigureById(Number(id));
   const [showModalReplica, setShowModalReplica] = useState(false);
   const [showModalVerify, setShowModalVerify] = useState(false);
+  const [showModalVideo, setShowModalVideo] = useState(false);
+
+  const isVerify = politicalFigure?.data?.results?.verify;
 
   return (
     <>
       <QueryResult query={politicalFigure} isFullScreenLoader>
         <div className="my-14 grid md:grid-cols-2 relative">
           <div className="grid place-items-center z-10">
-            <img
-              src={politicalFigure?.data?.results?.media?.[0]?.featured ? politicalFigure.data.results.media[0].featured : 'https://placehold.co/400'}
-              alt={`${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName}`}
-              className={`w-[500px] h-[500px] object-cover rounded-lg shadow-md ${politicalFigure.data?.results?.verify && 'border-4 border-cyan-400'}`}
-            />
+            {isVerify ?
+              <VideoModal
+                setShowModal={setShowModalVideo}
+                showModal={showModalVideo}
+                media={politicalFigure?.data?.results?.media?.[1]?.videoVerify}
+                className='cursor-pointer '
+              >
+                <img
+                  src={politicalFigure?.data?.results?.media?.[0]?.featured ? politicalFigure.data.results.media[0].featured : 'https://placehold.co/400'}
+                  alt={`${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName}`}
+                  className={`w-[500px] h-[500px] object-cover rounded-lg shadow-md ${isVerify && 'border-4 border-cyan-400 hover:border-8' }`}
+                />
+              </VideoModal>
+            :
+              <img
+                src={politicalFigure?.data?.results?.media?.[0]?.featured ? politicalFigure.data.results.media[0].featured : 'https://placehold.co/400'}
+                alt={`${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName}`}
+                className={`w-[500px] h-[500px] object-cover rounded-lg shadow-md ${isVerify && 'border-4 border-cyan-400'}`}
+              />
+            }
           </div>
           <div className="pt-5">
             <h2 className="text-4xl text-center font-light flex justify-center align-baseline">
               {`${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName}`}
-              {politicalFigure.data?.results?.verify && <GrValidate className="ml-3 text-cyan-400 text-3xl" />}
+              {isVerify && <GrValidate className="ml-3 text-cyan-400 text-3xl" />}
             </h2>
             <div className="my-3" />
             <h2 className="text-4xl text-center font-light">
@@ -85,26 +104,26 @@ function PoliticalFigureContent({ id }: PoliticalFigureContentProps) {
                   </h3>
                 </div>
 
-                { (politicalFigure?.data?.results?.employmentHistory?.[0] && politicalFigure?.data?.results?.verify )&& (
+                { (politicalFigure?.data?.results?.employmentHistory?.[0] && isVerify )&& (
                 <div className="col-span-2 md:col-span-1 text-xl text-gray-950">
                   {formatMoney(politicalFigure?.data?.results?.employmentHistory?.[0]?.salary)}
                 </div>
                 )}
-                <div className={`col-span-2 ${politicalFigure?.data?.results?.verify && 'md:col-span-1 '} text-xl text-gray-950`}>
+                <div className={`col-span-2 ${isVerify && 'md:col-span-1 '} text-xl text-gray-950`}>
                   { politicalFigure?.data?.results?.employmentHistory?.[0] && `${politicalFigure?.data?.results.employmentHistory?.[0].candidate ?' Candidato':''} ${politicalFigure?.data?.results?.employmentHistory?.[0]?.jobTitle}, `}
                   {`${politicalFigure?.data?.results?.city.name}, ${politicalFigure?.data?.results?.city.state.name}`}
                 </div>
-                { politicalFigure?.data?.results?.verify && (
+                { isVerify && (
                 <div className="col-span-2 md:col-span-1 text-xl text-gray-950">
                   {`${moment().diff(politicalFigure?.data?.results?.birthDate, 'years')} años`}
                 </div>
                 )}
-                { (politicalFigure?.data?.results?.scholarships?.[0] &&  politicalFigure?.data?.results?.verify) &&  (
+                { (politicalFigure?.data?.results?.scholarships?.[0] &&  isVerify) &&  (
                 <div className="col-span-2 md:col-span-1 text-xl text-gray-950">
                   {politicalFigure?.data?.results?.scholarships?.[0]?.name}
                 </div>
                 )}
-                {  politicalFigure?.data?.results?.verify && (
+                {  isVerify && (
                   <div className="col-span-2 md:mt-5">
                     <p className="col-span-2 md:col-span-1 text-xl text-gray-950">{politicalFigure.data?.results?.biography}</p>
                   </div>
@@ -120,7 +139,7 @@ function PoliticalFigureContent({ id }: PoliticalFigureContentProps) {
                     Derecho de Réplica
                   </FormModal>
                 </div>
-                { !politicalFigure?.data?.results?.verify &&(
+                { !isVerify &&(
                   <div className='col-span-1 md:mt-5'>
                     <FormModal
                     className='h-14 !px-12'
@@ -136,11 +155,12 @@ function PoliticalFigureContent({ id }: PoliticalFigureContentProps) {
               </div>
               <div className="px-14 mt-20 md:mt-0">
                 {politicalFigure?.data?.results
-            && (
-              <PoliticalFigureCommentForm
-                politicalFigure={politicalFigure?.data?.results}
-              />
-            )}
+                  && (
+                    <PoliticalFigureCommentForm
+                      politicalFigure={politicalFigure?.data?.results}
+                    />
+                    )
+                }
               </div>
             </div>
             {politicalFigure?.data?.results && <PoliticalFigureComments politicalFigure={politicalFigure?.data?.results} />}
