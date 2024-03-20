@@ -6,10 +6,12 @@ import { useEffect, useState } from 'react';
 import { usePoliticalFigures } from '@/api/political-figures';
 import Button from './components/Button';
 import QueryResult from './components/QueryResult';
+import HowItWorkModal from './features/home/HowItWork/HowItWorkModal';
 import PoliticalFiguresList from './features/home/PoliticalFiguresList';
 
 function Home() {
   const [page, setPage] = useState(1);
+  const [isOpen, setIsOpen] = useState(false);
   const [initialData, setInitialData] = useState<Api.PoliticalFigure[]>([]);
 
   const politicalFigures = usePoliticalFigures({ offset: (page - 1) * 9, limit: 9 });
@@ -43,6 +45,7 @@ function Home() {
         <div className="grid place-items-center mt-20 md:mt-0">
           <Button
             className="py-8 px-20 rounded-3xl"
+            onClick={() => setIsOpen(true)}
           >
             Cómo funciona FacesGov
           </Button>
@@ -55,6 +58,7 @@ function Home() {
             height={500}
           />
         </div>
+        <HowItWorkModal isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>
     </main>
   );
