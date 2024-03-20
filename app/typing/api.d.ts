@@ -47,6 +47,7 @@ declare namespace Api {
 
   type Media = {
     featured: string;
+    videoVerify: string;
   };
 
   interface Scholarship {
@@ -63,6 +64,7 @@ declare namespace Api {
     startDate: Date;
     endDate: Date | null;
     politicalParty: PoliticalParty;
+    candidate: boolean;
   }
 
   interface PoliticalFigure {
