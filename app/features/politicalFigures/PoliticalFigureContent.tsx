@@ -2,9 +2,11 @@
 
 import { useState } from 'react';
 
+
 import moment from 'moment';
 
-import { GrShare, GrValidate } from 'react-icons/gr';
+import { GrShare, GrValidate  } from 'react-icons/gr';
+import { FaFacebook } from "react-icons/fa";
 
 import { usePoliticalFigureById } from '@/api/political-figures';
 import QueryResult from '@/components/QueryResult';
@@ -27,6 +29,7 @@ function PoliticalFigureContent({ id }: PoliticalFigureContentProps) {
   const [showModalReplica, setShowModalReplica] = useState(false);
   const [showModalVerify, setShowModalVerify] = useState(false);
   const [showModalVideo, setShowModalVideo] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
 
   const isVerify = politicalFigure?.data?.results?.verify;
 
@@ -75,22 +78,37 @@ function PoliticalFigureContent({ id }: PoliticalFigureContentProps) {
                 ratingSize="5xl"
               />
             </div>
+          
             <div className="text-center flex mx-auto justify-center items-center gap-5 pt-20">
               <div className="text-2xl font-light">
                 Comparte este
                 <br />
                 político
               </div>
-              <a
+              <div>
+              <button
                 className="text-2xl font-light cursor-pointer"
-                target="_blank"
                 rel="noopener noreferrer"
-                // eslint-disable-next-line max-len
-                href={`http://www.facebook.com/sharer.php?u=https://srv489338.hstgr.cloud/politico/${politicalFigure.data?.results?.id}&t=Mira a ${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName} en FACESGOV.`}
+                onClick={() => setShowTooltip(!showTooltip)}
               >
                 <span className="sr-only">Compartir</span>
                 <GrShare className="text-4xl" />
-              </a>
+              </button>
+              {showTooltip && (
+              <div className="absolute bg-white shadow-lg p-3 rounded-lg">
+                <a
+                  className="text-2xl font-light cursor-pointer"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  // eslint-disable-next-line max-len
+                  href={`http://www.facebook.com/sharer.php?u=https://srv489338.hstgr.cloud/politico/${politicalFigure.data?.results?.id}&t=Mira a ${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName} en FACESGOV.`}
+                >
+                  <span className="sr-only">Compartir</span>
+                  <FaFacebook className="text-4xl hover:text-blue-700" />
+                </a>
+                </div>
+            )}
+              </div>
             </div>
           </div>
           <div className="h-[1px] md:bg-black w-full absolute bottom-10" />
