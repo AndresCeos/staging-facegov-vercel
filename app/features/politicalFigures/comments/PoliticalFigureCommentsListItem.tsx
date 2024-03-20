@@ -1,3 +1,7 @@
+'use client';
+
+import { useState } from 'react';
+
 import moment from 'moment';
 
 import { GrShare } from 'react-icons/gr';
@@ -7,6 +11,7 @@ import PoliticalFigureCommentRating from './PoliticalFigureCommentRating';
 import PoliticalFigureCommentUtility from './PoliticalFigureCommentUtility';
 
 import 'moment/locale/es';
+import { FaFacebook } from 'react-icons/fa';
 
 moment.locale('es');
 
@@ -16,6 +21,8 @@ type PoliticalFigureCommentsListItemProps = {
 };
 
 function PoliticalFigureCommentsListItem({ comment, politicalFigureId }: PoliticalFigureCommentsListItemProps) {
+const [showTooltipComment, setShowTooltipComment] = useState(false);
+
   return (
     <article className="my-20 text-base" id={`political-figure-comment-${comment.id}`}>
       <div className="flex flex-col md:flex-row">
@@ -44,16 +51,28 @@ function PoliticalFigureCommentsListItem({ comment, politicalFigureId }: Politic
             </p>
           </div>
           <div className="flex justify-end">
-            <a
+          <button
               className="text-2xl font-light cursor-pointer"
-              target="_blank"
-              rel="noopener noreferrer"
-              // eslint-disable-next-line max-len
-              href={`http://www.facebook.com/sharer.php?u=https://srv489338.hstgr.cloud/politico/${politicalFigureId}/?comment=${comment.id}&t=Acabo de calificar a ${comment.user.firstName} ${comment.user.lastName} en FACESGOV. `}
+              onClick={() => setShowTooltipComment(!showTooltipComment)}
             >
               <span className="sr-only">Compartir</span>
               <GrShare className="text-gray-500 cursor-pointer" />
-            </a>
+            </button>
+            {showTooltipComment && (
+              <div className="absolute bg-white shadow-lg p-3 mt-8 rounded-lg">
+                <a
+                  className="text-2xl font-light cursor-pointer"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  // eslint-disable-next-line max-len
+                  href={`http://www.facebook.com/sharer.php?u=https://srv489338.hstgr.cloud/politico/${politicalFigureId}/?comment=${comment.id}&t=Acabo de calificar a ${comment.user.firstName} ${comment.user.lastName} en FACESGOV. `}
+                >
+                  <span className="sr-only">Compartir</span>
+                  <FaFacebook className="text-4xl hover:text-blue-700" />
+                </a>
+                </div>
+            )}
+
           </div>
         </div>
       </div>
