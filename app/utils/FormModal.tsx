@@ -1,4 +1,3 @@
-
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable max-len */
 import cx from 'classnames';
@@ -17,25 +16,21 @@ type FormModalProps = {
 } & PropsWithChildren<unknown>;
 
 function FormModal({
-  showModal, setShowModal, children, className = '', politicalFigureName='',title ='',
+  showModal, setShowModal, children, className = '', politicalFigureName = '', title = '',
 }: FormModalProps) {
   const [hidden, setHidden] = useState(false);
   const [phone, setPhone] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [name, setName] = useState<string>(politicalFigureName);
 
-console.log(title);
-
   const handleSendOTP = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!phone) return;
     if (!email) return;
-    //todo: send data : {phone, email, politicalFigureName}
+    // TODO: send data : {phone, email, politicalFigureName}
     console.log({ phone, email, name });
     setHidden(true);
   };
-
-
 
   return (
     <>
@@ -84,28 +79,28 @@ console.log(title);
                         required
                       />
                     </div>
-                    <div className=' mb-4 flex flex-col gap-y-3'>
-                      <label htmlFor="email" className='uppercase text-center'>Correo Eléctronico</label>
+                    <div className=" mb-4 flex flex-col gap-y-3">
+                      <label htmlFor="email" className="uppercase text-center">Correo Eléctronico</label>
                       <input
                         type="email"
-                        id='email'
-                        name='email'
+                        id="email"
+                        name="email"
                         value={email}
-                        onChange={(e)=> setEmail(e.target.value)}
-                        className='text-gray-900 text-sm border border-gray-950 rounded-3xl w-full py-3 text-center'
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="text-gray-900 text-sm border border-gray-950 rounded-3xl w-full py-3 text-center"
                         required
                       />
                     </div>
-                    <div className='mb-4 flex flex-col gap-y-3'>
-                      <label htmlFor="poiliticalName" className='uppercase text-center'>Nombre del Político</label>
+                    <div className="mb-4 flex flex-col gap-y-3">
+                      <label htmlFor="poiliticalName" className="uppercase text-center">Nombre del Político</label>
                       <input
                         type="text"
-                        id='poiliticalName'
-                        name='poiliticalName'
+                        id="poiliticalName"
+                        name="poiliticalName"
                         value={name}
-                        className='text-gray-900 text-sm border border-gray-950 rounded-3xl w-full py-3 text-center'
+                        className="text-gray-900 text-sm border border-gray-950 rounded-3xl w-full py-3 text-center"
                         required
-                        onChange={(e)=> setName(e.target.value) }
+                        onChange={(e) => setName(e.target.value)}
                       />
                     </div>
                     <div className="mt-10 mb-6 grid place-items-center">

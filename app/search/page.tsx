@@ -23,7 +23,6 @@ function SearchPage() {
 
   useEffect(() => {
     if (politicalFigures.status === 'success') {
-      console.log(search, searchQuery);
       const data = (search !== searchQuery ? [] : initialData).concat(politicalFigures.data?.results ?? []);
       setInitialData(data.filter((value, index, self) => self.findIndex((v) => v.id === value.id) === index));
     }

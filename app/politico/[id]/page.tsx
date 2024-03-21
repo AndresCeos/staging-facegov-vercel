@@ -39,8 +39,6 @@ export async function generateMetadata(context: any): Promise<Metadata> {
 function Page({ params }: Props) {
   const { id } = params;
 
-  console.log({ params, id });
-
   return (
     <main>
       <PoliticalFigureContent id={id} />
