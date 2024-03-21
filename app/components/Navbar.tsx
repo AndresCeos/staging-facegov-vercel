@@ -18,6 +18,7 @@ function Navbar() {
           </Link>
         </div>
         <div className="hidden md:flex grow items-center gap-10 justify-end">
+          <Link className="text-sm text-gray-500 hover:text-gray-700" href="/candidatos">Candidatos</Link>
           <Link className="text-sm text-gray-500 hover:text-gray-700" href="/tendencias">Tendencias</Link>
           <Link className="text-sm text-gray-500 hover:text-gray-700" href="/contacto">Contacto</Link>
           <SearchForm />

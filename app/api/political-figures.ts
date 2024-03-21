@@ -7,8 +7,15 @@ import { useQuery } from 'react-query';
 
 import { axios } from './axios';
 
-const getPoliticalFigure = async (pagination: Pagination.Config & { search?: string }): Promise<Api.Response<Api.PoliticalFigure[]>> => {
-  return axios.get('/political-figures', { params: { offset: pagination.offset, limit: pagination.limit, ...(pagination.search && { search: pagination.search }) } });
+const getPoliticalFigure = async (pagination: Pagination.Config & { search?: string, filter?: string }): Promise<Api.Response<Api.PoliticalFigure[]>> => {
+  return axios.get('/political-figures', {
+    params: {
+      offset: pagination.offset,
+      limit: pagination.limit,
+      ...(pagination.search && { search: pagination.search }),
+      ...(pagination.filter && { filter: pagination.filter }),
+    }
+  });
 };
 export const getPoliticalFigureById = async (id: number): Promise<Api.Response<Api.PoliticalFigure>> => axios.get(`/political-figures/${id}`);
 // eslint-disable-next-line arrow-body-style
@@ -16,8 +23,8 @@ const getPoliticalFigureComments = async (id: number, sortConfig: Pagination.Sor
   return axios.get(`/political-figures/${id}/comments`, { params: { key: sortConfig.key, direction: sortConfig.direction } });
 };
 
-const usePoliticalFigures = (pagination: Pagination.Config & { search?: string }) => useQuery({
-  queryKey: ['political-figures', pagination.offset, pagination.limit, pagination?.search],
+const usePoliticalFigures = (pagination: Pagination.Config & { search?: string, filter?: string }) => useQuery({
+  queryKey: ['political-figures', pagination.offset, pagination.limit, pagination?.search, pagination?.filter],
   queryFn: () => getPoliticalFigure(pagination),
   keepPreviousData: true,
 });
