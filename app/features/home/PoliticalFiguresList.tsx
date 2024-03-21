@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { HiArrowRight } from 'react-icons/hi';
 
 import Rating from '@/components/Rating';
+import formatNameSlug from '@/utils/formatNameSlug';
 
 type PoliticalFiguresListProps = {
   politicalFigures: Api.PoliticalFigure[];
@@ -14,6 +15,7 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
   if (politicalFigures.length === 0) {
     return <h2 className="text-gray-700 text-2xl text-center my-10">No hay coincidencias con tu búsqueda.</h2>;
   }
+
 
   return (
     <ul className="grid md:grid-cols-2 lg:grid-cols-3">
@@ -26,7 +28,7 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
               (index >= 1 && (index - 1) % 3 === 0) ? 'mt-10' : '-mt-10',
             )}
           >
-            <Link href={`/politico/${politicalFigure.id}`}>
+            <Link href={`/politico/${politicalFigure.id}`} as={`/politico/${formatNameSlug(`${politicalFigure.firstName} ${politicalFigure.lastName}`)}`}>
               <div>
                 <img
                   src={politicalFigure?.media?.[0]?.featured ? politicalFigure.media[0].featured : 'https://placehold.co/375'}
