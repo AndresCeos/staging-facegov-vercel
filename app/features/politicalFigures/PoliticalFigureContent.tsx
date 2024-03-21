@@ -12,20 +12,20 @@ import { GrShare, GrValidate } from 'react-icons/gr';
 import { usePoliticalFigureById } from '@/api/political-figures';
 import QueryResult from '@/components/QueryResult';
 import Rating from '@/components/Rating';
-import PoliticalFigureRelatedList from '@/features/politicalFigures/PoliticalFigureRelatedList';
 import PoliticalFigureCommentForm from '@/features/politicalFigures/comments/PoliticalFigureCommentForm';
 import PoliticalFigureComments from '@/features/politicalFigures/comments/PoliticalFigureComments';
 import formatMoney from '@/utils/formatMoney';
 
 import FormModal from '@/utils/FormModal';
 import VideoModal from '@/utils/VideoModal';
+import PoliticalFigureRelatedList from './PoliticalFigureRelatedList';
 
 type PoliticalFigureContentProps = {
-  id: string;
+  slug: string;
 };
 
-function PoliticalFigureContent({ id }: PoliticalFigureContentProps) {
-  const politicalFigure = usePoliticalFigureById(Number(id));
+function PoliticalFigureContent({ slug }: PoliticalFigureContentProps) {
+  const politicalFigure = usePoliticalFigureById(slug);
   const [showModalReplica, setShowModalReplica] = useState(false);
   const [showModalVerify, setShowModalVerify] = useState(false);
   const [showModalVideo, setShowModalVideo] = useState(false);
@@ -81,7 +81,7 @@ function PoliticalFigureContent({ id }: PoliticalFigureContentProps) {
               />
             </div>
 
-            <div className="text-center flex mx-auto justify-center items-center gap-5 pt-20">
+            <div className="text-center flex mx-auto justify-center items-center gap-5 pt-10">
               <div className="text-2xl font-light">
                 Comparte este
                 <br />
@@ -210,7 +210,9 @@ function PoliticalFigureContent({ id }: PoliticalFigureContentProps) {
       </QueryResult>
       <div className="my-10">
         <h2 className="text-4xl font-light my-7 pb-10">Aquí puedes calificar a otros políticos</h2>
-        <PoliticalFigureRelatedList politicalFigureId={Number(id)} />
+        {politicalFigure?.data?.results?.id && (
+          <PoliticalFigureRelatedList politicalFigureId={politicalFigure?.data?.results?.id} />
+        )}
       </div>
     </>
   );

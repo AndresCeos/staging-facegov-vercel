@@ -1,27 +1,26 @@
 import type { Metadata } from 'next';
 
-import { getPoliticalFigureById } from '@/api/political-figures';
+import { getPoliticalFigureBySlug } from '@/api/political-figures';
 import PoliticalFigureContent from '@/features/politicalFigures/PoliticalFigureContent';
 
 type Props = {
   params: {
-    id: string;
+    slug: string;
   };
 };
 
 export async function generateMetadata(context: any): Promise<Metadata> {
-  const { id } = context.params;
+  const { slug } = context.params;
 
   const commentId = context?.searchParams?.comment;
 
   try {
-    const politicalFigureId = Number(id);
-    const product:Api.Response<Api.PoliticalFigure> = await getPoliticalFigureById(politicalFigureId);
+    const product:Api.Response<Api.PoliticalFigure> = await getPoliticalFigureBySlug(slug);
 
     return {
       title: `${product?.results?.firstName} ${product?.results?.lastName} - FACESGOV`,
       openGraph: {
-        images: [`${process.env.API_URL}/political-figures/${id}/share-image`],
+        images: [`${process.env.API_URL}/political-figures/${slug}/share-image`],
       },
     };
   } catch (error) {
@@ -29,7 +28,7 @@ export async function generateMetadata(context: any): Promise<Metadata> {
       title: 'FACESGOV',
       openGraph: {
         images: [
-          commentId ? `${process.env.API_URL}/political-figures/${id}/comments/${commentId}/share-image` : `${process.env.API_URL}/political-figures/${id}/share-image`,
+          commentId ? `${process.env.API_URL}/political-figures/${slug}/comments/${commentId}/share-image` : `${process.env.API_URL}/political-figures/${slug}/share-image`,
         ],
       },
     };
@@ -37,11 +36,11 @@ export async function generateMetadata(context: any): Promise<Metadata> {
 }
 
 function Page({ params }: Props) {
-  const { id } = params;
+  const { slug } = params;
 
   return (
     <main>
-      <PoliticalFigureContent id={id} />
+      <PoliticalFigureContent slug={slug} />
     </main>
   );
 }

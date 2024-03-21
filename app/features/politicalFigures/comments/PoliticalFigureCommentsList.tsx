@@ -8,7 +8,7 @@ type PoliticalFigureCommentsListProps = {
 };
 
 function PoliticalFigureCommentsList({ politicalFigure, sortConfig }: PoliticalFigureCommentsListProps) {
-  const comments = usePoliticalFigureComments(politicalFigure.id, sortConfig);
+  const comments = usePoliticalFigureComments(politicalFigure.slug, sortConfig);
 
   return (
     <QueryResult query={comments} isFullScreenLoader={false}>

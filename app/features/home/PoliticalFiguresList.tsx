@@ -28,7 +28,7 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
               (index >= 1 && (index - 1) % 3 === 0) ? 'mt-10' : '-mt-10',
             )}
           >
-            <Link href={`/politico/${politicalFigure.id}`} as={`/politico/${formatNameSlug(`${politicalFigure.firstName} ${politicalFigure.lastName}`)}`}>
+            <Link href={`/politico/${politicalFigure.slug}`}>
               <div>
                 <img
                   src={politicalFigure?.media?.[0]?.featured ? politicalFigure.media[0].featured : 'https://placehold.co/375'}

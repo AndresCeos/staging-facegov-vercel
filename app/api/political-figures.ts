@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable arrow-body-style */
 /* eslint-disable @typescript-eslint/comma-dangle */
 
@@ -17,10 +18,10 @@ const getPoliticalFigure = async (pagination: Pagination.Config & { search?: str
     }
   });
 };
-export const getPoliticalFigureById = async (id: number): Promise<Api.Response<Api.PoliticalFigure>> => axios.get(`/political-figures/${id}`);
+export const getPoliticalFigureBySlug = async (slug: string): Promise<Api.Response<Api.PoliticalFigure>> => axios.get(`/political-figures/${slug}`);
 // eslint-disable-next-line arrow-body-style
-const getPoliticalFigureComments = async (id: number, sortConfig: Pagination.SortConfig): Promise<Api.Response<Api.Comment[]>> => {
-  return axios.get(`/political-figures/${id}/comments`, { params: { key: sortConfig.key, direction: sortConfig.direction } });
+const getPoliticalFigureComments = async (slug: string, sortConfig: Pagination.SortConfig): Promise<Api.Response<Api.Comment[]>> => {
+  return axios.get(`/political-figures/${slug}/comments`, { params: { key: sortConfig.key, direction: sortConfig.direction } });
 };
 
 const usePoliticalFigures = (pagination: Pagination.Config & { search?: string, filter?: string }) => useQuery({
@@ -28,8 +29,8 @@ const usePoliticalFigures = (pagination: Pagination.Config & { search?: string, 
   queryFn: () => getPoliticalFigure(pagination),
   keepPreviousData: true,
 });
-const usePoliticalFigureById = (id: number) => useQuery(['political-figures', id], () => getPoliticalFigureById(id));
-const usePoliticalFigureComments = (id: number, sortConfig: Pagination.SortConfig) => useQuery(['political-figures', id, 'comments', sortConfig], () => getPoliticalFigureComments(id, sortConfig));
+const usePoliticalFigureById = (slug: string) => useQuery(['political-figures', slug], () => getPoliticalFigureBySlug(slug));
+const usePoliticalFigureComments = (slug: string, sortConfig: Pagination.SortConfig) => useQuery(['political-figures', slug, 'comments', sortConfig], () => getPoliticalFigureComments(slug, sortConfig));
 
 export {
   usePoliticalFigureById,
