@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 import moment from 'moment';
 
-import { FaFacebook } from 'react-icons/fa';
+import { FaFacebook, FaInstagram } from 'react-icons/fa';
 import { GrShare, GrValidate } from 'react-icons/gr';
 
 import { usePoliticalFigureById } from '@/api/political-figures';
@@ -97,16 +97,36 @@ function PoliticalFigureContent({ id }: PoliticalFigureContentProps) {
                   <GrShare className="text-4xl" />
                 </button>
                 {showTooltip && (
-                <div className="absolute bg-white shadow-lg p-3 rounded-lg">
+                <div className="absolute bg-white shadow-lg p-3 rounded-lg flex gap-2">
                   <a
                     className="text-2xl font-light cursor-pointer"
                     target="_blank"
                     rel="noopener noreferrer"
                   // eslint-disable-next-line max-len
-                    href={`http://www.facebook.com/sharer.php?u=https://srv489338.hstgr.cloud/politico/${politicalFigure.data?.results?.id}&t=Mira a ${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName} en FACESGOV.`}
+                    href={`https://www.facebook.com/sharer.php?u=https://srv489338.hstgr.cloud/politico/${politicalFigure.data?.results?.id}&t=Mira a ${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName} en FACESGOV.`}
                   >
                     <span className="sr-only">Compartir</span>
                     <FaFacebook className="text-4xl hover:text-blue-700" />
+                  </a>
+                  <a
+                    className="text-2xl font-light cursor-pointer"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  // eslint-disable-next-line max-len
+                    href={`https://www.facebook.com/stories/create?linkUrl=https://srv489338.hstgr.cloud/politico/${politicalFigure.data?.results?.id}&t=Mira a ${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName} en FACESGOV.`}
+                  >
+                    <span className="sr-only">Compartir en mi historia</span>
+                    <FaFacebook className="text-4xl hover:text-blue-700" />
+                  </a>
+                  <a
+                    className="text-2xl font-light cursor-pointer"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  // eslint-disable-next-line max-len
+                    href={`https://www.instagram.com/sharer.php?u=https://srv489338.hstgr.cloud/politico/${politicalFigure.data?.results?.id}&t=Mira a ${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName} en FACESGOV.`}
+                  >
+                    <span className="sr-only">Compartir en mi instagram</span>
+                    <FaInstagram className="text-4xl hover:text-blue-700" />
                   </a>
                 </div>
                 )}
