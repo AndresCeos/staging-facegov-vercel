@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+import cx from 'classnames';
 import Link from 'next/link';
 
 import { HiArrowRight } from 'react-icons/hi';
@@ -14,36 +16,44 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
   }
 
   return (
-    <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-20">
+    <ul className="grid md:grid-cols-2 lg:grid-cols-3">
       {politicalFigures.map((politicalFigure, index) => (
-        <li key={politicalFigure.id} className={`rounded-md shadow-lg overflow-hidden hover:shadow-xl  xl:w-[375px] ${index % 2 == 0 && 'h-[470px]'} `}>
-          <Link href={`/politico/${politicalFigure.id}`}>
-            <div>
-              <img
-                src={politicalFigure?.media?.[0]?.featured ? politicalFigure.media[0].featured : 'https://placehold.co/375'}
-                alt={`${politicalFigure.firstName} ${politicalFigure.lastName}`}
-                className={`w-full lg:w-[375px] l object-cover ${index % 2 == 0 && 'h-[300px]'} `}
-                loading="lazy"
-              />
-            </div>
-            <div className="p-4">
-              <div className="flex justify-between items-start">
-                <h2 className="font-medium grow min-h-12">
-                  {`${politicalFigure.firstName} ${politicalFigure.lastName}`}
-                </h2>
-                <Rating className="w-[100px]" rating={+politicalFigure.rating} ratingSize="2xl" />
+        <li>
+          <div
+            key={politicalFigure.id}
+            className={cx(
+              'rounded-md bg-white shadow-lg overflow-hidden hover:shadow-xl xl:w-[375px]',
+              (index >= 1 && (index - 1) % 3 === 0) ? 'mt-10' : '-mt-10',
+            )}
+          >
+            <Link href={`/politico/${politicalFigure.id}`}>
+              <div>
+                <img
+                  src={politicalFigure?.media?.[0]?.featured ? politicalFigure.media[0].featured : 'https://placehold.co/375'}
+                  alt={`${politicalFigure.firstName} ${politicalFigure.lastName}`}
+                  className="w-full lg:w-[375px] l object-cover"
+                  loading="lazy"
+                />
               </div>
-              <div className="flex justify-between items-end">
-                <div className="text-gray-500 font-medium flex flex-col">
-                  {politicalFigure.employmentHistory?.[0] ? <span>{`${(politicalFigure.employmentHistory?.[0].candidate)?'Candidato  ':''} ${politicalFigure.employmentHistory?.[0]?.jobTitle}`}</span> : 'PENDIENTE'}
+              <div className="p-4">
+                <div className="flex justify-between items-start">
+                  <h2 className="font-medium grow min-h-12">
+                    {`${politicalFigure.firstName} ${politicalFigure.lastName}`}
+                  </h2>
+                  <Rating className="w-[100px]" rating={+politicalFigure.rating} ratingSize="2xl" />
                 </div>
-                <div className="hover:underline">
-                  Calificar
-                  <HiArrowRight className="inline-block" />
+                <div className="flex justify-between items-end">
+                  <div className="text-gray-500 font-medium flex flex-col">
+                    {politicalFigure.employmentHistory?.[0] ? <span>{`${(politicalFigure.employmentHistory?.[0].candidate) ? 'Candidato  ' : ''} ${politicalFigure.employmentHistory?.[0]?.jobTitle}`}</span> : 'PENDIENTE'}
+                  </div>
+                  <div className="hover:underline flex items-center">
+                    Calificar&nbsp;
+                    <HiArrowRight className="inline-block" />
+                  </div>
                 </div>
               </div>
-            </div>
-          </Link>
+            </Link>
+          </div>
         </li>
       ))}
     </ul>
