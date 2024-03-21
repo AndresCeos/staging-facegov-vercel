@@ -69,6 +69,7 @@ declare namespace Api {
 
   interface PoliticalFigure {
     id: number;
+    slug: string;
     firstName: string;
     lastName: string;
     birthDate: Date;

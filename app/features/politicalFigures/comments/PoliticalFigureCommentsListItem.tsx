@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import moment from 'moment';
 
+import { FaFacebook } from 'react-icons/fa';
 import { GrShare } from 'react-icons/gr';
 
 import profileAcronym from '@/utils/profileAcronym';
@@ -11,7 +12,6 @@ import PoliticalFigureCommentRating from './PoliticalFigureCommentRating';
 import PoliticalFigureCommentUtility from './PoliticalFigureCommentUtility';
 
 import 'moment/locale/es';
-import { FaFacebook } from 'react-icons/fa';
 
 moment.locale('es');
 
@@ -21,7 +21,7 @@ type PoliticalFigureCommentsListItemProps = {
 };
 
 function PoliticalFigureCommentsListItem({ comment, politicalFigureId }: PoliticalFigureCommentsListItemProps) {
-const [showTooltipComment, setShowTooltipComment] = useState(false);
+  const [showTooltipComment, setShowTooltipComment] = useState(false);
 
   return (
     <article className="my-20 text-base" id={`political-figure-comment-${comment.id}`}>
@@ -51,7 +51,8 @@ const [showTooltipComment, setShowTooltipComment] = useState(false);
             </p>
           </div>
           <div className="flex justify-end">
-          <button
+            <button
+              type="button"
               className="text-2xl font-light cursor-pointer"
               onClick={() => setShowTooltipComment(!showTooltipComment)}
             >
@@ -70,7 +71,7 @@ const [showTooltipComment, setShowTooltipComment] = useState(false);
                   <span className="sr-only">Compartir</span>
                   <FaFacebook className="text-4xl hover:text-blue-700" />
                 </a>
-                </div>
+              </div>
             )}
 
           </div>

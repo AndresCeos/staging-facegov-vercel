@@ -1,12 +1,9 @@
-
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable max-len */
 import cx from 'classnames';
-import { PropsWithChildren, useState } from 'react';
+import { PropsWithChildren } from 'react';
 
 import { MdClose } from 'react-icons/md';
-
-import Button from '@/components/Button';
 
 type VideoModalProps = {
   className?: string;
@@ -18,18 +15,15 @@ type VideoModalProps = {
 function VideoModal({
   showModal, setShowModal, children, className = '', media,
 }: VideoModalProps) {
-  const [hidden, setHidden] = useState(false);
-
-
-
   return (
     <>
-      <a
+      <button
+        type="button"
         className={cx(className)}
         onClick={() => setShowModal(true)}
       >
         {children}
-      </a>
+      </button>
       {showModal ? (
         <>
           <div
@@ -53,7 +47,7 @@ function VideoModal({
                 </div>
                 {/* body */}
                 <div className="relative p-6 flex-auto w-full max-w-[34rem] px-16">
-                  <iframe width="400" height="400" src={media} ></iframe>
+                  <iframe width="400" height="400" src={media} title="video" />
                 </div>
               </div>
             </div>
