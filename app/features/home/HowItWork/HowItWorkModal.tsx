@@ -1,7 +1,7 @@
 'use client';
 
 import { MdClose } from 'react-icons/md';
-import Stepper from './Stepper/Stepper';
+import Stepper from './stepper/Stepper';
 
 type ModalProps = {
   isOpen: boolean;

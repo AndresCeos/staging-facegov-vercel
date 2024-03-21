@@ -6,8 +6,8 @@ import { useEffect, useState } from 'react';
 import { usePoliticalFigures } from '@/api/political-figures';
 import Button from './components/Button';
 import QueryResult from './components/QueryResult';
-import HowItWorkModal from './features/home/HowItWork/HowItWorkModal';
 import PoliticalFiguresList from './features/home/PoliticalFiguresList';
+import HowItWorkModal from './features/home/howItWork/HowItWorkModal';
 
 function Home() {
   const [page, setPage] = useState(1);
