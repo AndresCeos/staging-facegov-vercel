@@ -24,57 +24,59 @@ function PoliticalFigureCommentUtility({ comment, politicalFigureId }: Political
 
   if (!isSignedIn.data?.data?.authenticated) {
     return (
-      <div className="flex flex-col justify-center items-center w-7 pr-4">
+      <div className="grid grid-cols-2 place-items-center">
         <LoginModal
-          className="!px-1 !py-1 !text-gray-500 bg-transparent hover:bg-transparent hover:text-gray-700 !outline-none !focus:outline-none !focus:ring-0"
+          className="!px-0 !py-0 !text-gray-500 bg-transparent hover:bg-transparent hover:text-gray-700 !outline-none !focus:outline-none !focus:ring-0"
           showModal={showModal}
           setShowModal={setShowModal}
         >
           <PiArrowSquareUp className="text-2xl" />
           <span className="sr-only">Comment up</span>
         </LoginModal>
-        <span className="mx-1 font-bold">{comment?.utility ?? 0}</span>
+        <span className="mx-1 font-bold text-blue-800">{comment?.utilityPositive ?? 0}</span>
         <LoginModal
-          className="!px-1 !py-1 !text-gray-500 bg-transparent hover:bg-transparent hover:text-gray-700 !outline-none !focus:outline-none !focus:ring-0"
+          className="!px-0 !py-0 !text-gray-500 bg-transparent hover:bg-transparent hover:text-gray-700 !outline-none !focus:outline-none !focus:ring-0"
           showModal={showModal}
           setShowModal={setShowModal}
         >
           <PiArrowSquareDown className="text-2xl" />
           <span className="sr-only">Comment down</span>
         </LoginModal>
+        <span className="mx-1 font-bold text-red-800">{comment?.utilityNegative ?? 0}</span>
       </div>
     );
   }
 
   if (comment.commentedByUser) {
     return (
-      <div className="flex flex-col justify-center items-center w-7 pr-4">
+      <div className="grid grid-cols-2 place-items-center">
         <button
-          className="!px-1 !py-1 !text-gray-500 bg-transparent hover:bg-transparent hover:text-gray-700 !outline-none !focus:outline-none !focus:ring-0"
+          className="!px-0 !py-0 !text-gray-500 bg-transparent hover:bg-transparent hover:text-gray-700 !outline-none !focus:outline-none !focus:ring-0"
           type="button"
           disabled
         >
           <PiArrowSquareUp className="text-2xl" />
           <span className="sr-only">Comment up</span>
         </button>
-        <span className="mx-1 font-bold">{comment?.utility ?? 0}</span>
+        <span className="mx-1 font-bold text-blue-800">{comment?.utilityPositive ?? 0}</span>
         <button
-          className="!px-1 !py-1 !text-gray-500 bg-transparent hover:bg-transparent hover:text-gray-700 !outline-none !focus:outline-none !focus:ring-0"
+          className="!px-0 !py-0 !text-gray-500 bg-transparent hover:bg-transparent hover:text-gray-700 !outline-none !focus:outline-none !focus:ring-0"
           type="button"
           disabled
         >
           <PiArrowSquareDown className="text-2xl" />
           <span className="sr-only">Comment down</span>
         </button>
+        <span className="mx-1 font-bold text-red-800">{comment?.utilityNegative ?? 0}</span>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col justify-center items-center w-7 pr-4">
+    <div className="grid grid-cols-2 place-items-center">
       <button
         className={cx(
-          '!px-1 !py-1 bg-transparent hover:bg-transparent hover:text-gray-700 !outline-none !focus:outline-none !focus:ring-0',
+          '!px-0 !py-0 bg-transparent hover:bg-transparent hover:text-gray-700 !outline-none !focus:outline-none !focus:ring-0',
           comment.userUtility === true && '!text-green-500',
           comment.userUtility !== true && '!text-gray-500',
         )}
@@ -84,10 +86,10 @@ function PoliticalFigureCommentUtility({ comment, politicalFigureId }: Political
         <PiArrowSquareUp className="text-2xl" />
         <span className="sr-only">Comment up</span>
       </button>
-      <span className="mx-1 font-bold">{comment?.utility ?? 0}</span>
+      <span className="mx-1 font-bold text-blue-800">{comment?.utilityPositive ?? 0}</span>
       <button
         className={cx(
-          '!px-1 !py-1 bg-transparent hover:bg-transparent hover:text-gray-700 !outline-none !focus:outline-none !focus:ring-0',
+          '!px-0 !py-0 bg-transparent hover:bg-transparent hover:text-gray-700 !outline-none !focus:outline-none !focus:ring-0',
           comment.userUtility === false && '!text-red-500',
           comment.userUtility !== false && '!text-gray-500',
         )}
@@ -97,6 +99,7 @@ function PoliticalFigureCommentUtility({ comment, politicalFigureId }: Political
         <PiArrowSquareDown className="text-2xl" />
         <span className="sr-only">Comment down</span>
       </button>
+      <span className="mx-1 font-bold text-red-800">{comment?.utilityNegative ?? 0}</span>
     </div>
   );
 }

@@ -91,6 +91,8 @@ declare namespace Api {
     createdAt: Date;
     user: User;
     utility: number;
+    utilityPositive: number;
+    utilityNegative: number;
     userUtility: boolean | null;
     commentedByUser?: boolean;
   }
