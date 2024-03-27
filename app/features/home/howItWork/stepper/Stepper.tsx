@@ -9,7 +9,7 @@ type StepperProps = {
 };
 
 function Stepper({ setIsOpen }: StepperProps) {
-  const steps = ['Paso 1', 'Paso 2', 'Paso 3', 'Paso 4'];
+  const steps = ['Paso 1', 'Paso 2', 'Paso 3'];
   const [currentStep, setCurrentStep] = useState(1);
   const [complete, setComplete] = useState(false);
 
@@ -46,7 +46,7 @@ function Stepper({ setIsOpen }: StepperProps) {
         currentStep === 1
           ? (
             <div>
-              Paso 1
+              <img src="/paso1.jpg" alt="paso1" />
             </div>
           )
           : ''
@@ -56,7 +56,7 @@ function Stepper({ setIsOpen }: StepperProps) {
         currentStep === 2
           ? (
             <div>
-              Paso 2
+              <img src="/paso2.jpg" alt="paso1" />
             </div>
           )
           : ''
@@ -66,21 +66,12 @@ function Stepper({ setIsOpen }: StepperProps) {
         currentStep === 3
           ? (
             <div>
-              Paso 3
+              <img src="/paso3.jpg" alt="paso1" />
             </div>
           )
           : ''
       }
 
-        {
-        currentStep === 4
-          ? (
-            <div>
-              Paso 4
-            </div>
-          )
-          : ''
-      }
       </div>
       {!complete && (
         <div className="mt-10 mb-6 grid place-items-center">

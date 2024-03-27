@@ -30,7 +30,7 @@ function PoliticalFigureCommentUtility({ comment, politicalFigureId }: Political
           showModal={showModal}
           setShowModal={setShowModal}
         >
-          <PiArrowSquareUp className="text-2xl" />
+          <img src='/2.png' className="text-2xl" width="20" alt='up'/>
           <span className="sr-only">Comment up</span>
         </LoginModal>
         <span className="mx-1 font-bold text-blue-800">{comment?.utilityPositive ?? 0}</span>
@@ -39,7 +39,7 @@ function PoliticalFigureCommentUtility({ comment, politicalFigureId }: Political
           showModal={showModal}
           setShowModal={setShowModal}
         >
-          <PiArrowSquareDown className="text-2xl" />
+          <img src='/1.png' width="20" className="text-2xl" />
           <span className="sr-only">Comment down</span>
         </LoginModal>
         <span className="mx-1 font-bold text-red-800">{comment?.utilityNegative ?? 0}</span>
