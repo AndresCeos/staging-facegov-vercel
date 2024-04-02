@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { HiArrowRight } from 'react-icons/hi';
 
 import Rating from '@/components/Rating';
-import formatNameSlug from '@/utils/formatNameSlug';
 
 type PoliticalFiguresListProps = {
   politicalFigures: Api.PoliticalFigure[];
@@ -15,7 +14,6 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
   if (politicalFigures.length === 0) {
     return <h2 className="text-gray-700 text-2xl text-center my-10">No hay coincidencias con tu búsqueda.</h2>;
   }
-
 
   return (
     <ul className="grid md:grid-cols-2 lg:grid-cols-3">
