@@ -18,7 +18,7 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
   return (
     <ul className="grid md:grid-cols-2 lg:grid-cols-3">
       {politicalFigures.map((politicalFigure, index) => (
-        <li>
+        <li key={politicalFigure.id}>
           <div
             key={politicalFigure.id}
             className={cx(

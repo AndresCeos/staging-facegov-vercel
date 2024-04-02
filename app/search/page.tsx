@@ -41,7 +41,7 @@ function SearchPage() {
           <HiXCircle className="w-6 h-6" />
         </Link>
       </div>
-      <QueryResult query={politicalFigures} isFullScreenLoader>
+      <QueryResult query={politicalFigures} isFullScreenLoader={false}>
         <PoliticalFiguresList politicalFigures={initialData} />
         {politicalFigures.data?.pagination.hasNextPage && (
           <div className="my-20 grid place-items-center">

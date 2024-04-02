@@ -35,7 +35,7 @@ function PoliticalFigureContent({ slug }: PoliticalFigureContentProps) {
 
   return (
     <>
-      <QueryResult query={politicalFigure} isFullScreenLoader>
+      <QueryResult query={politicalFigure} isFullScreenLoader={false}>
         <div className="my-14 grid md:grid-cols-2 relative">
           <div className="grid place-items-center z-10">
             {isVerify
@@ -97,7 +97,7 @@ function PoliticalFigureContent({ slug }: PoliticalFigureContentProps) {
                   <GrShare className="text-4xl" />
                 </button>
                 {showTooltip && (
-                <div className="absolute bg-white shadow-lg p-3 rounded-lg flex gap-2">
+                <div className="absolute bg-white shadow-lg p-4 rounded-lg flex flex-col gap-4">
                   <a
                     className="text-2xl font-light cursor-pointer"
                     target="_blank"
@@ -106,16 +106,6 @@ function PoliticalFigureContent({ slug }: PoliticalFigureContentProps) {
                     href={`https://www.facebook.com/sharer.php?u=https://srv489338.hstgr.cloud/politico/${politicalFigure.data?.results?.id}&t=Mira a ${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName} en FACESGOV.`}
                   >
                     <span className="sr-only">Compartir</span>
-                    <FaFacebook className="text-4xl hover:text-blue-700" />
-                  </a>
-                  <a
-                    className="text-2xl font-light cursor-pointer"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  // eslint-disable-next-line max-len
-                    href={`https://www.facebook.com/stories/create?linkUrl=https://srv489338.hstgr.cloud/politico/${politicalFigure.data?.results?.id}&t=Mira a ${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName} en FACESGOV.`}
-                  >
-                    <span className="sr-only">Compartir en mi historia</span>
                     <FaFacebook className="text-4xl hover:text-blue-700" />
                   </a>
                   <a
@@ -137,7 +127,7 @@ function PoliticalFigureContent({ slug }: PoliticalFigureContentProps) {
         </div>
         <>
           <div className="grid md:grid-cols-2">
-            <div className="grid gap-2 md:grid-cols-2 md:border-r md:border-gray-950 px-14">
+            <div className="grid gap-2 md:grid-cols-2 md:border-r md:border-gray-950 md:px-14">
               <div className="col-span-2 md:mb-16">
                 <h3 className="text-2xl">
                   {`¿Quién es ${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName}?`}

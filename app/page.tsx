@@ -26,7 +26,7 @@ function Home() {
   return (
     <main>
       <h2 className="py-20 md:py-36 text-4xl text-center max-w-96 mx-auto">El espacio para calificar políticos</h2>
-      <QueryResult query={politicalFigures} isFullScreenLoader>
+      <QueryResult query={politicalFigures} isFullScreenLoader={false}>
         <PoliticalFiguresList politicalFigures={initialData} />
         {politicalFigures.data?.pagination.hasNextPage && (
           <div className="my-20 grid place-items-center">

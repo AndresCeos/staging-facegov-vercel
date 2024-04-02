@@ -8,7 +8,7 @@ import {
 function Footer() {
   return (
     <footer className="bg-white">
-      <div className="flex justify-between h-20 items-center max-w-[1240px]  mx-auto px-4">
+      <div className="flex flex-col-reverse md:flex-row justify-between h-20 items-center max-w-[1240px]  mx-auto px-4">
         <ul className="p-0 m-0 flex gap-10">
           <li>
             <a href="/aviso-de-privacidad">Aviso de Privacidad</a>
@@ -21,7 +21,7 @@ function Footer() {
           </li>
         </ul>
 
-        <ul className="p-0 m-0 flex gap-10">
+        <ul className="py-10 md:p-0 m-0 flex gap-10">
           <li>
             <a href="https://www.facebook.com/sexeniofaces" target="_blank" rel="noreferrer">
               <FaFacebookSquare className="text-2xl" />
