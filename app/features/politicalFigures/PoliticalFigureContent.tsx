@@ -6,8 +6,7 @@ import { useState } from 'react';
 
 import moment from 'moment';
 
-import { FaFacebook, FaInstagram } from 'react-icons/fa';
-import { GrShare, GrValidate } from 'react-icons/gr';
+import { GrValidate } from 'react-icons/gr';
 
 import { usePoliticalFigureById } from '@/api/political-figures';
 import QueryResult from '@/components/QueryResult';
@@ -19,6 +18,7 @@ import formatMoney from '@/utils/formatMoney';
 import FormModal from '@/utils/FormModal';
 import VideoModal from '@/utils/VideoModal';
 import PoliticalFigureRelatedList from './PoliticalFigureRelatedList';
+import PoliticalFigureShare from './share/PoliticalFigureShare';
 
 type PoliticalFigureContentProps = {
   slug: string;
@@ -29,7 +29,6 @@ function PoliticalFigureContent({ slug }: PoliticalFigureContentProps) {
   const [showModalReplica, setShowModalReplica] = useState(false);
   const [showModalVerify, setShowModalVerify] = useState(false);
   const [showModalVideo, setShowModalVideo] = useState(false);
-  const [showTooltip, setShowTooltip] = useState(false);
 
   const isVerify = politicalFigure?.data?.results?.verify;
 
@@ -81,47 +80,9 @@ function PoliticalFigureContent({ slug }: PoliticalFigureContentProps) {
               />
             </div>
 
-            <div className="text-center flex mx-auto justify-center items-center gap-5 pt-10">
-              <div className="text-2xl font-light">
-                Comparte este
-                <br />
-                político
-              </div>
-              <div>
-                <button
-                  type="button"
-                  className="text-2xl font-light cursor-pointer"
-                  onClick={() => setShowTooltip(!showTooltip)}
-                >
-                  <span className="sr-only">Compartir</span>
-                  <GrShare className="text-4xl" />
-                </button>
-                {showTooltip && (
-                <div className="absolute bg-white shadow-lg p-4 rounded-lg flex flex-col gap-4">
-                  <a
-                    className="text-2xl font-light cursor-pointer"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  // eslint-disable-next-line max-len
-                    href={`https://www.facebook.com/sharer.php?u=https://srv489338.hstgr.cloud/politico/${politicalFigure.data?.results?.id}&t=Mira a ${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName} en FACESGOV.`}
-                  >
-                    <span className="sr-only">Compartir</span>
-                    <FaFacebook className="text-4xl hover:text-blue-700" />
-                  </a>
-                  <a
-                    className="text-2xl font-light cursor-pointer"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  // eslint-disable-next-line max-len
-                    href={`https://www.instagram.com/sharer.php?u=https://srv489338.hstgr.cloud/politico/${politicalFigure.data?.results?.id}&t=Mira a ${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName} en FACESGOV.`}
-                  >
-                    <span className="sr-only">Compartir en mi instagram</span>
-                    <FaInstagram className="text-4xl hover:text-blue-700" />
-                  </a>
-                </div>
-                )}
-              </div>
-            </div>
+            {politicalFigure.data?.results
+              && <PoliticalFigureShare politicalFigure={politicalFigure.data?.results} />}
+
           </div>
           <div className="h-[1px] md:bg-black w-full absolute bottom-10" />
         </div>
