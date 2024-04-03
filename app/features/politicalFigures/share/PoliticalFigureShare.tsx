@@ -11,10 +11,6 @@ function PoliticalFigureShare({ politicalFigure }: PoliticalFigureShareProps) {
   const [showTooltip, setShowTooltip] = useState(false);
 
   const handleShareBtn = async () => {
-    if (!canUseNavigationShare) {
-      setShowTooltip(!showTooltip);
-      return;
-    }
     const imageUrl = new URL(`/political-figures/${politicalFigure.slug}/nav-share`, process.env.API_URL).toString();
     console.log(`clicked shareImageAsset: ${imageUrl}`);
     const fetchedImage = await fetch(imageUrl);
@@ -30,6 +26,13 @@ function PoliticalFigureShare({ politicalFigure }: PoliticalFigureShareProps) {
       files: filesArray,
       url: document.location.origin,
     };
+    console.log({
+      shareData,
+    });
+    if (!canUseNavigationShare) {
+      setShowTooltip(!showTooltip);
+      return;
+    }
     console.log('shareData:', shareData);
     if (navigator.canShare && navigator.canShare(shareData)) {
       await navigator.share(shareData);
