@@ -7,15 +7,15 @@ type PoliticalFigureShareProps = {
 };
 
 function PoliticalFigureShare({ politicalFigure }: PoliticalFigureShareProps) {
-  // const canUseNavigationShare = !!(typeof navigator !== 'undefined' && navigator.share);
-  const [showTooltip] = useState(false); // setShowTooltip
+  const canUseNavigationShare = !!(typeof navigator !== 'undefined' && navigator.share);
+  const [showTooltip, setShowTooltip] = useState(false);
 
   const handleShareBtn = async () => {
-    // if (!canUseNavigationShare) {
-    //   setShowTooltip(!showTooltip);
-    //   return;
-    // }
-    const imageUrl = new URL(process.env.API_URL ?? '', `/political-figures/${politicalFigure.slug}/nav-share`);
+    if (!canUseNavigationShare) {
+      setShowTooltip(!showTooltip);
+      return;
+    }
+    const imageUrl = new URL(`/political-figures/${politicalFigure.slug}/nav-share`, process.env.API_URL).toString();
     console.log(`clicked shareImageAsset: ${imageUrl}`);
     const fetchedImage = await fetch(imageUrl);
     const blobImage = await fetchedImage.blob();
