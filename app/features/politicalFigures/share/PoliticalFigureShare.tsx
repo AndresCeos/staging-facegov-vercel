@@ -15,19 +15,18 @@ function PoliticalFigureShare({ politicalFigure }: PoliticalFigureShareProps) {
     //   setShowTooltip(!showTooltip);
     //   return;
     // }
-    const imageUrl = `${process.env.API_URL}/political-figures/${politicalFigure.slug}/nav-share`;
+    const imageUrl = new URL(process.env.API_URL ?? '', `/political-figures/${politicalFigure.slug}/nav-share`);
     console.log(`clicked shareImageAsset: ${imageUrl}`);
     const fetchedImage = await fetch(imageUrl);
     const blobImage = await fetchedImage.blob();
-    const fileName = imageUrl.split('/').pop();
     const filesArray = [
-      new File([blobImage], fileName ?? 'image.png', {
+      new File([blobImage], politicalFigure.slug ?? 'image.png', {
         type: 'image/png',
         lastModified: Date.now(),
       }),
     ];
     const shareData = {
-      title: fileName,
+      title: `${politicalFigure.firstName} ${politicalFigure.lastName}`,
       files: filesArray,
       url: document.location.origin,
     };
