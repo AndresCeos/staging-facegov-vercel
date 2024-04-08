@@ -16,7 +16,7 @@ function PoliticalFigureShare({ politicalFigure }: PoliticalFigureShareProps) {
     const fetchedImage = await fetch(imageUrl);
     const blobImage = await fetchedImage.blob();
     const filesArray = [
-      new File([blobImage], politicalFigure.slug ?? 'image.png', {
+      new File([blobImage], `${politicalFigure.slug || 'image'}.png`, {
         type: 'image/png',
         lastModified: Date.now(),
       }),
