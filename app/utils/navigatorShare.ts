@@ -1,6 +1,6 @@
 const navigatorShare = async (politicalFigure: Api.PoliticalFigure, comment?: Api.Comment) => {
   const politicalFigureUrl = new URL(`/politico/${politicalFigure.slug}`, process.env.APP_URL).toString();
-  const imageUrl = new URL(`/political-figures/${politicalFigure.slug}/nav-share${comment?.id ? `${comment.id}/share-image` : ''}`, process.env.API_URL).toString();
+  const imageUrl = new URL(`/political-figures/${politicalFigure.slug}/${comment?.id ? `comments/${comment.id}/share-image` : 'nav-share'}`, process.env.API_URL).toString();
   const fetchedImage = await fetch(imageUrl);
   const blobImage = await fetchedImage.blob();
   const fileImage = `${politicalFigure.firstName} ${politicalFigure.lastName}.png`;

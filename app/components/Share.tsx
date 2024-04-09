@@ -31,10 +31,8 @@ function Share({
     const shareData = await navigatorShare(politicalFigure, comment);
     if (navigator.canShare && navigator.canShare(shareData)) {
       await navigator.share(shareData);
-      setIsLoading(false);
-    } else {
-      setShowTooltip(!showTooltip);
     }
+    setIsLoading(false);
   };
 
   const handleShareBtn = async () => {
