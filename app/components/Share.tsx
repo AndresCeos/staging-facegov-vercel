@@ -30,7 +30,12 @@ function Share({
     setIsLoading(true);
     const shareData = await navigatorShare(politicalFigure, comment);
     if (navigator.canShare && navigator.canShare(shareData)) {
-      await navigator.share(shareData);
+      try {
+        await navigator.share(shareData);
+      } catch (error) {
+        console.error('Error sharing:', error);
+        setIsLoading(false);
+      }
     }
     setIsLoading(false);
   };
