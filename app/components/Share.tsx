@@ -38,8 +38,6 @@ function Share({
   };
 
   const handleShareBtn = async () => {
-    const t = await navigatorShare(politicalFigure, comment);
-    console.log({ t });
     if (showTooltip) {
       setShowTooltip(!showTooltip);
       return;
