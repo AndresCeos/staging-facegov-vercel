@@ -9,17 +9,17 @@ import LoginModal from '@/features/login/LoginModal';
 
 type PoliticalFigureCommentUtilityProps = {
   comment: Api.Comment;
-  politicalFigureId: number;
+  politicalFigureSlug: string;
 };
 
-function PoliticalFigureCommentUtility({ comment, politicalFigureId }: PoliticalFigureCommentUtilityProps) {
+function PoliticalFigureCommentUtility({ comment, politicalFigureSlug }: PoliticalFigureCommentUtilityProps) {
   const isSignedIn = useIsSignedIn();
   const [showModal, setShowModal] = useState(false);
 
   const mutate = mutateCommentUtility();
 
   const handleCommentUtility = (utility: 'true' | 'false') => {
-    mutate.mutate({ commentId: comment.id, utility, politicalFigureId });
+    mutate.mutate({ commentId: comment.id, utility, politicalFigureSlug });
   };
 
   if (!isSignedIn.data?.data?.authenticated) {

@@ -41,7 +41,7 @@ function ProfileUtilitiesList() {
                 <time>{moment(comment.createdAt).format('D MMMM YYYY')}</time>
               </p>
               <div className="flex">
-                <PoliticalFigureCommentUtility comment={comment as never} politicalFigureId={comment.politicalFigure.id} />
+                <PoliticalFigureCommentUtility comment={comment as never} politicalFigureSlug={comment.politicalFigure.slug} />
                 <p className="text-gray-500 w-full">
                   {comment.text}
                 </p>

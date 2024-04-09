@@ -28,7 +28,7 @@ function PoliticalFigureCommentForm({ politicalFigure }: PoliticalFigureCommentF
       return;
     }
     // eslint-disable-next-line no-alert
-    mutate.mutate({ rating, text, politicalFigureId: politicalFigure.id });
+    mutate.mutate({ rating, text, politicalFigureSlug: politicalFigure.slug });
     setText('');
   };
 

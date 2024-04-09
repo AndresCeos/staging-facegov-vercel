@@ -17,10 +17,10 @@ moment.locale('es');
 
 type PoliticalFigureCommentsListItemProps = {
   comment: Api.Comment;
-  politicalFigureId: number;
+  politicalFigureSlug: string;
 };
 
-function PoliticalFigureCommentsListItem({ comment, politicalFigureId }: PoliticalFigureCommentsListItemProps) {
+function PoliticalFigureCommentsListItem({ comment, politicalFigureSlug }: PoliticalFigureCommentsListItemProps) {
   const [showTooltipComment, setShowTooltipComment] = useState(false);
 
   return (
@@ -45,7 +45,7 @@ function PoliticalFigureCommentsListItem({ comment, politicalFigureId }: Politic
             <time>{moment(comment.createdAt).format('D MMMM YYYY')}</time>
           </p>
           <div className="flex">
-            <PoliticalFigureCommentUtility comment={comment} politicalFigureId={politicalFigureId} />
+            <PoliticalFigureCommentUtility comment={comment} politicalFigureSlug={politicalFigureSlug} />
             <p className="text-gray-500 w-full">
               {comment.text}
             </p>
@@ -66,7 +66,7 @@ function PoliticalFigureCommentsListItem({ comment, politicalFigureId }: Politic
                   target="_blank"
                   rel="noopener noreferrer"
                   // eslint-disable-next-line max-len
-                  href={`http://www.facebook.com/sharer.php?u=https://srv489338.hstgr.cloud/politico/${politicalFigureId}/?comment=${comment.id}&t=Acabo de calificar a ${comment.user.firstName} ${comment.user.lastName} en FACESGOV. `}
+                  href={`http://www.facebook.com/sharer.php?u=https://srv489338.hstgr.cloud/politico/${politicalFigureSlug}/?comment=${comment.id}&t=Acabo de calificar a ${comment.user.firstName} ${comment.user.lastName} en FACESGOV. `}
                 >
                   <span className="sr-only">Compartir</span>
                   <FaFacebook className="text-4xl hover:text-blue-700" />
