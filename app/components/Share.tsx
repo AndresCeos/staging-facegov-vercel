@@ -36,15 +36,20 @@ function Share({
   };
 
   const handleShareBtn = async () => {
-    if (showTooltip) {
-      setShowTooltip(!showTooltip);
-      return;
+    try {
+      if (showTooltip) {
+        setShowTooltip(!showTooltip);
+        return;
+      }
+      if (!canUseNavigationShare) {
+        setShowTooltip(!showTooltip);
+        return;
+      }
+      handleNavigatorShare();
+    } catch (error) {
+      console.error('Error sharing:', error);
+      setIsLoading(false);
     }
-    if (!canUseNavigationShare) {
-      setShowTooltip(!showTooltip);
-      return;
-    }
-    handleNavigatorShare();
   };
 
   if (isLoading) {
