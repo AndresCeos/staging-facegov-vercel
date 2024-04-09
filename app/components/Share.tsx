@@ -55,7 +55,7 @@ function Share({
     return <div className="fixed w-full bg-white bg-opacity-70 left-0 top-0 z-50"><Loader isFullHeight /></div>;
   }
 
-  const PoliticalFigureURL = new URL(`/politico/${politicalFigure.slug}${comment && `/comment/${comment.id}`}`, process.env.APP_URL).toString();
+  const PoliticalFigureURL = new URL(`/politico/${politicalFigure.slug}${comment ? `/comment/${comment.id}` : ''}`, process.env.APP_URL).toString();
   const PoliticalFigureMsg = comment
     ? `Mira el comentario que acabo de hacer a ${politicalFigure.firstName} ${politicalFigure.lastName} en FACESGOV.`
     : `Mira a ${politicalFigure.firstName} ${politicalFigure.lastName} en FACESGOV.`;
