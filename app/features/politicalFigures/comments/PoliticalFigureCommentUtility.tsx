@@ -1,8 +1,6 @@
 import cx from 'classnames';
 import { useState } from 'react';
 
-import { PiArrowSquareDown, PiArrowSquareUp } from 'react-icons/pi';
-
 import { useIsSignedIn } from '@/api/authentication';
 import { mutateCommentUtility } from '@/api/comments';
 import LoginModal from '@/features/login/LoginModal';
@@ -30,7 +28,7 @@ function PoliticalFigureCommentUtility({ comment, politicalFigureSlug }: Politic
           showModal={showModal}
           setShowModal={setShowModal}
         >
-          <img src="/2.png" className="text-2xl" width="20" alt="up" />
+          <img src="/up.png" width="20" alt="up" />
           <span className="sr-only">Comment up</span>
         </LoginModal>
         <span className="mx-1 font-bold text-blue-800">{comment?.utilityPositive ?? 0}</span>
@@ -39,7 +37,7 @@ function PoliticalFigureCommentUtility({ comment, politicalFigureSlug }: Politic
           showModal={showModal}
           setShowModal={setShowModal}
         >
-          <img src="/1.png" width="20" className="text-2xl" alt="down" />
+          <img src="/down.png" width="20" alt="down" />
           <span className="sr-only">Comment down</span>
         </LoginModal>
         <span className="mx-1 font-bold text-red-800">{comment?.utilityNegative ?? 0}</span>
@@ -55,7 +53,7 @@ function PoliticalFigureCommentUtility({ comment, politicalFigureSlug }: Politic
           type="button"
           disabled
         >
-          <PiArrowSquareUp className="text-2xl" />
+          <img src="/up.png" width="20" alt="up" />
           <span className="sr-only">Comment up</span>
         </button>
         <span className="mx-1 font-bold text-blue-800">{comment?.utilityPositive ?? 0}</span>
@@ -64,7 +62,7 @@ function PoliticalFigureCommentUtility({ comment, politicalFigureSlug }: Politic
           type="button"
           disabled
         >
-          <PiArrowSquareDown className="text-2xl" />
+          <img src="/down.png" width="20" alt="down" />
           <span className="sr-only">Comment down</span>
         </button>
         <span className="mx-1 font-bold text-red-800">{comment?.utilityNegative ?? 0}</span>
@@ -83,7 +81,7 @@ function PoliticalFigureCommentUtility({ comment, politicalFigureSlug }: Politic
         type="button"
         onClick={() => handleCommentUtility('true')}
       >
-        <PiArrowSquareUp className="text-2xl" />
+        <img src="/up.png" width="20" alt="up" />
         <span className="sr-only">Comment up</span>
       </button>
       <span className="mx-1 font-bold text-blue-800">{comment?.utilityPositive ?? 0}</span>
@@ -96,7 +94,7 @@ function PoliticalFigureCommentUtility({ comment, politicalFigureSlug }: Politic
         type="button"
         onClick={() => handleCommentUtility('false')}
       >
-        <PiArrowSquareDown className="text-2xl" />
+        <img src="/down.png" width="20" alt="down" />
         <span className="sr-only">Comment down</span>
       </button>
       <span className="mx-1 font-bold text-red-800">{comment?.utilityNegative ?? 0}</span>

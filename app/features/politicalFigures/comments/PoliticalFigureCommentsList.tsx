@@ -14,7 +14,7 @@ function PoliticalFigureCommentsList({ politicalFigure, sortConfig }: PoliticalF
     <QueryResult query={comments} isFullScreenLoader={false}>
       {comments?.data?.results?.map((comment) => (
         <PoliticalFigureCommentsListItem
-          politicalFigureSlug={politicalFigure.slug}
+          politicalFigure={politicalFigure}
           comment={comment}
           key={comment.id}
         />
