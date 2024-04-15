@@ -1,6 +1,6 @@
+import axios from 'axios';
 import type { Metadata } from 'next';
 
-import { getPoliticalFigureBySlug } from '@/api/political-figures';
 import PoliticalFigureContent from '@/features/politicalFigures/PoliticalFigureContent';
 
 type Props = {
@@ -15,10 +15,10 @@ export async function generateMetadata(context: any): Promise<Metadata> {
   const commentId = context?.searchParams?.comment;
 
   try {
-    const product:Api.Response<Api.PoliticalFigure> = await getPoliticalFigureBySlug(slug);
+    const politicalFigure = await axios.get(`${process.env.API_URL}/political-figures/${slug}`);
 
     return {
-      title: `${product?.results?.firstName} ${product?.results?.lastName} - FACESGOV`,
+      title: `${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName} - FACESGOV`,
       openGraph: {
         images: [`${process.env.API_URL}/political-figures/${slug}/share-image`],
       },

@@ -22,7 +22,8 @@ type ShareProps = {
 function Share({
   className, politicalFigure, comment, iconClassName,
 }: ShareProps) {
-  const canUseNavigationShare = !!(typeof navigator !== 'undefined' && navigator.share);
+  const isMobile = window.innerWidth < 768;
+  const canUseNavigationShare = isMobile ? !!(typeof navigator !== 'undefined' && navigator.share) : false;
   const [showTooltip, setShowTooltip] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -103,7 +104,7 @@ function Share({
               className="text-2xl font-light cursor-pointer"
               target="_blank"
               rel="noopener noreferrer"
-              href={`https://www.facebook.com/sharer.php?u=${PoliticalFigureURL}&t=${PoliticalFigureMsg}`}
+              href={`https://www.facebook.com/sharer.php?u=${PoliticalFigureURL}&quote=${PoliticalFigureMsg}`}
             >
               <span className="sr-only">Compartir</span>
               <FaFacebook className="text-4xl hover:text-blue-700" />
