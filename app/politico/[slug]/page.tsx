@@ -2,6 +2,7 @@ import axios from 'axios';
 import type { Metadata } from 'next';
 
 import PoliticalFigureContent from '@/features/politicalFigures/PoliticalFigureContent';
+import url from '@/utils/url';
 
 type Props = {
   params: {
@@ -15,19 +16,19 @@ export async function generateMetadata(context: any): Promise<Metadata> {
   const commentId = context?.searchParams?.comment;
 
   try {
-    const politicalFigure = await axios.get(`${process.env.API_URL}/political-figures/${slug}`);
+    const politicalFigure = await axios.get(url(`/political-figures/${slug}`, 'api'));
 
     console.log('politicalFigure:', {
       title: `${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName} - FACESGOV`,
       openGraph: {
-        images: [`${process.env.API_URL}/political-figures/${slug}/share-image`],
+        images: [url(`/political-figures/${slug}/share-image`, 'api')],
       },
     });
 
     return {
       title: `${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName} - FACESGOV`,
       openGraph: {
-        images: [`${process.env.API_URL}/political-figures/${slug}/share-image`],
+        images: [url(`/political-figures/${slug}/share-image`, 'api')],
       },
     };
   } catch (error) {
@@ -36,7 +37,7 @@ export async function generateMetadata(context: any): Promise<Metadata> {
       title: 'FACESGOV',
       openGraph: {
         images: [
-          commentId ? `${process.env.API_URL}/political-figures/${slug}/comments/${commentId}/share-image` : `${process.env.API_URL}/political-figures/${slug}/share-image`,
+          commentId ? url(`/political-figures/${slug}/comments/${commentId}/share-image`, 'api') : url(`/political-figures/${slug}/share-image`, 'api'),
         ],
       },
     };
