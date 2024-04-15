@@ -17,6 +17,13 @@ export async function generateMetadata(context: any): Promise<Metadata> {
   try {
     const politicalFigure = await axios.get(`${process.env.API_URL}/political-figures/${slug}`);
 
+    console.log('politicalFigure:', {
+      title: `${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName} - FACESGOV`,
+      openGraph: {
+        images: [`${process.env.API_URL}/political-figures/${slug}/share-image`],
+      },
+    });
+
     return {
       title: `${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName} - FACESGOV`,
       openGraph: {
@@ -24,6 +31,7 @@ export async function generateMetadata(context: any): Promise<Metadata> {
       },
     };
   } catch (error) {
+    console.error('Error getting political figure:', error);
     return {
       title: 'FACESGOV',
       openGraph: {
