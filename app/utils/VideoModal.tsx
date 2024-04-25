@@ -30,9 +30,7 @@ function VideoModal({
             className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
           >
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
-              {/* content */}
               <div className="border-0 rounded-3xl shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                {/* header */}
                 <div className="flex items-start justify-between p-5 rounded-t ">
                   <button
                     type="button"
@@ -45,7 +43,6 @@ function VideoModal({
                     </span>
                   </button>
                 </div>
-                {/* body */}
                 <div className="relative p-6 flex-auto w-full max-w-[34rem] px-16">
                   <iframe width="400" height="400" src={media} title="video" />
                 </div>
