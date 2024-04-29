@@ -9,9 +9,12 @@ import { HiX } from 'react-icons/hi';
 import Button from './Button';
 import SearchForm from './SearchForm';
 import UserDropdown from './UserDropDown';
+import { mutateLogout, useIsSignedIn } from '@/api/authentication';
+import LoginModal from '@/features/login/LoginModal';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <>
@@ -27,12 +30,12 @@ function Navbar() {
             <Link className="text-sm text-gray-500 hover:text-gray-700" href="/tendencias">Tendencias</Link>
             <Link className="text-sm text-gray-500 hover:text-gray-700" href="/contacto">Contacto</Link>
             <SearchForm />
-            <Button
-              onClick={() => console.log('Registro')}
-              className="uppercase"
+            <LoginModal
+              showModal={showModal}
+              setShowModal={setShowModal}
             >
-              Registro
-            </Button>
+              REGISTRO
+            </LoginModal>
             <Button
               onClick={() => console.log('Calificar')}
               className="uppercase"
