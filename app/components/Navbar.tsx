@@ -9,7 +9,6 @@ import { HiX } from 'react-icons/hi';
 import Button from './Button';
 import SearchForm from './SearchForm';
 import UserDropdown from './UserDropDown';
-import { mutateLogout, useIsSignedIn } from '@/api/authentication';
 import LoginModal from '@/features/login/LoginModal';
 
 function Navbar() {
