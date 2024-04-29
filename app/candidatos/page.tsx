@@ -7,10 +7,12 @@ import { usePoliticalFigures } from '@/api/political-figures';
 import Button from '../components/Button';
 import QueryResult from '../components/QueryResult';
 import PoliticalFiguresList from '../features/home/PoliticalFiguresList';
+import HowItWorkModal from '@/features/home/howItWork/HowItWorkModal';
 
 function Home() {
   const [page, setPage] = useState(1);
   const [initialData, setInitialData] = useState<Api.PoliticalFigure[]>([]);
+  const [isOpen, setIsOpen] = useState(false);
 
   const politicalFigures = usePoliticalFigures({ offset: (page - 1) * 9, limit: 9, filter: 'candidate' });
 
@@ -42,6 +44,7 @@ function Home() {
       <div className="flex flex-col-reverse md:grid md:grid-cols-2 my-20">
         <div className="grid place-items-center mt-20 md:mt-0">
           <Button
+            onClick={() => setIsOpen(true)}
             className="py-8 px-20 rounded-3xl"
           >
             Cómo funciona FacesGov
@@ -49,12 +52,13 @@ function Home() {
         </div>
         <div>
           <Image
-            src="/como-funciona.jpg"
+            src="/foto_fcs.jpeg"
             alt="Cómo funciona FacesGov"
             width={500}
             height={500}
           />
         </div>
+        <HowItWorkModal isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>
     </main>
   );
