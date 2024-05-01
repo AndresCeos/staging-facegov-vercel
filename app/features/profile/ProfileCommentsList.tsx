@@ -9,6 +9,7 @@ import { useUserComments } from '@/api/users';
 import QueryResult from '@/components/QueryResult';
 import PoliticalFigureCommentRating from '../politicalFigures/comments/PoliticalFigureCommentRating';
 import PoliticalFigureCommentUtility from '../politicalFigures/comments/PoliticalFigureCommentUtility';
+import formatNameSlug from '@/utils/formatNameSlug';
 
 function ProfileCommentsList() {
   const comments = useUserComments({ offset: 0, limit: 10 });
@@ -27,7 +28,7 @@ function ProfileCommentsList() {
                 alt="profile"
                 className="w-10 md:w-20 h-10 md:h-20 rounded-full"
               />
-              <Link href={`/politico/${comment.politicalFigure.id}`} className="text-blue-950 text-center mt-3">
+              <Link href={`/politico/${formatNameSlug(`${comment.politicalFigure.firstName} ${comment.politicalFigure.lastName}`)}`} className="text-blue-950 text-center mt-3">
                 {`${comment.politicalFigure.firstName} ${comment.politicalFigure.lastName}`}
               </Link>
             </div>
