@@ -14,7 +14,6 @@ import formatNameSlug from '@/utils/formatNameSlug';
 
 function ProfileUtilitiesList() {
   const comments = useUserCommentUtilities({ offset: 0, limit: 10 });
-  console.log(comments.data?.results)
   return (
     <QueryResult query={comments}>
       {comments.data?.results?.length === 0 && (

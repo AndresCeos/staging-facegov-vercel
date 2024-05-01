@@ -31,12 +31,14 @@ function Navbar() {
             <Link className="text-sm text-gray-500 hover:text-gray-700" href="/tendencias">Tendencias</Link>
             <Link className="text-sm text-gray-500 hover:text-gray-700" href="/contacto">Contacto</Link>
             <SearchForm />
-            {(!isSignedIn.data?.data?.authenticated || isSignedIn.isLoading) && <LoginModal
+            {(!isSignedIn.data?.data?.authenticated || isSignedIn.isLoading) && (
+            <LoginModal
               showModal={showModal}
               setShowModal={setShowModal}
             >
               REGISTRO
-            </LoginModal> }
+            </LoginModal>
+            ) }
             <Button
               onClick={() => console.log('Calificar')}
               className="uppercase"

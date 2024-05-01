@@ -40,7 +40,7 @@ function PoliticalFigureCommentForm({ politicalFigure }: PoliticalFigureCommentF
 
   return (
     <QueryResult query={isSignedIn} isFullScreenLoader={false}>
-      <form className={`mb-6 ${(isSignedIn.data?.data?.authenticated === true && politicalFigure.canUserComment !== true) && 'hidden'}`} onSubmit={handleCommentSubmit} >
+      <form className={`mb-6 ${(isSignedIn.data?.data?.authenticated === true && politicalFigure.canUserComment !== true) && 'hidden'}`} onSubmit={handleCommentSubmit}>
         <div className="mb-16">
           <label htmlFor="rating" className="sr-only">Calificación:</label>
           <RatingControl rating={rating} setRating={setRating} />
