@@ -10,11 +10,14 @@ import Button from './Button';
 import SearchForm from './SearchForm';
 import UserDropdown from './UserDropDown';
 import LoginModal from '@/features/login/LoginModal';
+
 import { useIsSignedIn } from '@/api/authentication';
+
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
+
   const isSignedIn = useIsSignedIn();
 
   return (
@@ -31,7 +34,9 @@ function Navbar() {
             <Link className="text-sm text-gray-500 hover:text-gray-700" href="/tendencias">Tendencias</Link>
             <Link className="text-sm text-gray-500 hover:text-gray-700" href="/contacto">Contacto</Link>
             <SearchForm />
+
             {(!isSignedIn.data?.data?.authenticated || isSignedIn.isLoading) && (
+
             <LoginModal
               showModal={showModal}
               setShowModal={setShowModal}
@@ -39,6 +44,7 @@ function Navbar() {
               REGISTRO
             </LoginModal>
             ) }
+
             <Button
               onClick={() => console.log('Calificar')}
               className="uppercase"
