@@ -13,7 +13,6 @@ import LoginModal from '@/features/login/LoginModal';
 
 import { useIsSignedIn } from '@/api/authentication';
 
-
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
