@@ -10,10 +10,10 @@ import QueryResult from '@/components/QueryResult';
 import profileAcronym from '@/utils/profileAcronym';
 import PoliticalFigureCommentRating from '../politicalFigures/comments/PoliticalFigureCommentRating';
 import PoliticalFigureCommentUtility from '../politicalFigures/comments/PoliticalFigureCommentUtility';
+import formatNameSlug from '@/utils/formatNameSlug';
 
 function ProfileUtilitiesList() {
   const comments = useUserCommentUtilities({ offset: 0, limit: 10 });
-
   return (
     <QueryResult query={comments}>
       {comments.data?.results?.length === 0 && (
@@ -53,7 +53,7 @@ function ProfileUtilitiesList() {
                 <div className="font-medium">
                   Calificacion hecha a
                 </div>
-                <Link href={`/politico/${comment.politicalFigure.id}`} className="text-blue-400">
+                <Link href={`/politico/${formatNameSlug(`${comment.politicalFigure.firstName} ${comment.politicalFigure.lastName}`)}`} className="text-blue-400">
                   {`${comment.politicalFigure.firstName} ${comment.politicalFigure.lastName}`}
                 </Link>
               </div>
