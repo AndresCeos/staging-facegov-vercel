@@ -97,6 +97,7 @@ function PoliticalFigureContent({ slug }: PoliticalFigureContentProps) {
 
               { (politicalFigure?.data?.results?.employmentHistory?.[0] && isVerify) && (
                 <div className="col-span-2 md:col-span-1 text-xl text-gray-950">
+                  <div>Salario Mensual Neto</div>
                   {!politicalFigure?.data?.results?.employmentHistory?.[0].candidate && formatMoney(politicalFigure?.data?.results?.employmentHistory?.[0]?.salary)}
                 </div>
               )}
