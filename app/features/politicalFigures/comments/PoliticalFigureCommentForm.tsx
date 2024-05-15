@@ -40,29 +40,29 @@ function PoliticalFigureCommentForm({ politicalFigure }: PoliticalFigureCommentF
 
   return (
     <QueryResult query={isSignedIn} isFullScreenLoader={false}>
-      <form className={`mb-6 ${(isSignedIn.data?.data?.authenticated === true && politicalFigure.canUserComment !== true) && 'hidden'}`} onSubmit={handleCommentSubmit}>
-        <div className="mb-16">
-          <label htmlFor="rating" className="sr-only">Calificación:</label>
-          <RatingControl rating={rating} setRating={setRating} />
-        </div>
-        <div className="p-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-950">
-          <label htmlFor="comment" className="sr-only">
-            Tú comentario
-          </label>
-          <textarea
-            rows={6}
-            className="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none"
-            placeholder="Escribe un comentario..."
-            required
-            value={text}
-            onChange={handleChangeText}
-          />
-          <div className="text-right">
-            {`${text.length} / ${MAX_COMMENT_LENGTH}`}
+      {(isSignedIn.data?.data?.authenticated === true && politicalFigure.canUserComment !== true) && (
+        <form className="mb-6" onSubmit={handleCommentSubmit}>
+          <div className="mb-16">
+            <label htmlFor="rating" className="sr-only">Calificación:</label>
+            <RatingControl rating={rating} setRating={setRating} />
           </div>
-        </div>
-        <div className="flex justify-end mt-8">
-          {(isSignedIn.data?.data?.authenticated === true && politicalFigure.canUserComment === true) ? (
+          <div className="p-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-950">
+            <label htmlFor="comment" className="sr-only">
+              Tú comentario
+            </label>
+            <textarea
+              rows={6}
+              className="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none"
+              placeholder="Escribe un comentario..."
+              required
+              value={text}
+              onChange={handleChangeText}
+            />
+            <div className="text-right">
+              {`${text.length} / ${MAX_COMMENT_LENGTH}`}
+            </div>
+          </div>
+          <div className="flex justify-end mt-8">
             <Button
               type="submit"
               className="h-14 !px-12"
@@ -70,9 +70,9 @@ function PoliticalFigureCommentForm({ politicalFigure }: PoliticalFigureCommentF
             >
               Calificar
             </Button>
-          ) : null }
-        </div>
-      </form>
+          </div>
+        </form>
+      )}
       {(isSignedIn.data?.data?.authenticated === true && politicalFigure.canUserComment !== true) && (
         <div className="bg-gray-200 px-6 py-4 rounded-2xl cursor-not-allowed">Ya has calificado a este político</div>
       )}
