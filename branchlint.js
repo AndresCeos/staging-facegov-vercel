@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const branchPattern =
-  /^(feat|fix|refactor|hotfix|reformat|optimise|enhance|ci|docs)\/[A-Z]{2,4}-\d+\/.+$/i;
+  /^(feat|fix|refactor|hotfix|reformat|optimise|enhance|ci|docs)\/[A-Z]{2,4}\/[a-z0-9-]+$/;
 const mainBranch = "main";
 const developBranch = "develop";
 
@@ -13,12 +13,12 @@ if (!branchName) {
   process.exit(1);
 }
 
-if (
-  branchPattern.test(branchName) ||
-  branchName === mainBranch ||
-  branchName === developBranch
-) {
-  console.log("Branch name is correct!");
+if (branchName === mainBranch || branchName === developBranch) {
+  console.log("You cannot push to main or develop branch directly!");
+  process.exit(1);
+}
+
+if (branchPattern.test(branchName)) {
   process.exit(0);
 }
 
