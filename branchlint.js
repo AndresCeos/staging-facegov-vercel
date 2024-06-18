@@ -18,6 +18,7 @@ if (
   branchName === mainBranch ||
   branchName === developBranch
 ) {
+  console.log("Branch name is correct!");
   process.exit(0);
 }
 
