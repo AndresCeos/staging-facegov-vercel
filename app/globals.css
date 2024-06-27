@@ -44,3 +44,6 @@
 .active:not(:first-child):before {
   @apply bg-green-600;
 }
+.bg-green{
+  @apply bg-[#67d62b];
+} 

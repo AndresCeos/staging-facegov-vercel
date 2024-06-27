@@ -1,5 +1,7 @@
 'use client';
 
+import cx from 'classnames';
+
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
@@ -8,6 +10,7 @@ import Button from './components/Button';
 import QueryResult from './components/QueryResult';
 import PoliticalFiguresList from './features/home/PoliticalFiguresList';
 import HowItWorkModal from './features/home/howItWork/HowItWorkModal';
+import { bold, extraBold, regular } from './fonts';
 
 function Home() {
   const [page, setPage] = useState(1);
@@ -25,7 +28,16 @@ function Home() {
 
   return (
     <main>
-      <h2 className="py-20 md:py-36 text-4xl text-center max-w-96 mx-auto">El espacio para calificar políticos</h2>
+      <h2
+        className={cx(
+          'py-20 md:py-36 text-3xl tracking-tighter leading-8 text-center mx-auto',
+          bold.className,
+        )}
+      >
+        Bienvenido a la única red social para la
+        <br />
+        participación ciudadana dentro de la política.
+      </h2>
       <QueryResult query={politicalFigures} isFullScreenLoader={false}>
         <PoliticalFiguresList politicalFigures={initialData} />
         {politicalFigures.data?.pagination.hasNextPage && (
@@ -41,18 +53,36 @@ function Home() {
           </div>
         )}
       </QueryResult>
-      <div className="flex flex-col-reverse md:grid md:grid-cols-2 my-20">
-        <div className="grid place-items-center mt-20 md:mt-0">
+      <div className="flex flex-col-reverse md:grid md:grid-cols-2 my-20 items-center">
+        <div className="place-items-center mt-20 md:mt-0">
+          <p className={cx('text-5xl mb-10 leading-10', extraBold.className)}>
+            Conócelos,
+            <br />
+            califica y opina.
+          </p>
+          <p className={cx('text-base leading-6 mb-10', regular.className)}>
+            Encuentra a un politico, y calificalo con hasta
+            <br />
+            cinco estrellas. Expresa tú opinión sobre el
+            <br />
+            desempeño de ellos, escribe comentarios
+            <br />
+            detallados y proporciona retroalimentación
+            <br />
+            sobre su trabajo y cumplimiento de sus promesas
+            <br />
+            de campaña.
+          </p>
           <Button
-            className="py-8 px-20 rounded-3xl"
+            className={cx(' text-base leading-6 mb-10', bold.className)}
             onClick={() => setIsOpen(true)}
           >
-            Cómo funciona FacesGov
+            ¿Cómo funciona?
           </Button>
         </div>
         <div>
           <Image
-            src="/foto_fcs.jpeg"
+            src="/Collage_Facegov.jpg"
             alt="Cómo funciona FacesGov"
             width={500}
             height={500}

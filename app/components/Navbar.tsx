@@ -1,5 +1,7 @@
 'use client';
 
+import cx from 'classnames';
+
 import Link from 'next/link';
 
 import { HiBars4 } from 'react-icons/hi2';
@@ -12,6 +14,8 @@ import UserDropdown from './UserDropDown';
 import LoginModal from '@/features/login/LoginModal';
 
 import { useIsSignedIn } from '@/api/authentication';
+
+import { bold, regular } from '@/fonts';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,32 +32,57 @@ function Navbar() {
               <h1 className="w-full text-3xl">FACESGOV</h1>
             </Link>
           </div>
-          <div className="hidden md:flex grow items-center gap-10 justify-end">
-            <Link className="text-sm text-gray-500 hover:text-gray-700" href="/candidatos">Candidatos</Link>
-            <Link className="text-sm text-gray-500 hover:text-gray-700" href="/tendencias">Tendencias</Link>
-            <Link className="text-sm text-gray-500 hover:text-gray-700" href="/contacto">Contacto</Link>
+          <div className="hidden lg:flex grow items-center gap-10 justify-end">
+            <Link
+              className={cx(
+                'text-base text-gray-500 hover:text-gray-700',
+                regular.className,
+              )}
+              href="/candidatos"
+            >
+              Candidatos
+            </Link>
+            <Link
+              className={cx(
+                'text-base text-gray-500 hover:text-gray-700',
+                regular.className,
+              )}
+              href="/tendencias"
+            >
+              Tendencias
+            </Link>
+            <Link
+              className={cx(
+                'text-base text-gray-500 hover:text-gray-700',
+                regular.className,
+              )}
+              href="/contacto"
+            >
+              Contacto
+            </Link>
             <SearchForm />
+
+            <Button
+              onClick={() => console.log('Calificar')}
+              className={cx('text-lg', bold.className)}
+            >
+              Calificar
+            </Button>
 
             {(!isSignedIn.data?.data?.authenticated || isSignedIn.isLoading) && (
 
             <LoginModal
               showModal={showModal}
               setShowModal={setShowModal}
+              className={cx('text-lg bg-green', bold.className)}
             >
-              REGISTRO
+              Registro
             </LoginModal>
             ) }
 
-            <Button
-              onClick={() => console.log('Calificar')}
-              className="uppercase"
-            >
-              Calificar
-            </Button>
-
             <UserDropdown />
           </div>
-          <div className="grid place-items-center md:hidden">
+          <div className="grid place-items-center lg:hidden">
             <button
               type="button"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -66,7 +95,7 @@ function Navbar() {
       </header>
       {isMenuOpen && (
         <div className="fixed z-50 top-0 left-0 right-0">
-          <nav className="w-full h-screen bg-white bg-opacity-55 p-10 flex flex-col justify-center items-center">
+          <nav className="w-full h-screen bg-white bg-opacity-90 p-10 flex flex-col justify-center items-center">
             <button
               type="button"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
