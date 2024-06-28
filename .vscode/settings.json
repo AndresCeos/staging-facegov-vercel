@@ -5,9 +5,37 @@
     "overrideConfigFile": ".eslintrc"
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "explicit"
+    "source.fixAll.eslint": "always",
+    "source.organizeImports": "always",
+    "source.fixAll": "always"
   },
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[typescript]": {
+    "editor.formatOnSave": false
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": false
+  },
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  },
+  "[svg]": {
+    "editor.defaultFormatter": "jock.svg"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "ngClass",
+    "routerLinkActive"
+  ],
+  "tailwindCSS.experimental.classRegex": [
+    "/\\*\\s*tw\\s*\\*/\\s*'([^']*)'",
+    "/\\*\\s*tw\\s*\\*/\\s*\"([^\"]*)\""
+  ],
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#0f6ec3",
     "activityBar.background": "#0f6ec3",

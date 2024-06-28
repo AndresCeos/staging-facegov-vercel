@@ -9,7 +9,6 @@ const branchName = process.argv[2];
 
 if (!branchName) {
   console.log("branch name is required");
-
   process.exit(1);
 }
 
