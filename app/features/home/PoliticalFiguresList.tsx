@@ -27,10 +27,10 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
             )}
           >
             <Link href={`/politico/${politicalFigure.slug}`}>
-              <div className="h-[480px] relative bg-gray-400">
+              <div className="h-[480px] relative">
                 <div
                   className={cx(
-                    'w-3/5 text-xs bg-[#FAB400] px-3 py-1 ml-3 rounded-3xl text-white flex flex-col absolute top-3',
+                    'w-3/5 text-xs bg-[#FAB400] px-3 py-1 ml-3 rounded-3xl text-white flex flex-col absolute top-5',
                     regular.className,
                   )}
                 >
@@ -39,11 +39,11 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
                 <h2 className={cx('text-white text-2xl ml-5 min-h-12 absolute bottom-8', extraBold.className)}>
                   {`${politicalFigure.firstName} ${politicalFigure.lastName}`}
                 </h2>
-                <h3 className={cx('text-gray-100 ml-5 absolute bottom-4', regular.className)}>{`${politicalFigure.politicalParty.acronym}`}</h3>
+                <h3 className={cx('text-gray-100 ml-5 absolute bottom-4', regular.className)}>{ politicalFigure.politicalParty ? `${politicalFigure.politicalParty.acronym}` : 'SIN AFiILIACIÓN'}</h3>
                 <img
                   src={politicalFigure?.media?.[0]?.featured ? politicalFigure.media[0].featured : 'https://placehold.co/375'}
                   alt={`${politicalFigure.firstName} ${politicalFigure.lastName}`}
-                  className="w-full lg:w-[275px] object-cover h-[480px]"
+                  className="w-full lg:w-[275px] object-cover h-full"
                   loading="lazy"
                 />
               </div>
