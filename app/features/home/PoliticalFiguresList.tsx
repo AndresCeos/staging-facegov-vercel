@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import cx from 'classnames';
 import Link from 'next/link';
 
@@ -11,7 +10,11 @@ type PoliticalFiguresListProps = {
 
 function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
   if (politicalFigures.length === 0) {
-    return <h2 className="text-gray-700 text-2xl text-center my-10">No hay coincidencias con tu búsqueda.</h2>;
+    return (
+      <h2 className="text-gray-700 text-2xl text-center my-10">
+        No hay coincidencias con tu búsqueda.
+      </h2>
+    );
   }
 
   return (
@@ -41,7 +44,11 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
                 </h2>
                 <h3 className={cx('text-gray-100 ml-5 absolute bottom-4', regular.className)}>{ politicalFigure.politicalParty ? `${politicalFigure.politicalParty.acronym}` : 'SIN AFiILIACIÓN'}</h3>
                 <img
-                  src={politicalFigure?.media?.[0]?.featured ? politicalFigure.media[0].featured : 'https://placehold.co/375'}
+                  src={
+                    politicalFigure?.media?.[0]?.featured
+                      ? politicalFigure.media[0].featured
+                      : 'https://placehold.co/375'
+                  }
                   alt={`${politicalFigure.firstName} ${politicalFigure.lastName}`}
                   className="w-full lg:w-[275px] object-cover h-full"
                   loading="lazy"

@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "editorconfig.editorconfig",
+    "bradlc.vscode-tailwindcss",
+    "eamodio.gitlens",
+    "jock.svg",
+    "mikestead.dotenv",
+    "streetsidesoftware.code-spell-checker",
+    "naumovs.color-highlight",
+    "vitest.explorer",
+    "styled-components.vscode-styled-components"
+  ]
+}
