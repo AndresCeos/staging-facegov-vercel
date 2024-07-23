@@ -26,7 +26,7 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
             className={cx(
               'rounded-3xl bg-white shadow-lg overflow-hidden hover:shadow-xl xl:w-[275px] ',
               (index >= 1 && (index - 1) % 2 === 0) ? 'mt-10' : '-mt-10',
-              (politicalFigure.verify) && 'border-4 border-[#66DFD0] hover:border-8',
+              (politicalFigure.verify) && 'border-4 border-[#66DFD0] border-5',
             )}
           >
             <Link href={`/politico/${politicalFigure.slug}`}>
@@ -49,7 +49,7 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
                   {`${politicalFigure.firstName} ${politicalFigure.lastName}`}
                 </h2>
                 <h3 className={cx('text-gray-100 ml-5 absolute bottom-4', regular.className)}>
-                  { politicalFigure.politicalParty ? `${politicalFigure.politicalParty.acronym}` : 'SIN AFiILIACIÓN'}
+                  { politicalFigure.politicalParty ? `${politicalFigure.politicalParty.acronym}` : 'SIN AFILIACIÓN'}
                 </h3>
                 <img
                   src={
@@ -64,9 +64,9 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
               </div>
               <div className="p-6">
                 <div className="flex justify-between items-end">
-                  <div className="hover:underline flex items-start justify-center h-5">
+                  <div className="flex items-start justify-center h-5">
                     <Rating className="w-[80px]" rating={+politicalFigure.rating} ratingSize="xl" />
-                    <div className={cx('text-sm ml-3', regular.className)}>CALIFICA</div>
+                    <div className={cx('text-sm ml-3 hover:font-semibold hover:scale-100', regular.className)}>CALIFICA</div>
                   </div>
                   <img src="/Share.svg" alt="" width="20" />
                 </div>

@@ -44,7 +44,7 @@ function Home() {
           <div className="my-20 grid place-items-center">
             <Button
               onClick={() => setPage(page + 1)}
-              className="py-6 px-22 rounded-[20px]"
+              className="py-6 px-22 rounded-[20px] bg-green hover:bg-black"
               disabled={politicalFigures.isLoading}
             >
               Ver otros políticos
