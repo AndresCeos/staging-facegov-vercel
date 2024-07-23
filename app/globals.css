@@ -22,6 +22,13 @@
   fill: #eab307;
 }
 
+.bg-green-h:hover {
+  background-color: #67d62b;
+}
+.border-5:hover {
+  border-width: 5px;
+}
+
 .step-item {
   @apply relative flex flex-col justify-center items-center w-36;
 }
@@ -44,6 +51,6 @@
 .active:not(:first-child):before {
   @apply bg-green-600;
 }
-.bg-green{
+.bg-green {
   @apply bg-[#67d62b];
-} 
+}

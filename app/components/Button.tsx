@@ -17,7 +17,7 @@ function Button({
       // eslint-disable-next-line react/button-has-type
       type={type}
       className={cx(
-        'bg-gray-950 hover:bg-gray-700 text-white font-normal py-2 px-8 rounded-full focus:outline-none focus:ring-2 focus:ring-gray-500',
+        'bg-gray-950 text-white font-normal py-2 px-8 rounded-full focus:outline-none focus:ring-2 focus:ring-gray-500',
         className,
       )}
       onClick={onClick}

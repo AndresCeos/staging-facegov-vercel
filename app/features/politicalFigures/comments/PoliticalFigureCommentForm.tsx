@@ -40,7 +40,7 @@ function PoliticalFigureCommentForm({ politicalFigure }: PoliticalFigureCommentF
 
   return (
     <QueryResult query={isSignedIn} isFullScreenLoader={false}>
-      {(isSignedIn.data?.data?.authenticated === true && politicalFigure.canUserComment !== true) && (
+      {(isSignedIn.data?.data?.authenticated === true && politicalFigure.canUserComment === true) && (
         <form className="mb-6" onSubmit={handleCommentSubmit}>
           <div className="mb-16">
             <label htmlFor="rating" className="sr-only">Calificación:</label>
@@ -83,7 +83,7 @@ function PoliticalFigureCommentForm({ politicalFigure }: PoliticalFigureCommentF
             showModal={showModal}
             setShowModal={setShowModal}
           >
-            Calificar
+            Registro
           </LoginModal>
         ) : null }
       </div>

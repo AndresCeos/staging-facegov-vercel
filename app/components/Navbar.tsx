@@ -8,10 +8,12 @@ import { HiBars4 } from 'react-icons/hi2';
 
 import { useState } from 'react';
 import { HiX } from 'react-icons/hi';
+
+import LoginModal from '@/features/login/LoginModal';
+
 import Button from './Button';
 import SearchForm from './SearchForm';
 import UserDropdown from './UserDropDown';
-import LoginModal from '@/features/login/LoginModal';
 
 import { useIsSignedIn } from '@/api/authentication';
 
@@ -35,7 +37,7 @@ function Navbar() {
           <div className="hidden lg:flex grow items-center gap-10 justify-end">
             <Link
               className={cx(
-                'text-base text-gray-500 hover:text-gray-700',
+                'text-base text-gray-500 hover:text-gray-700 hover:underline',
                 regular.className,
               )}
               href="/candidatos"
@@ -44,7 +46,7 @@ function Navbar() {
             </Link>
             <Link
               className={cx(
-                'text-base text-gray-500 hover:text-gray-700',
+                'text-base text-gray-500 hover:text-gray-700 hover:underline',
                 regular.className,
               )}
               href="/tendencias"
@@ -53,7 +55,7 @@ function Navbar() {
             </Link>
             <Link
               className={cx(
-                'text-base text-gray-500 hover:text-gray-700',
+                'text-base text-gray-500 hover:text-gray-700 hover:underline',
                 regular.className,
               )}
               href="/contacto"
@@ -64,7 +66,7 @@ function Navbar() {
 
             <Button
               onClick={() => console.log('Calificar')}
-              className={cx('text-lg', bold.className)}
+              className={cx('text-lg bg-green-h', bold.className)}
             >
               Calificar
             </Button>
@@ -74,7 +76,7 @@ function Navbar() {
             <LoginModal
               showModal={showModal}
               setShowModal={setShowModal}
-              className={cx('text-lg bg-green', bold.className)}
+              className={cx('text-lg bg-green hover:bg-black', bold.className)}
             >
               Registro
             </LoginModal>
