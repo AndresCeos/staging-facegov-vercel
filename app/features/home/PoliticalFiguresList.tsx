@@ -26,7 +26,7 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
             className={cx(
               'rounded-3xl bg-white shadow-lg overflow-hidden hover:shadow-xl xl:w-[275px] ',
               (index >= 1 && (index - 1) % 2 === 0) ? 'mt-10' : '-mt-10',
-              (politicalFigure.verify) && 'border-8 border-[#66DFD0] hover:border-4',
+              (politicalFigure.verify) && 'border-4 border-[#66DFD0] hover:border-8',
             )}
           >
             <Link href={`/politico/${politicalFigure.slug}`}>
@@ -40,7 +40,7 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
                   {politicalFigure.employmentHistory?.[0]
                     ? (
                       <span>
-                        {`${(politicalFigure.employmentHistory?.[0].candidate) && 'Candidato '} ${politicalFigure.employmentHistory?.[0]?.jobTitle}`}
+                        {`${(politicalFigure.employmentHistory?.[0].candidate) ? 'Candidato ' : ''} ${politicalFigure.employmentHistory?.[0]?.jobTitle}`}
                       </span>
                     )
                     : 'PENDIENTE'}
