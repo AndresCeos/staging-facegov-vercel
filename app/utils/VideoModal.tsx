@@ -27,7 +27,7 @@ function VideoModal({
       {showModal ? (
         <>
           <div
-            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none w-full"
           >
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               <div className="border-0 rounded-3xl shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
@@ -43,8 +43,8 @@ function VideoModal({
                     </span>
                   </button>
                 </div>
-                <div className="relative p-6 flex-auto w-full max-w-[340rem] px-16">
-                  <iframe width="800" height="400" src={media} title="video" />
+                <div className="relative p-6 flex-auto w-full md:w-[900px] h-[400px] px-16">
+                  <iframe width="600px" height="300px" src={media} title="video" />
                 </div>
               </div>
             </div>

@@ -1,7 +1,8 @@
 import cx from 'classnames';
 import Link from 'next/link';
 
-import Rating from '@/components/Rating';
+import RatingControl from '@/components/RatingControl';
+
 import { extraBold, regular } from '@/fonts';
 
 type PoliticalFiguresListProps = {
@@ -62,10 +63,11 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
                   loading="lazy"
                 />
               </div>
+
               <div className="p-6">
                 <div className="flex justify-between items-end">
                   <div className="flex items-start justify-center h-5">
-                    <Rating className="w-[80px]" rating={+politicalFigure.rating} ratingSize="xl" />
+                    <RatingControl rating={politicalFigure.rating} className="text-xl" />
                     <div className={cx('text-sm ml-3 hover:font-semibold hover:scale-100', regular.className)}>CALIFICA</div>
                   </div>
                   <img src="/Share.svg" alt="" width="20" />
