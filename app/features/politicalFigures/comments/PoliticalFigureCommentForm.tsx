@@ -92,7 +92,6 @@ function PoliticalFigureCommentForm({ politicalFigure }: PoliticalFigureCommentF
       {(isSignedIn.data?.data?.authenticated === true && politicalFigure.canUserComment !== true) && (
         <div className="bg-gray-200 px-6 py-4 rounded-2xl cursor-not-allowed">Ya has calificado a este político</div>
       )}
-
     </QueryResult>
   );
 }
