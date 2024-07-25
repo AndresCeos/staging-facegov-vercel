@@ -48,7 +48,7 @@ function PoliticalFigureContent({ slug }: PoliticalFigureContentProps) {
                   <img
                     src={politicalFigure?.data?.results?.media?.[0]?.featured ? politicalFigure.data.results.media[0].featured : 'https://placehold.co/400'}
                     alt={`${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName}`}
-                    className={`w-[500px] h-[500px] object-cover rounded-lg shadow-md ${isVerify && 'border-4 border-cyan-400 hover:border-8'}`}
+                    className={`w-[500px] h-[700px] object-cover rounded-lg shadow-md ${isVerify && 'border-4 border-cyan-400 hover:border-8'}`}
                   />
                 </VideoModal>
               )
@@ -56,7 +56,7 @@ function PoliticalFigureContent({ slug }: PoliticalFigureContentProps) {
                 <img
                   src={politicalFigure?.data?.results?.media?.[0]?.featured ? politicalFigure.data.results.media[0].featured : 'https://placehold.co/400'}
                   alt={`${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName}`}
-                  className={`w-[500px] h-[700px] object-contain rounded-lg shadow-md ${isVerify && 'border-4 border-cyan-400'}`}
+                  className={`w-[500px] h-[700px] object-cover rounded-lg shadow-md ${isVerify && 'border-4 border-cyan-400'}`}
                 />
               )}
           </div>
