@@ -43,8 +43,8 @@ function VideoModal({
                     </span>
                   </button>
                 </div>
-                <div className="relative p-6 flex-auto w-full max-w-[34rem] px-16">
-                  <iframe width="400" height="400" src={media} title="video" />
+                <div className="relative p-6 flex-auto w-full max-w-[340rem] px-16">
+                  <iframe width="800" height="400" src={media} title="video" />
                 </div>
               </div>
             </div>

@@ -39,14 +39,14 @@ function Stepper({ setIsOpen }: StepperProps) {
         ))}
       </div>
       <div className={cx(
-        'p-4 bg-black bg-opacity-10 block w-full text-center m-4',
+        'p-4 block w-full text-center m-4',
       )}
       >
         {
         currentStep === 1
           ? (
-            <div>
-              <img src="/paso1.jpg" alt="paso1" />
+            <div className="flex justify-center">
+              <img src="/paso1.jpg" alt="paso1" className="md:h-[200px] h-[100px]" />
             </div>
           )
           : ''
@@ -55,8 +55,8 @@ function Stepper({ setIsOpen }: StepperProps) {
         {
         currentStep === 2
           ? (
-            <div>
-              <img src="/paso2.jpg" alt="paso1" />
+            <div className="flex justify-center">
+              <img src="/paso2.jpg" alt="paso1" className="md:h-[200px] h-[100px]" />
             </div>
           )
           : ''
@@ -65,8 +65,8 @@ function Stepper({ setIsOpen }: StepperProps) {
         {
         currentStep === 3
           ? (
-            <div>
-              <img src="/paso3.jpg" alt="paso1" />
+            <div className="flex justify-center">
+              <img src="/paso3.jpg" alt="paso1" className="md:h-[200px] h-[100px]" />
             </div>
           )
           : ''
@@ -77,7 +77,7 @@ function Stepper({ setIsOpen }: StepperProps) {
         <div className="mt-10 mb-6 grid place-items-center">
           <Button
             onClick={handleStep}
-            className="py-6 !px-20 rounded-3xl"
+            className="py-3 !px-6 rounded-3xl bg-green-h"
           >
             {currentStep === steps.length ? 'Cerrar' : 'Siguiente'}
           </Button>
