@@ -4,7 +4,8 @@ import { MdOutlineStar } from 'react-icons/md';
 
 type RatingControlProps = {
   rating: number;
-  setRating: (value: number) => void;
+  setRating?: (value: number) => void;
+  className?: string;
 };
 
 type StarsProps = {
@@ -12,14 +13,15 @@ type StarsProps = {
   onClick: () => void;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
+  className?: string;
 };
 
 function Stars({
-  isFilled, onClick, onMouseEnter, onMouseLeave,
+  isFilled, onClick, onMouseEnter, onMouseLeave, className = '',
 }: StarsProps) {
   return (
     <MdOutlineStar
-      className={cx('text-5xl cursor-pointer', isFilled ? 'text-yellow-500' : 'text-gray-300')}
+      className={cx(className, 'cursor-pointer', isFilled ? 'text-yellow-500' : 'text-gray-300')}
       onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
@@ -27,11 +29,13 @@ function Stars({
   );
 }
 
-function RatingControl({ rating, setRating }: RatingControlProps) {
+function RatingControl({ rating, setRating, className = '' }: RatingControlProps) {
   const [hoverRating, setHoverRating] = useState(0);
 
   const handleRatingChange = (value: number) => {
-    setRating(value);
+    if (setRating) {
+      setRating(value);
+    }
     setHoverRating(value === 4 || value === 5 ? value : 0);
   };
 
@@ -48,6 +52,7 @@ function RatingControl({ rating, setRating }: RatingControlProps) {
           onClick={() => handleRatingChange(value)}
           onMouseEnter={() => handleHoverRating(value)}
           onMouseLeave={() => handleHoverRating(0)}
+          className={className}
         />
       ))}
     </div>

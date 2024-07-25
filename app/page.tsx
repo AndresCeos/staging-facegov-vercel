@@ -118,13 +118,13 @@ function Home() {
         </div>
       </div>
 
-      <div className="mx-auto">
+      <div className="m-0 p-0 ">
         <button type="button" className="w-full" onClick={() => setShowModal(true)}>
-          <img src="/video.png" alt="video-modal" className="md:w-full w-11/12" />
+          <img src="/video.jpg" alt="video-modal" className="md:w-full w-11/12" />
         </button>
-        <VideoModal showModal={showModal} setShowModal={setShowModal} media="" />
+        <VideoModal showModal={showModal} setShowModal={setShowModal} media="/video.jpg" />
       </div>
-      <div className="flex w-full justify-center bg-gray-400 mb-10">
+      <div className="flex w-full justify-center mb-10 mt-0 pt-0" style={{ backgroundImage: 'url(/bg_form.jpg)' }}>
         <div className="w-2/5  text-justify ">
           <p className={cx('text-5xl mb-10 leading-10 text-white text-center py-20 ', extraBold.className)}>
             Sé parte de

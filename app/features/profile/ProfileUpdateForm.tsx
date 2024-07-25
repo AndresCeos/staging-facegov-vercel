@@ -34,6 +34,7 @@ function ProfileUpdateForm({ initialUserInformation }: ProfileUpdateFormProps) {
             value={userInformation.firstName}
             onChange={(e) => setUserInformation({ ...userInformation, firstName: e.target.value })}
             className="text-gray-900 text-sm border border-gray-950 rounded-3xl w-full py-3 text-center"
+            required
           />
         </label>
       </div>
@@ -47,6 +48,7 @@ function ProfileUpdateForm({ initialUserInformation }: ProfileUpdateFormProps) {
             value={userInformation.lastName}
             onChange={(e) => setUserInformation({ ...userInformation, lastName: e.target.value })}
             className="text-gray-900 text-sm border border-gray-950 rounded-3xl w-full py-3 text-center"
+            required
           />
         </label>
       </div>

@@ -56,11 +56,11 @@ function PoliticalFigureContent({ slug }: PoliticalFigureContentProps) {
                 <img
                   src={politicalFigure?.data?.results?.media?.[0]?.featured ? politicalFigure.data.results.media[0].featured : 'https://placehold.co/400'}
                   alt={`${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName}`}
-                  className={`w-[500px] h-[500px] object-cover rounded-lg shadow-md ${isVerify && 'border-4 border-cyan-400'}`}
+                  className={`w-[500px] h-[700px] object-contain rounded-lg shadow-md ${isVerify && 'border-4 border-cyan-400'}`}
                 />
               )}
           </div>
-          <div className="pt-5">
+          <div className="pt-5 flex flex-col justify-center">
             <h2 className="text-4xl text-center font-light flex justify-center align-baseline">
               {`${politicalFigure.data?.results?.firstName} ${politicalFigure.data?.results?.lastName}`}
               {isVerify && <GrValidate className="ml-3 text-cyan-400 text-3xl" />}
@@ -84,7 +84,6 @@ function PoliticalFigureContent({ slug }: PoliticalFigureContentProps) {
               && <PoliticalFigureShare politicalFigure={politicalFigure.data?.results} />}
 
           </div>
-          <div className="h-[1px] md:bg-black w-full absolute bottom-10" />
         </div>
         <>
           <div className="grid md:grid-cols-2">
@@ -105,7 +104,7 @@ function PoliticalFigureContent({ slug }: PoliticalFigureContentProps) {
                 { politicalFigure?.data?.results?.employmentHistory?.[0] && `${politicalFigure?.data?.results.employmentHistory?.[0].candidate ? ' Candidato' : ''} ${politicalFigure?.data?.results?.employmentHistory?.[0]?.jobTitle}, `}
                 {`${politicalFigure?.data?.results?.city.name}, ${politicalFigure?.data?.results?.city.state.name}`}
               </div>
-              { isVerify && (
+              { !isVerify && (
                 <div className="col-span-2 md:col-span-1 text-xl text-gray-950">
                   {`${moment().diff(politicalFigure?.data?.results?.birthDate, 'years')} años`}
                 </div>
@@ -120,7 +119,7 @@ function PoliticalFigureContent({ slug }: PoliticalFigureContentProps) {
                 <p className="col-span-2 md:col-span-1 text-xl text-gray-950">{politicalFigure.data?.results?.biography}</p>
               </div>
               )}
-              <div className="col-span-1 md:mt-5">
+              <div className="col-span-2 md:mt-5">
                 <FormModal
                   className="h-14 !px-12"
                   showModal={showModalReplica}
@@ -131,8 +130,9 @@ function PoliticalFigureContent({ slug }: PoliticalFigureContentProps) {
                   Derecho de Réplica
                 </FormModal>
               </div>
-              { !isVerify && (
-              <div className="col-span-1 md:mt-5">
+
+              <div className="col-span-2 md:mt-5">
+                { !isVerify && (
                 <FormModal
                   className="h-14 !px-12"
                   showModal={showModalVerify}
@@ -145,8 +145,9 @@ function PoliticalFigureContent({ slug }: PoliticalFigureContentProps) {
                     <GrValidate className="ml-3 text-white text-1xl" />
                   </div>
                 </FormModal>
+                )}
               </div>
-              )}
+
             </div>
             <div className="px-14 mt-20 md:mt-0">
               {politicalFigure?.data?.results
