@@ -38,6 +38,22 @@ function PoliticalFigureCommentForm({ politicalFigure }: PoliticalFigureCommentF
     }
   };
 
+  if (isSignedIn.status === 'error') {
+    return (
+      <div className="flex justify-end">
+        {isSignedIn.data?.data?.authenticated === false || isSignedIn.status === 'error' ? (
+          <LoginModal
+            className="h-14 !px-12"
+            showModal={showModal}
+            setShowModal={setShowModal}
+          >
+            Registro
+          </LoginModal>
+        ) : null }
+      </div>
+    );
+  }
+
   return (
     <QueryResult query={isSignedIn} isFullScreenLoader={false}>
       {(isSignedIn.data?.data?.authenticated === true && politicalFigure.canUserComment === true) && (
@@ -76,17 +92,7 @@ function PoliticalFigureCommentForm({ politicalFigure }: PoliticalFigureCommentF
       {(isSignedIn.data?.data?.authenticated === true && politicalFigure.canUserComment !== true) && (
         <div className="bg-gray-200 px-6 py-4 rounded-2xl cursor-not-allowed">Ya has calificado a este político</div>
       )}
-      <div className="flex justify-end">
-        {isSignedIn.data?.data?.authenticated === false ? (
-          <LoginModal
-            className="h-14 !px-12"
-            showModal={showModal}
-            setShowModal={setShowModal}
-          >
-            Registro
-          </LoginModal>
-        ) : null }
-      </div>
+
     </QueryResult>
   );
 }

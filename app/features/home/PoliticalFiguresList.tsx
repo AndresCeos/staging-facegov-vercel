@@ -24,7 +24,7 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
           <div
             key={politicalFigure.id}
             className={cx(
-              'rounded-3xl bg-white shadow-lg overflow-hidden hover:shadow-xl xl:w-[275px] ',
+              'rounded-3xl bg-white shadow-lg overflow-hidden hover:shadow-xl xl:w-[275px]',
               (index >= 1 && (index - 1) % 2 === 0) ? 'mt-10' : '-mt-10',
               (politicalFigure.verify) && 'border-4 border-[#66DFD0] border-5',
             )}
