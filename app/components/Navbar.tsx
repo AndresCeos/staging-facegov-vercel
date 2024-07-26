@@ -31,7 +31,7 @@ function Navbar() {
         <div className="h-20 flex items-center justify-between max-w-[1240px] mx-auto px-4">
           <div className="">
             <Link href="/">
-              <h1 className="w-full text-3xl">FACESGOV</h1>
+              <img src="/logo_faces.png" alt="logo" className="w-[200px]" />
             </Link>
           </div>
           <div className="hidden lg:flex grow items-center gap-10 justify-end">

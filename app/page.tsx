@@ -42,7 +42,14 @@ function Home() {
     setShowModal(false);
   };
 
-  const politicalFigures = usePoliticalFigures({ offset: (page - 1) * 9, limit: 9 });
+  const politicalFigures = usePoliticalFigures({ offset: (page - 1) * 8, limit: 8 });
+
+  useEffect(() => {
+    const body = document.querySelector('body');
+    setTimeout(() => {
+      body?.scrollIntoView();
+    }, 200);
+  }, []);
 
   useEffect(() => {
     if (politicalFigures.status === 'success') {
