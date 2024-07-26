@@ -95,11 +95,11 @@ function LoginModal({
                   </form>
                   <form id="formValidate" hidden={!hidden} onSubmit={handleValidateOTP}>
                     <div className="mb-4 flex flex-col gap-y-3">
-                      <label htmlFor="code" className="uppercase text-center">Codigo de verificación</label>
+                      <label htmlFor="code" className="uppercase text-center">Código de verificación</label>
                       <input
                         id="code"
                         name="code"
-                        placeholder="Ingresa el codigo dde verificación"
+                        placeholder="Ingresa el código de verificación"
                         type="text"
                         pattern="[0-9]{6}"
                         value={code}
