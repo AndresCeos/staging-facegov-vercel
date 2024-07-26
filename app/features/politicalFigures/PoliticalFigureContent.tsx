@@ -13,7 +13,6 @@ import QueryResult from '@/components/QueryResult';
 import Rating from '@/components/Rating';
 import PoliticalFigureCommentForm from '@/features/politicalFigures/comments/PoliticalFigureCommentForm';
 import PoliticalFigureComments from '@/features/politicalFigures/comments/PoliticalFigureComments';
-import formatMoney from '@/utils/formatMoney';
 
 import FormModal from '@/utils/FormModal';
 import VideoModal from '@/utils/VideoModal';
@@ -94,12 +93,12 @@ function PoliticalFigureContent({ slug }: PoliticalFigureContentProps) {
                 </h3>
               </div>
 
-              { (politicalFigure?.data?.results?.employmentHistory?.[0] && !isVerify) && (
+              {/* (politicalFigure?.data?.results?.employmentHistory?.[0] && !isVerify) && (
                 <div className="col-span-2 md:col-span-1 text-xl text-gray-950">
                   <div>Salario Mensual Neto</div>
                   {!politicalFigure?.data?.results?.employmentHistory?.[0].candidate && formatMoney(politicalFigure?.data?.results?.employmentHistory?.[0]?.salary)}
                 </div>
-              )}
+              ) */}
               <div className={`col-span-2 ${isVerify && 'md:col-span-1 '} text-xl text-gray-950`}>
                 { politicalFigure?.data?.results?.employmentHistory?.[0] && `${politicalFigure?.data?.results.employmentHistory?.[0].candidate ? ' Candidato' : ''} ${politicalFigure?.data?.results?.employmentHistory?.[0]?.jobTitle}, `}
                 {`${politicalFigure?.data?.results?.city.name}, ${politicalFigure?.data?.results?.city.state.name}`}
