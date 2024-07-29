@@ -32,6 +32,7 @@
     "ngClass",
     "routerLinkActive"
   ],
+  "cSpell.language": "en,es,en-US,en-GB,es-ES,es-MX",
   "tailwindCSS.experimental.classRegex": [
     "/\\*\\s*tw\\s*\\*/\\s*'([^']*)'",
     "/\\*\\s*tw\\s*\\*/\\s*\"([^\"]*)\""
@@ -55,5 +56,6 @@
     "titleBar.inactiveBackground": "#0b539499",
     "titleBar.inactiveForeground": "#e7e7e799"
   },
-  "peacock.color": "#0b5394"
+  "peacock.color": "#0b5394",
+  "cSpell.words": ["Facegov", "FACESGOV"]
 }
