@@ -118,6 +118,17 @@ function Navbar() {
               <li className="p-4">
                 <Link onClick={() => setIsMenuOpen(!isMenuOpen)} href="/contacto">Contacto</Link>
               </li>
+              {(!isSignedIn.data?.data?.authenticated || isSignedIn.isLoading) && (
+
+              <LoginModal
+                showModal={showModal}
+                setShowModal={setShowModal}
+                className={cx('text-lg bg-green hover:bg-black', bold.className)}
+              >
+                Registro
+              </LoginModal>
+              ) }
+              <UserDropdown />
             </ul>
           </nav>
         </div>

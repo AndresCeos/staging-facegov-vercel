@@ -6,11 +6,12 @@ type ProfileSetupModalProps = {
     firstName: string;
     lastName: string;
   };
+  className: string;
 };
 
-function ProfileSetupModal({ initialUserInformation }: ProfileSetupModalProps) {
+function ProfileSetupModal({ initialUserInformation, className = '' }: ProfileSetupModalProps) {
   return (
-    <>
+    <div className={className}>
       <div
         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
       >
@@ -27,7 +28,7 @@ function ProfileSetupModal({ initialUserInformation }: ProfileSetupModalProps) {
         </div>
       </div>
       <div className="opacity-25 fixed inset-0 z-40 bg-black" />
-    </>
+    </div>
   );
 }
 
