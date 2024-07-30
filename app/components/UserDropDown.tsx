@@ -64,13 +64,13 @@ function UserDropdown() {
 
       {isSignedIn.data?.data?.authenticated === true && (isSignedIn.data?.data?.user?.firstName === null || isSignedIn.data?.data?.user?.lastName === null) ? (
         <ProfileSetupModal
-          className="!lg:hidden"
           initialUserInformation={{
             firstName: isSignedIn.data?.data?.user?.firstName ?? '',
             lastName: isSignedIn.data?.data?.user?.lastName ?? '',
           }}
         />
       ) : null }
+
       <div className="lg:hidden">
         <li className="p-4">
           <Link href="/perfil">
