@@ -28,7 +28,6 @@ function FormModal({
     if (!phone) return;
     if (!email) return;
     // TODO: send data : {phone, email, politicalFigureName}
-    console.log({ phone, email, name });
     setHidden(true);
   };
 
@@ -64,7 +63,6 @@ function FormModal({
                 {/* body */}
                 <div className="relative p-6 flex-auto w-full max-w-[34rem] px-16">
                   <h1 className="w-full text-3xl font-light text-center">{ title }</h1>
-                  <p className="text-gray-500 my-9 mb-4 text-center">Aenean consectetur odio in condimentum tristique. Nam hendrerit urna ex</p>
                   <form id="formPhone" hidden={!!hidden} onSubmit={handleSendOTP}>
                     <div className="mb-4 flex flex-col gap-y-3">
                       <label htmlFor="phone" className="uppercase text-center">Celular</label>

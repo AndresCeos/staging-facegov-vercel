@@ -18,7 +18,7 @@ type PoliticalFigureCommentsListItemProps = {
 
 function PoliticalFigureCommentsListItem({ comment, politicalFigure }: PoliticalFigureCommentsListItemProps) {
   return (
-    <article className="my-20 text-base" id={`political-figure-comment-${comment.id}`}>
+    <article className="my-20 text-base" id={`comment-${comment.id}`}>
       <div className="flex flex-col md:flex-row">
         <div className="flex flex-col items-center mb-5 mx-auto md:border-r-2 md:border-gray-300 w-full max-w-[13rem] md:min-h-64">
           <img
@@ -29,7 +29,6 @@ function PoliticalFigureCommentsListItem({ comment, politicalFigure }: Political
           <p className="text-gray-900 font-bold md:mt-5 md:mb-11">
             {`${comment.user.firstName} ${comment.user.lastName}`}
           </p>
-          <span className="text-sm text-gray-500">12 comentarios</span>
         </div>
         <div className="flex flex-col pl-10 w-full">
           <div className="flex">

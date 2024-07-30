@@ -71,6 +71,22 @@ function UserDropdown() {
         />
       ) : null }
 
+      <div className="lg:hidden">
+        <li className="p-4">
+          <Link href="/perfil">
+            Perfil
+          </Link>
+        </li>
+        <li
+          className="block p-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
+          role="menuitem"
+          onClick={handleLogout}
+        >
+          Cerrar sesión
+        </li>
+
+      </div>
+
       {isOpen && (
         <div className="origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
           <div

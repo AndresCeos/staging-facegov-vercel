@@ -6,6 +6,7 @@ import cx from 'classnames';
 import { useState } from 'react';
 
 import { useIsSignedIn } from '@/api/authentication';
+import { useUserComments } from '@/api/users';
 import ProfileCommentsList from '@/features/profile/ProfileCommentsList';
 import ProfileEdit from '@/features/profile/ProfileEdit';
 import ProfileUtilitiesList from '@/features/profile/ProfileUtilitiesList';
@@ -14,6 +15,7 @@ import profileAcronym from '@/utils/profileAcronym';
 function ProfilePage() {
   const isSignedIn = useIsSignedIn();
   const [view, setView] = useState<'comments' | 'utilities' | 'profile'>('comments');
+  const comments = useUserComments({ offset: 0, limit: 10 });
 
   if (!isSignedIn.data?.data?.authenticated || isSignedIn.isLoading) {
     return null;
@@ -32,7 +34,9 @@ function ProfilePage() {
             <p className="text-gray-900 font-bold md:mt-5">
               {`${isSignedIn.data?.data?.user?.firstName} ${isSignedIn.data?.data?.user?.lastName}`}
             </p>
-            <span className="text-sm text-gray-500 my-8">12 comentarios</span>
+            <span className="text-sm text-gray-500 my-8">
+              {comments.data?.results?.length === 0 ? 'Sin comentarios' : `${comments.data?.results?.length} comentarios`}
+            </span>
             <ul>
               <li>
                 <button

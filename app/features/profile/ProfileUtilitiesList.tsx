@@ -3,14 +3,12 @@
 import moment from 'moment';
 import Link from 'next/link';
 
-import { GrShare } from 'react-icons/gr';
-
 import { useUserCommentUtilities } from '@/api/users';
 import QueryResult from '@/components/QueryResult';
+import formatNameSlug from '@/utils/formatNameSlug';
 import profileAcronym from '@/utils/profileAcronym';
 import PoliticalFigureCommentRating from '../politicalFigures/comments/PoliticalFigureCommentRating';
 import PoliticalFigureCommentUtility from '../politicalFigures/comments/PoliticalFigureCommentUtility';
-import formatNameSlug from '@/utils/formatNameSlug';
 
 function ProfileUtilitiesList() {
   const comments = useUserCommentUtilities({ offset: 0, limit: 10 });
@@ -31,7 +29,6 @@ function ProfileUtilitiesList() {
               <p className="text-gray-900 font-bold md:mt-5 md:mb-11">
                 {`${comment.user.firstName} ${comment.user.lastName}`}
               </p>
-              <span className="text-sm text-gray-500">12 comentarios</span>
             </div>
             <div className="flex flex-col pl-10 w-full">
               <div className="flex">
@@ -45,9 +42,6 @@ function ProfileUtilitiesList() {
                 <p className="text-gray-500 w-full">
                   {comment.text}
                 </p>
-              </div>
-              <div className="flex justify-end">
-                <GrShare className="text-gray-500 cursor-pointer" />
               </div>
               <div className="flex gap-2 mb-4">
                 <div className="font-medium">

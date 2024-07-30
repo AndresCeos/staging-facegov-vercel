@@ -97,7 +97,7 @@ function Navbar() {
       </header>
       {isMenuOpen && (
         <div className="fixed z-50 top-0 left-0 right-0">
-          <nav className="w-full h-screen bg-white bg-opacity-90 p-10 flex flex-col justify-center items-center">
+          <nav className="w-full h-screen bg-white bg-opacity-90 p-10 flex flex-col items-center">
             <button
               type="button"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -118,6 +118,17 @@ function Navbar() {
               <li className="p-4">
                 <Link onClick={() => setIsMenuOpen(!isMenuOpen)} href="/contacto">Contacto</Link>
               </li>
+              {(!isSignedIn.data?.data?.authenticated || isSignedIn.isLoading) && (
+
+              <LoginModal
+                showModal={showModal}
+                setShowModal={setShowModal}
+                className={cx('text-lg bg-green hover:bg-black', bold.className)}
+              >
+                Registro
+              </LoginModal>
+              ) }
+              <UserDropdown />
             </ul>
           </nav>
         </div>
