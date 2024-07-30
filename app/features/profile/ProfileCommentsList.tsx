@@ -3,8 +3,6 @@
 import moment from 'moment';
 import Link from 'next/link';
 
-import { GrShare } from 'react-icons/gr';
-
 import { useUserComments } from '@/api/users';
 import QueryResult from '@/components/QueryResult';
 import formatNameSlug from '@/utils/formatNameSlug';
@@ -46,9 +44,7 @@ function ProfileCommentsList() {
                   {comment.text}
                 </p>
               </div>
-              <div className="flex justify-end">
-                <GrShare className="text-gray-500 cursor-pointer" />
-              </div>
+
             </div>
           </div>
           <hr className="my-10" />

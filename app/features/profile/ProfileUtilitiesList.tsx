@@ -3,8 +3,6 @@
 import moment from 'moment';
 import Link from 'next/link';
 
-import { GrShare } from 'react-icons/gr';
-
 import { useUserCommentUtilities } from '@/api/users';
 import QueryResult from '@/components/QueryResult';
 import formatNameSlug from '@/utils/formatNameSlug';
@@ -44,9 +42,6 @@ function ProfileUtilitiesList() {
                 <p className="text-gray-500 w-full">
                   {comment.text}
                 </p>
-              </div>
-              <div className="flex justify-end">
-                <GrShare className="text-gray-500 cursor-pointer" />
               </div>
               <div className="flex gap-2 mb-4">
                 <div className="font-medium">
