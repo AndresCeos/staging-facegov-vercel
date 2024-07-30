@@ -7,12 +7,13 @@ import { GrShare } from 'react-icons/gr';
 
 import { useUserComments } from '@/api/users';
 import QueryResult from '@/components/QueryResult';
+import formatNameSlug from '@/utils/formatNameSlug';
 import PoliticalFigureCommentRating from '../politicalFigures/comments/PoliticalFigureCommentRating';
 import PoliticalFigureCommentUtility from '../politicalFigures/comments/PoliticalFigureCommentUtility';
-import formatNameSlug from '@/utils/formatNameSlug';
 
 function ProfileCommentsList() {
   const comments = useUserComments({ offset: 0, limit: 10 });
+  console.log({ comentarios: comments });
 
   return (
     <QueryResult query={comments}>

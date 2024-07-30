@@ -28,7 +28,6 @@ function FormModal({
     if (!phone) return;
     if (!email) return;
     // TODO: send data : {phone, email, politicalFigureName}
-    console.log({ phone, email, name });
     setHidden(true);
   };
 
