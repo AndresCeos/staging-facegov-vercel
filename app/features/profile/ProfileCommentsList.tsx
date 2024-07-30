@@ -11,7 +11,6 @@ import PoliticalFigureCommentUtility from '../politicalFigures/comments/Politica
 
 function ProfileCommentsList() {
   const comments = useUserComments({ offset: 0, limit: 10 });
-  console.log({ comentarios: comments });
 
   return (
     <QueryResult query={comments}>
