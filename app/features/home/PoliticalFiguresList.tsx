@@ -26,7 +26,7 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
             key={politicalFigure.id}
             className={cx(
               'rounded-3xl bg-white shadow-lg overflow-hidden hover:shadow-xl xl:w-[275px]',
-              (index >= 1 && (index - 1) % 2 === 0) ? 'mt-10' : '-mt-10',
+              (index >= 1 && (index - 1) % 2 === 0) ? 'mb:mt-10 mt-3' : 'mb:-mt-10 -mt-3',
               (politicalFigure.verify) && 'border-4 border-[#66DFD0] border-5',
             )}
           >

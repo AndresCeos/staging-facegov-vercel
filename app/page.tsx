@@ -8,39 +8,19 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 import { usePoliticalFigures } from '@/api/political-figures';
-import VideoModal from '@/utils/VideoModal';
-import { mutateSendOTP, mutateVerifyOTP } from './api/authentication';
+
 import Button from './components/Button';
 import QueryResult from './components/QueryResult';
+import FormHome from './features/home/FormHome';
 import PoliticalFiguresList from './features/home/PoliticalFiguresList';
+import VideoModalHome from './features/home/VideoModalHome';
 import HowItWorkModal from './features/home/howItWork/HowItWorkModal';
 import { bold, extraBold, regular } from './fonts';
 
 function Home() {
   const [page, setPage] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
-  const [showModal, setShowModal] = useState(false);
   const [initialData, setInitialData] = useState<Api.PoliticalFigure[]>([]);
-  const [hidden, setHidden] = useState(false);
-  const [phone, setPhone] = useState<string>('');
-  const [code, setCode] = useState<string>('');
-
-  const postSendOTP = mutateSendOTP();
-  const postValidateOTP = mutateVerifyOTP();
-
-  const handleSendOTP = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (!phone) return;
-    postSendOTP.mutate(phone);
-    setHidden(true);
-  };
-
-  const handleValidateOTP = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (!phone || !code) return;
-    postValidateOTP.mutate({ phoneNumber: phone, code });
-    setShowModal(false);
-  };
 
   const politicalFigures = usePoliticalFigures({ offset: (page - 1) * 8, limit: 8 });
 
@@ -124,77 +104,8 @@ function Home() {
           <HowItWorkModal isOpen={isOpen} setIsOpen={setIsOpen} />
         </div>
       </div>
-
-      <div className="m-0 p-0 ">
-        <button type="button" className="w-full" onClick={() => setShowModal(true)}>
-          <img src="/video.jpg" alt="video-modal" className="md:w-full w-11/12" />
-        </button>
-        <VideoModal showModal={showModal} setShowModal={setShowModal} media="/video.jpg" />
-      </div>
-      <div className="flex w-full justify-center mb-10 mt-0 pt-0" style={{ backgroundImage: 'url(/bg_form.jpg)' }}>
-        <div className="w-2/5  text-justify ">
-          <p className={cx('text-5xl mb-10 leading-10 text-white text-center py-20 ', extraBold.className)}>
-            Sé parte de
-            <br />
-            la comunidad
-            <br />
-            que opina y
-            <br />
-            aporta a México.
-          </p>
-        </div>
-        <div className="w-2/5 p-20 bg-white">
-          <p className={cx('text-3xl mb-10 leading-10 text-center', extraBold.className)}>Bienvenido a Facegov.</p>
-          <p className="pb-3">
-            ¡Bienvenidos a la primera plataforma para calificar a la clase política de nuestro país! Para comenzar solo tienes que registrarte aquí con tu número de teléfono y a continuación te enviaremos una verificación.
-          </p>
-          <form id="formPhone" hidden={!!hidden} onSubmit={handleSendOTP}>
-            <div className="mb-4 flex flex-col gap-y-3">
-              <p className="uppercase text-center">Celular</p>
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                pattern="[0-9]{10}"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                className="text-gray-900 text-sm border border-gray-950 rounded-3xl w-full py-3 text-center"
-              />
-            </div>
-            <div className="mt-10 mb-6 grid place-items-center">
-              <Button
-                type="submit"
-                className="py-3 w-full !px-20 rounded-3xl !bg-red-700 !hover:bg-black"
-              >
-                Continuar
-              </Button>
-            </div>
-          </form>
-          <form id="formValidate" hidden={!hidden} onSubmit={handleValidateOTP}>
-            <div className="mb-4 flex flex-col gap-y-3">
-              <p className="uppercase text-center">Código de verificación</p>
-              <input
-                id="code"
-                name="code"
-                placeholder="Ingresa el código de verificación"
-                type="text"
-                pattern="[0-9]{6}"
-                value={code}
-                onChange={(e) => setCode(e.target.value)}
-                className="text-gray-900 text-sm border border-gray-950 rounded-3xl w-full py-3 text-center"
-              />
-            </div>
-            <div className="mt-10 mb-6 grid place-items-center">
-              <Button
-                type="submit"
-                className="py-3 w-full !px-20 rounded-3xl !bg-red-700 !hover:bg-black"
-              >
-                Validar
-              </Button>
-            </div>
-          </form>
-        </div>
-      </div>
+      <VideoModalHome />
+      <FormHome />
     </main>
   );
 }

@@ -100,8 +100,18 @@ function PoliticalFigureContent({ slug }: PoliticalFigureContentProps) {
                 </div>
               ) */}
               <div className={`col-span-2 ${isVerify && 'md:col-span-1 '} text-xl text-gray-950`}>
-                { politicalFigure?.data?.results?.employmentHistory?.[0] && `${politicalFigure?.data?.results.employmentHistory?.[0].candidate ? ' Candidato' : ''} ${politicalFigure?.data?.results?.employmentHistory?.[0]?.jobTitle}, `}
-                {`${politicalFigure?.data?.results?.city.name}, ${politicalFigure?.data?.results?.city.state.name}`}
+                <p>
+                  <b>Cargo: </b>
+                  { politicalFigure?.data?.results?.employmentHistory?.[0] && `${politicalFigure?.data?.results.employmentHistory?.[0].candidate ? ' Candidato' : ''} ${politicalFigure?.data?.results?.employmentHistory?.[0]?.jobTitle} `}
+                </p>
+                <p>
+                  <b>Estado: </b>
+                  {politicalFigure?.data?.results?.city.name}
+                </p>
+                <p>
+                  <b>Municipio: </b>
+                  {politicalFigure?.data?.results?.city.state.name}
+                </p>
               </div>
               { !isVerify && (
                 <div className="col-span-2 md:col-span-1 text-xl text-gray-950">

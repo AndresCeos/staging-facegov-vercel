@@ -3,13 +3,11 @@
 import moment from 'moment';
 import Link from 'next/link';
 
-import { GrShare } from 'react-icons/gr';
-
 import { useUserComments } from '@/api/users';
 import QueryResult from '@/components/QueryResult';
+import formatNameSlug from '@/utils/formatNameSlug';
 import PoliticalFigureCommentRating from '../politicalFigures/comments/PoliticalFigureCommentRating';
 import PoliticalFigureCommentUtility from '../politicalFigures/comments/PoliticalFigureCommentUtility';
-import formatNameSlug from '@/utils/formatNameSlug';
 
 function ProfileCommentsList() {
   const comments = useUserComments({ offset: 0, limit: 10 });
@@ -45,9 +43,7 @@ function ProfileCommentsList() {
                   {comment.text}
                 </p>
               </div>
-              <div className="flex justify-end">
-                <GrShare className="text-gray-500 cursor-pointer" />
-              </div>
+
             </div>
           </div>
           <hr className="my-10" />
