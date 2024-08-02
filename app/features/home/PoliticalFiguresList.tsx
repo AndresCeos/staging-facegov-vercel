@@ -32,24 +32,10 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
           >
             <Link href={`/politico/${politicalFigure.slug}`}>
               <div className="h-[480px] relative">
-                <div
-                  className={cx(
-                    'w-3/5 text-xs bg-[#FAB400] px-3 py-1 ml-3 rounded-3xl text-white flex flex-col absolute top-5',
-                    regular.className,
-                  )}
-                >
-                  {politicalFigure.employmentHistory?.[0]
-                    ? (
-                      <span>
-                        {`${(politicalFigure.employmentHistory?.[0].candidate) ? 'Candidato ' : ''} ${politicalFigure.employmentHistory?.[0]?.jobTitle}`}
-                      </span>
-                    )
-                    : 'PENDIENTE'}
-                </div>
-                <h2 className={cx('text-white text-2xl ml-5 min-h-12 absolute bottom-8', extraBold.className)}>
+                <h2 className={cx('text-white text-2xl leading-6 ml-5 min-h-12 absolute bottom-8 ', extraBold.className)}>
                   {`${politicalFigure.firstName} ${politicalFigure.lastName}`}
                 </h2>
-                <h3 className={cx('text-gray-100 ml-5 absolute bottom-4', regular.className)}>
+                <h3 className={cx('text-gray-100 ml-5 absolute bottom-2', regular.className)}>
                   { politicalFigure.politicalParty ? `${politicalFigure.politicalParty.acronym}` : 'SIN AFILIACIÓN'}
                 </h3>
                 <img
