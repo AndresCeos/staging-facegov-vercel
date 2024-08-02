@@ -4,8 +4,6 @@
 
 import { useState } from 'react';
 
-import moment from 'moment';
-
 import { GrValidate } from 'react-icons/gr';
 
 import { usePoliticalFigureById } from '@/api/political-figures';
@@ -92,13 +90,6 @@ function PoliticalFigureContent({ slug }: PoliticalFigureContentProps) {
                   {`¿Quién es ${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName}?`}
                 </h3>
               </div>
-
-              {/* (politicalFigure?.data?.results?.employmentHistory?.[0] && !isVerify) && (
-                <div className="col-span-2 md:col-span-1 text-xl text-gray-950">
-                  <div>Salario Mensual Neto</div>
-                  {!politicalFigure?.data?.results?.employmentHistory?.[0].candidate && formatMoney(politicalFigure?.data?.results?.employmentHistory?.[0]?.salary)}
-                </div>
-              ) */}
               <div className={`col-span-2 ${isVerify && 'md:col-span-1 '} text-xl text-gray-950`}>
                 <p>
                   <b>Cargo: </b>
@@ -113,11 +104,6 @@ function PoliticalFigureContent({ slug }: PoliticalFigureContentProps) {
                   {politicalFigure?.data?.results?.city.state.name}
                 </p>
               </div>
-              { !isVerify && (
-                <div className="col-span-2 md:col-span-1 text-xl text-gray-950">
-                  {`${moment().diff(politicalFigure?.data?.results?.birthDate, 'years')} años`}
-                </div>
-              )}
               { (politicalFigure?.data?.results?.scholarships?.[0] && isVerify) && (
                 <div className="col-span-2 md:col-span-1 text-xl text-gray-950">
                   {politicalFigure?.data?.results?.scholarships?.[0]?.name}
