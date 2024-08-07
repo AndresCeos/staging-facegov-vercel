@@ -9,7 +9,6 @@ import { useIsSignedIn } from '@/api/authentication';
 import { useUserComments } from '@/api/users';
 import ProfileCommentsList from '@/features/profile/ProfileCommentsList';
 import ProfileEdit from '@/features/profile/ProfileEdit';
-import ProfileUtilitiesList from '@/features/profile/ProfileUtilitiesList';
 import profileAcronym from '@/utils/profileAcronym';
 
 function ProfilePage() {
@@ -53,18 +52,6 @@ function ProfilePage() {
               <li>
                 <button
                   type="button"
-                  onClick={() => setView('utilities')}
-                  className={cx(
-                    'p-2 hover:bg-black hover:bg-opacity-10 block w-full text-left',
-                    view === 'utilities' && 'font-bold',
-                  )}
-                >
-                  Mis votos
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
                   onClick={() => setView('profile')}
                   className={cx(
                     'p-2 hover:bg-black hover:bg-opacity-10 block w-full text-left',
@@ -78,7 +65,6 @@ function ProfilePage() {
           </div>
           <div className="flex flex-col pl-10 w-full">
             {view === 'comments' && <ProfileCommentsList />}
-            {view === 'utilities' && <ProfileUtilitiesList />}
             {view === 'profile' && <ProfileEdit />}
           </div>
         </div>

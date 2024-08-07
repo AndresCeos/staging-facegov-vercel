@@ -6,7 +6,7 @@ import { mutateCommentUtility } from '@/api/comments';
 import LoginModal from '@/features/login/LoginModal';
 
 type PoliticalFigureCommentUtilityProps = {
-  comment: Api.Comment;
+  comment: Api.Comment | undefined;
   politicalFigureSlug: string;
 };
 
@@ -15,6 +15,10 @@ function PoliticalFigureCommentUtility({ comment, politicalFigureSlug }: Politic
   const [showModal, setShowModal] = useState(false);
 
   const mutate = mutateCommentUtility();
+
+  if (!comment) {
+    return null;
+  }
 
   const handleCommentUtility = (utility: 'true' | 'false') => {
     mutate.mutate({ commentId: comment.id, utility, politicalFigureSlug });
@@ -81,11 +85,10 @@ function PoliticalFigureCommentUtility({ comment, politicalFigureSlug }: Politic
         type="button"
         onClick={() => handleCommentUtility('true')}
       >
-        {/* TODO: refactor how to get the commnet data complete
         <img src="/up.png" width="20" alt="up" />
-        <span className="sr-only">Comment up</span> */}
+        <span className="sr-only">Comment up</span>
       </button>
-      {/* <span className="mx-1 font-bold text-blue-800">{comment?.utilityPositive ?? 0}</span> */}
+      <span className="mx-1 font-bold text-blue-800">{comment?.utilityPositive ?? 0}</span>
       <button
         className={cx(
           '!px-0 !py-0 bg-transparent hover:bg-transparent hover:text-gray-700 !outline-none !focus:outline-none !focus:ring-0',
@@ -95,10 +98,10 @@ function PoliticalFigureCommentUtility({ comment, politicalFigureSlug }: Politic
         type="button"
         onClick={() => handleCommentUtility('false')}
       >
-        {/* <img src="/down.png" width="20" alt="down" />
-        <span className="sr-only">Comment down</span> */}
+        <img src="/down.png" width="20" alt="down" />
+        <span className="sr-only">Comment down</span>
       </button>
-      {/* <span className="mx-1 font-bold text-red-800">{comment?.utilityNegative ?? 0}</span> */}
+      <span className="mx-1 font-bold text-red-800">{comment?.utilityNegative ?? 0}</span>
     </div>
   );
 }
