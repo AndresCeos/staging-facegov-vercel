@@ -31,6 +31,7 @@ declare namespace Api {
     id: number;
     firstName: string | null;
     lastName: string | null;
+    urlImage: string | null;
   }
 
   interface City {

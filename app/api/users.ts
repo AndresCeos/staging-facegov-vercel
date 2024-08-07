@@ -4,6 +4,7 @@ import { useQuery } from 'react-query';
 import { axios } from './axios';
 
 import makeMutation from '@/hooks/makeMutation';
+import formatNameSlug from '@/utils/formatNameSlug';
 
 const postUserProfile = (profile: { firstName: string, lastName: string }) => axios.post('/profile', profile);
 const mutateUserProfile = makeMutation(['profile'], postUserProfile, ['auth/me']);
@@ -14,6 +15,7 @@ const useUserComments = (pagination: Pagination.Config) => useQuery({
   queryFn: () => getUserComments(pagination),
   keepPreviousData: true,
 });
+const getUserCommentData = (comment: Api.UserComment): Promise<Api.Response<Api.Comment[]>> => axios.get(`political-figures/${formatNameSlug(`${comment.politicalFigure.firstName} ${comment.politicalFigure.lastName}`)}/comments`);
 
 const getUserCommentUtilities = (pagination: Pagination.Config): Promise<Api.Response<Api.UserCommentUtility[]>> => axios.get('/profile/utilities', { params: { offset: pagination.offset, limit: pagination.limit } });
 const useUserCommentUtilities = (pagination: Pagination.Config) => useQuery({
@@ -23,7 +25,5 @@ const useUserCommentUtilities = (pagination: Pagination.Config) => useQuery({
 });
 
 export {
-  mutateUserProfile,
-  useUserCommentUtilities,
-  useUserComments
+  getUserCommentData, mutateUserProfile, useUserComments, useUserCommentUtilities
 };
