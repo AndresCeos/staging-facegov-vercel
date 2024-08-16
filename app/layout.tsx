@@ -6,7 +6,7 @@ import ClientProvider from './context/ClientProvider';
 import './globals.css';
 
 export const metadata = {
-  title: 'FACESGOV',
+  title: 'FACEGOV',
   description: 'El espacio para calificar políticos',
 };
 

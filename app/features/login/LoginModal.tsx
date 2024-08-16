@@ -69,7 +69,7 @@ function LoginModal({
                 </div>
                 {/* body */}
                 <div className="relative p-6 flex-auto w-full max-w-[34rem] px-16">
-                  <h1 className="w-full text-3xl font-light text-center">FACESGOV</h1>
+                  <h1 className="w-full text-3xl font-light text-center">FACEGOV</h1>
                   <p className="text-gray-500 my-9 mb-4 text-center">¡Bienvenidos a la primera plataforma para calificar a la clase política de nuestro país! Para comenzar solo tienes que registrarte aquí con tu número de teléfono y a continuación te enviaremos una verificación.</p>
                   <form id="formPhone" hidden={!!hidden} onSubmit={handleSendOTP}>
                     <div className="mb-4 flex flex-col gap-y-3">

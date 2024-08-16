@@ -64,8 +64,8 @@ function Share({
 
   const PoliticalFigureURL = new URL(`/politico/${politicalFigure.slug}${comment ? `/#comment-${comment.id}` : ''}`, process.env.APP_URL).toString();
   const PoliticalFigureMsg = comment
-    ? `Mira el comentario a ${politicalFigure.firstName} ${politicalFigure.lastName} en FACESGOV.`
-    : `Mira a ${politicalFigure.firstName} ${politicalFigure.lastName} en FACESGOV.`;
+    ? `Mira el comentario a ${politicalFigure.firstName} ${politicalFigure.lastName} en FACEGOV.`
+    : `Mira a ${politicalFigure.firstName} ${politicalFigure.lastName} en FACEGOV.`;
 
   return (
     <div className="relative">
