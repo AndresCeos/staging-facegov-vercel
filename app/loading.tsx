@@ -12,7 +12,7 @@ export default function loading() {
         )}
       >
         <div className="text-center">
-          <h1 className="w-full text-3xl font-bold">FACESGOV</h1>
+          <h1 className="w-full text-3xl font-bold">FACEGOV</h1>
           <p className="text-main flex items-center mt-4 justify-center">
             <RiLoader3Fill className="mr-1 text-primary animate-spin text-3xl" />
           </p>

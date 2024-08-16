@@ -19,7 +19,7 @@ function ProfileSetupModal({ initialUserInformation }: ProfileSetupModalProps) {
           <div className="border-0 rounded-3xl shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
             {/* body */}
             <div className="relative p-6 flex-auto w-full max-w-[34rem] px-16">
-              <h1 className="w-full text-3xl font-light text-center">FACESGOV</h1>
+              <h1 className="w-full text-3xl font-light text-center">FACEGOV</h1>
               <ProfileUpdateForm initialUserInformation={initialUserInformation} />
             </div>
           </div>

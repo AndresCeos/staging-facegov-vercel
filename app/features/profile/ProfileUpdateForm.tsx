@@ -1,14 +1,18 @@
+/* eslint-disable react/jsx-props-no-spreading */
+
 'use client';
 
 import { useState } from 'react';
 
 import { mutateUserProfile } from '@/api/users';
+
 import Button from '@/components/Button';
 
 type ProfileUpdateFormProps = {
   initialUserInformation: {
     firstName: string;
     lastName: string;
+    urlImage?: string;
   };
 };
 
@@ -16,10 +20,15 @@ function ProfileUpdateForm({ initialUserInformation }: ProfileUpdateFormProps) {
   const [userInformation, setUserInformation] = useState(initialUserInformation);
 
   const mutate = mutateUserProfile();
+  console.log(userInformation);
 
   const handleSendUserInformation = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    mutate.mutate(userInformation);
+
+    mutate.mutate({
+      firstName: userInformation.firstName,
+      lastName: userInformation.lastName,
+    });
   };
 
   return (

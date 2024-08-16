@@ -11,6 +11,7 @@ import { useState } from 'react';
 import { mutateLogout, useIsSignedIn } from '@/api/authentication';
 import LoginModal from '@/features/login/LoginModal';
 import ProfileSetupModal from '@/features/profile/modal/ProfileSetupModal';
+import getMediaUrl from '@/utils/media';
 import profileAcronym from '@/utils/profileAcronym';
 
 function UserDropdown() {
@@ -43,7 +44,7 @@ function UserDropdown() {
           <div
             className="inline-flex justify-center w-full rounded-full border border-gray-300 hover:border-blue-300 shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 overflow-hidden"
           >
-            <img src="https://placehold.co/80?text=S" alt="profile" className="w-8 h-8" />
+            <img src={`${isSignedIn.data?.data?.user.urlImage ? `${getMediaUrl(isSignedIn.data?.data?.user.urlImage)}` : `https://placehold.co/80?text=${profileAcronym(isSignedIn.data?.data?.user.firstName, isSignedIn.data?.data?.user.lastName)}`}`} alt="profile" className="w-8 h-8" />
           </div>
         </div>
       </LoginModal>
@@ -58,7 +59,7 @@ function UserDropdown() {
           className="inline-flex justify-center w-full rounded-full border border-gray-300 shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100 overflow-hidden"
           onClick={handleToggle}
         >
-          <img src={`https://placehold.co/80?text=${profileAcronym(isSignedIn.data?.data?.user?.firstName, isSignedIn.data?.data?.user?.lastName)}`} alt="profile" className="w-8 h-8" />
+          <img src={`${isSignedIn.data?.data?.user.urlImage ? isSignedIn.data?.data?.user.urlImage : `https://placehold.co/80?text=${profileAcronym(isSignedIn.data?.data?.user.firstName, isSignedIn.data?.data?.user.lastName)}`}`} alt="profile" className="w-8 h-8" />
         </button>
       </div>
 

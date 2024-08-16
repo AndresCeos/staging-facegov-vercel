@@ -70,3 +70,15 @@
     opacity: 1;
   }
 }
+@layer components {
+  .dropzone {
+    @apply w-full bg-gray-50 rounded-lg border-2 border-dashed border-gray-300 p-5 mb-5 flex flex-col justify-center items-center cursor-pointer;
+    @apply dark:bg-gray-700 dark:border-gray-600;
+    @apply hover:border-gray-400;
+  }
+  .dropzone span,
+  .dropzone p {
+    @apply m-0 text-gray-500;
+    @apply hover:text-gray-700 dark:hover:text-white;
+  }
+}

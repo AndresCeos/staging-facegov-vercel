@@ -7,6 +7,7 @@ import PoliticalFigureCommentRating from './PoliticalFigureCommentRating';
 import PoliticalFigureCommentUtility from './PoliticalFigureCommentUtility';
 
 import Share from '@/components/Share';
+import getMediaUrl from '@/utils/media';
 import 'moment/locale/es';
 
 moment.locale('es');
@@ -22,10 +23,11 @@ function PoliticalFigureCommentsListItem({ comment, politicalFigure }: Political
       <div className="flex flex-col md:flex-row">
         <div className="flex flex-col items-center mb-5 mx-auto md:border-r-2 md:border-gray-300 w-full max-w-[13rem] md:min-h-64">
           <img
-            src={`https://placehold.co/80?text=${profileAcronym(comment.user.firstName, comment.user.lastName)}`}
+            src={`${comment.user.urlImage ? getMediaUrl(comment.user.urlImage) : `https://placehold.co/80?text=${profileAcronym(comment.user.firstName, comment.user.lastName)}`}`}
             alt="profile"
             className="w-10 md:w-20 h-10 md:h-20 rounded-full"
           />
+          <p>{comment.user.urlImage}</p>
           <p className="text-gray-900 font-bold md:mt-5 md:mb-11">
             {`${comment.user.firstName} ${comment.user.lastName}`}
           </p>

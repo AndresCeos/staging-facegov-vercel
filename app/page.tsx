@@ -96,7 +96,7 @@ function Home() {
           <div>
             <Image
               src="/Collage_Facegov.jpg"
-              alt="Cómo funciona FacesGov"
+              alt="Cómo funciona FaceGov"
               width={500}
               height={500}
             />

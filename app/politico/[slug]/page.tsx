@@ -19,14 +19,14 @@ export async function generateMetadata(context: any): Promise<Metadata> {
     const politicalFigure = await axios.get(url(`/political-figures/${slug}`, 'api'));
 
     console.log('politicalFigure:', {
-      title: `${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName} - FACESGOV`,
+      title: `${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName} - FACEGOV`,
       openGraph: {
         images: [url(`/political-figures/${slug}/share-image`, 'api')],
       },
     });
 
     return {
-      title: `${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName} - FACESGOV`,
+      title: `${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName} - FACEGOV`,
       openGraph: {
         images: [url(`/political-figures/${slug}/share-image`, 'api')],
       },
@@ -34,7 +34,7 @@ export async function generateMetadata(context: any): Promise<Metadata> {
   } catch (error) {
     console.error('Error getting political figure:', error);
     return {
-      title: 'FACESGOV',
+      title: 'FACEGOV',
       openGraph: {
         images: [
           commentId ? url(`/political-figures/${slug}/comments/${commentId}/share-image`, 'api') : url(`/political-figures/${slug}/share-image`, 'api'),

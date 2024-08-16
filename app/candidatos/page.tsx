@@ -4,10 +4,10 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 import { usePoliticalFigures } from '@/api/political-figures';
+import HowItWorkModal from '@/features/home/howItWork/HowItWorkModal';
 import Button from '../components/Button';
 import QueryResult from '../components/QueryResult';
 import PoliticalFiguresList from '../features/home/PoliticalFiguresList';
-import HowItWorkModal from '@/features/home/howItWork/HowItWorkModal';
 
 function Home() {
   const [page, setPage] = useState(1);
@@ -47,13 +47,13 @@ function Home() {
             onClick={() => setIsOpen(true)}
             className="py-8 px-20 rounded-3xl"
           >
-            Cómo funciona FacesGov
+            Cómo funciona FaceGov
           </Button>
         </div>
         <div>
           <Image
             src="/foto_fcs.jpeg"
-            alt="Cómo funciona FacesGov"
+            alt="Cómo funciona FaceGov"
             width={500}
             height={500}
           />
