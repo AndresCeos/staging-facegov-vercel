@@ -12,7 +12,6 @@ type ProfileUpdateFormProps = {
   initialUserInformation: {
     firstName: string;
     lastName: string;
-    urlImage?: string;
   };
 };
 
@@ -20,15 +19,10 @@ function ProfileUpdateForm({ initialUserInformation }: ProfileUpdateFormProps) {
   const [userInformation, setUserInformation] = useState(initialUserInformation);
 
   const mutate = mutateUserProfile();
-  console.log(userInformation);
 
   const handleSendUserInformation = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    mutate.mutate({
-      firstName: userInformation.firstName,
-      lastName: userInformation.lastName,
-    });
+    mutate.mutate(userInformation);
   };
 
   return (

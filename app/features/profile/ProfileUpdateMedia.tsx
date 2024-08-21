@@ -2,11 +2,12 @@
 
 'use client';
 
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { HiOutlineUpload } from 'react-icons/hi';
 
 import { mutateUserImageProfile } from '@/api/users';
+import Modal from '@/components/Modal';
 import getMediaUrl from '@/utils/media';
 
 type ProfileUpdateFormProps = {
@@ -17,10 +18,22 @@ type ProfileUpdateFormProps = {
 
 function ProfileUpdateMedia({ initialUserInformation }: ProfileUpdateFormProps) {
   const mutateImage = mutateUserImageProfile();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [message, setMessage] = useState('');
 
   const handleUploadImage = (fileToUpload: File) => {
     console.log(fileToUpload);
-    if (!fileToUpload) return;
+    if (!fileToUpload) {
+      setMessage('No se ha seleccionado una Imagen');
+      setIsModalOpen(true);
+      return;
+    }
+
+    if (fileToUpload.size > 1048576) {
+      setMessage('El archivo es demasiado grande');
+      setIsModalOpen(true);
+      return;
+    }
     const formData = new FormData();
     formData.append('file', fileToUpload);
     mutateImage.mutate(formData);
@@ -35,6 +48,7 @@ function ProfileUpdateMedia({ initialUserInformation }: ProfileUpdateFormProps) 
       mimeType: ['image/*'],
       extensions: ['png', 'jpg', 'jpeg', 'gif'],
     },
+    multiple: false,
   });
 
   return (
@@ -78,6 +92,7 @@ function ProfileUpdateMedia({ initialUserInformation }: ProfileUpdateFormProps) 
           </div>
         </div>
       )}
+      {isModalOpen && <Modal title="Ups! Ocurrio un error" type="error" button="Cerrar" message={message} closeModal={() => { setIsModalOpen(false); }} />}
     </div>
   );
 }
