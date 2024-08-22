@@ -9,7 +9,6 @@ import { useIsSignedIn } from '@/api/authentication';
 import { useUserComments } from '@/api/users';
 import ProfileCommentsList from '@/features/profile/ProfileCommentsList';
 import ProfileEdit from '@/features/profile/ProfileEdit';
-import getMediaUrl from '@/utils/media';
 import profileAcronym from '@/utils/profileAcronym';
 
 function ProfilePage() {
@@ -27,7 +26,7 @@ function ProfilePage() {
         <div className="flex flex-col md:flex-row">
           <div className="flex flex-col items-center mb-5 mx-auto md:border-r-2 md:border-gray-50 w-full max-w-[13rem] md:min-h-64">
             <img
-              src={`${isSignedIn.data?.data?.user.urlImage ? `${getMediaUrl(isSignedIn.data?.data?.user.urlImage)}` : `https://placehold.co/80?text=${profileAcronym(isSignedIn.data?.data?.user.firstName, isSignedIn.data?.data?.user.lastName)}`}`}
+              src={`${isSignedIn.data?.data?.user.urlImage ? `${isSignedIn.data?.data?.user.urlImage}` : `https://placehold.co/80?text=${profileAcronym(isSignedIn.data?.data?.user.firstName, isSignedIn.data?.data?.user.lastName)}`}`}
               alt="profile"
               className="w-10 md:w-20 h-10 md:h-20 rounded-full"
             />

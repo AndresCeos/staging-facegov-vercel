@@ -8,7 +8,6 @@ import { HiOutlineUpload } from 'react-icons/hi';
 
 import { mutateUserImageProfile } from '@/api/users';
 import Modal from '@/components/Modal';
-import getMediaUrl from '@/utils/media';
 
 type ProfileUpdateFormProps = {
   initialUserInformation: {
@@ -84,7 +83,7 @@ function ProfileUpdateMedia({ initialUserInformation }: ProfileUpdateFormProps) 
           <div className="flex flex-col justify-center">
 
             <img
-              src={getMediaUrl(initialUserInformation.urlImage ?? '')}
+              src={initialUserInformation.urlImage ?? ''}
               alt="profile"
               className="w-10 md:w-20 h-10 md:h-20 rounded-full"
             />
