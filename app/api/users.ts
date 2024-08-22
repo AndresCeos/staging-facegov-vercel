@@ -6,14 +6,7 @@ import { axios } from './axios';
 import makeMutation from '@/hooks/makeMutation';
 import formatNameSlug from '@/utils/formatNameSlug';
 
-const postUserProfile = (profile: { firstName: string, lastName: string }) => {
-  const formData = new FormData();
-
-  formData.append('firstName', profile.firstName);
-  formData.append('lastName', profile.lastName);
-  return axios.post('/profile', formData, {
-  });
-};
+const postUserProfile = (profile: { firstName:string, lastName:string }) => axios.post('/profile', profile);
 const mutateUserProfile = makeMutation(['profile'], postUserProfile, ['auth/me']);
 
 const postUserImageProfile = (formData: FormData) => axios.post('/profile/upload-image', formData, { headers: { 'Content-Type': 'multipart/form-data' } });
