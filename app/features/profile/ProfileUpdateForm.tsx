@@ -58,7 +58,7 @@ function ProfileUpdateForm({ initialUserInformation }: ProfileUpdateFormProps) {
       <div className="mt-10 mb-6 grid place-items-center">
         <Button
           type="submit"
-          className="py-6 !px-20 rounded-3xl"
+          className="mt-3"
           disabled={mutate.isLoading}
         >
           Continuar
