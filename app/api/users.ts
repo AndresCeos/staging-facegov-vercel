@@ -12,6 +12,9 @@ const mutateUserProfile = makeMutation(['profile'], postUserProfile, ['auth/me']
 const postUserImageProfile = (formData: FormData) => axios.post('/profile/upload-image', formData, { headers: { 'Content-Type': 'multipart/form-data' } });
 const mutateUserImageProfile = makeMutation(['/upload-image'], postUserImageProfile, ['auth/me']);
 
+const deleteUserImageProfile = () => axios.post('/profile/delete-image');
+const mutateDeleteUserImageProfile = makeMutation(['/delete-image'], deleteUserImageProfile, ['auth/me']);
+
 const getUserComments = (pagination: Pagination.Config): Promise<Api.Response<Api.UserComment[]>> => axios.get('/profile/comments', { params: { offset: pagination.offset, limit: pagination.limit } });
 const useUserComments = (pagination: Pagination.Config) => useQuery({
   queryKey: ['profile', 'comments', pagination.offset, pagination.limit],
@@ -28,5 +31,5 @@ const useUserCommentUtilities = (pagination: Pagination.Config) => useQuery({
 });
 
 export {
-  getUserCommentData, mutateUserImageProfile, mutateUserProfile, useUserComments, useUserCommentUtilities
+  getUserCommentData, mutateDeleteUserImageProfile, mutateUserImageProfile, mutateUserProfile, useUserComments, useUserCommentUtilities
 };

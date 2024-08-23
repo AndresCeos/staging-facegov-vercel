@@ -6,7 +6,8 @@ import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { HiOutlineUpload } from 'react-icons/hi';
 
-import { mutateUserImageProfile } from '@/api/users';
+import { mutateDeleteUserImageProfile, mutateUserImageProfile } from '@/api/users';
+import Button from '@/components/Button';
 import Modal from '@/components/Modal';
 
 type ProfileUpdateFormProps = {
@@ -17,6 +18,7 @@ type ProfileUpdateFormProps = {
 
 function ProfileUpdateMedia({ initialUserInformation }: ProfileUpdateFormProps) {
   const mutateImage = mutateUserImageProfile();
+  const mutateDeleteImage = mutateDeleteUserImageProfile();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [message, setMessage] = useState('');
 
@@ -49,6 +51,9 @@ function ProfileUpdateMedia({ initialUserInformation }: ProfileUpdateFormProps) 
     },
     multiple: false,
   });
+  const handleRemoveImage = () => {
+    mutateDeleteImage.mutate({});
+  };
 
   return (
     <div>
@@ -76,18 +81,25 @@ function ProfileUpdateMedia({ initialUserInformation }: ProfileUpdateFormProps) 
           </div>
         </form>
       ) : (
-        <div className="col-span-2 flex flex-col mt-5">
+        <div className="col-span-2 flex flex-col mt-5 justify-center items-center">
           <div className="flex justify-between p-6">
             <h2 className="text-2xl text-bold">Imagen de Perfil</h2>
           </div>
           <div className="flex flex-col justify-center">
-
             <img
               src={initialUserInformation.urlImage ?? ''}
               alt="profile"
-              className="w-10 md:w-20 h-10 md:h-20 rounded-full"
+              className="w-10 md:w-20 h-10 md:h-20 rounded-full border-2 border-gray-300"
             />
-
+          </div>
+          <div>
+            <Button
+              type="button"
+              onClick={() => handleRemoveImage()}
+              className="mt-3"
+            >
+              Eliminar Imagen
+            </Button>
           </div>
         </div>
       )}
