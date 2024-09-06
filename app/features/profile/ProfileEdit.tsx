@@ -21,7 +21,7 @@ function ProfileEdit() {
     urlImage: isSignedIn.data?.data?.user?.urlImage ?? '',
   };
   return (
-    <div className="w-full md:p-10 md:flex">
+    <div className="w-full md:p-10 md:flex mb-10">
       <div className="md:p-5 md:w-1/2">
         <ProfileUpdateForm initialUserInformation={initialUserInformation} />
       </div>
