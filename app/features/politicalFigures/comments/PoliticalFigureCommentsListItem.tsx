@@ -22,7 +22,7 @@ function PoliticalFigureCommentsListItem({ comment, politicalFigure }: Political
       <div className="flex flex-col md:flex-row">
         <div className="flex flex-col items-center mb-5 mx-auto md:border-r-2 md:border-gray-300 w-full max-w-[13rem] md:min-h-64">
           <img
-            src={`${comment.user.urlImage ? comment.user.urlImage : `https://placehold.co/80?text=${profileAcronym(comment.user.firstName, comment.user.lastName)}`}`}
+            src={`${comment.user.urlImage !== null ? comment.user.urlImage : `https://placehold.co/80?text=${profileAcronym(comment.user.firstName, comment.user.lastName)}`}`}
             alt="profile"
             className="w-10 md:w-20 h-10 md:h-20 rounded-full"
           />
