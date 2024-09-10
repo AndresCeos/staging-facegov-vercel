@@ -21,14 +21,14 @@ export async function generateMetadata(context: any): Promise<Metadata> {
     console.log('politicalFigure:', {
       title: `${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName} - FACEGOV`,
       openGraph: {
-        images: [url(`/political-figures/${slug}/share-image`, 'api')],
+        images: [`https://media.aquiestaelmenu.com/${slug}/share/desktop.jpeg`],
       },
     });
 
     return {
       title: `${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName} - FACEGOV`,
       openGraph: {
-        images: [url(`/political-figures/${slug}/share-image`, 'api')],
+        images: [`https://media.aquiestaelmenu.com/${slug}/share/desktop.jpeg`],
       },
     };
   } catch (error) {
@@ -37,7 +37,7 @@ export async function generateMetadata(context: any): Promise<Metadata> {
       title: 'FACEGOV',
       openGraph: {
         images: [
-          commentId ? url(`/political-figures/${slug}/comments/${commentId}/share-image`, 'api') : url(`/political-figures/${slug}/share-image`, 'api'),
+          commentId ? `https://media.aquiestaelmenu.com/${slug}/comment/${commentId}/comment.jpeg` : `https://media.aquiestaelmenu.com/${slug}/share/desktop.jpeg`,
         ],
       },
     };
