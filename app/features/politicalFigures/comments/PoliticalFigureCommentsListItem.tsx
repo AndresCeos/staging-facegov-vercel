@@ -44,12 +44,14 @@ function PoliticalFigureCommentsListItem({ comment, politicalFigure }: Political
             </p>
           </div>
           <div className="flex justify-end">
-            <Share
-              politicalFigure={politicalFigure}
-              comment={comment}
-              className="text-2xl font-light cursor-pointer"
-              iconClassName="text-2xl"
-            />
+            {comment.commentedByUser ? (
+              <Share
+                politicalFigure={politicalFigure}
+                comment={comment}
+                className="text-2xl font-light cursor-pointer"
+                iconClassName="text-2xl"
+              />
+            ) : null}
           </div>
         </div>
       </div>

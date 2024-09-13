@@ -21,14 +21,18 @@ function ProfileEdit() {
     urlImage: isSignedIn.data?.data?.user?.urlImage ?? '',
   };
   return (
-    <div className="w-full md:p-10 md:flex mb-10">
-      <div className="md:p-5 md:w-1/2">
-        <ProfileUpdateForm initialUserInformation={initialUserInformation} />
-      </div>
-      <div className="md:p-5 md:w-1/2">
-        <ProfileUpdateMedia initialUserInformation={initialUserMediaInformation} />
+    <div>
+      <h1 className="text-2xl font-bold my-10 text-center">Mi perfil</h1>
+      <div className="w-full md:p-10 md:flex mb-10">
+        <div className="md:p-5 md:w-1/2">
+          <ProfileUpdateForm initialUserInformation={initialUserInformation} />
+        </div>
+        <div className="md:p-5 md:w-1/2">
+          <ProfileUpdateMedia initialUserInformation={initialUserMediaInformation} />
+        </div>
       </div>
     </div>
+
   );
 }
 
