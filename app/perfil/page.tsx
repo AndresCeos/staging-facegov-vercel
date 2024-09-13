@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 import { useIsSignedIn } from '@/api/authentication';
 import { useUserComments } from '@/api/users';
+import Button from '@/components/Button';
 import ProfileCommentsList from '@/features/profile/ProfileCommentsList';
 import ProfileEdit from '@/features/profile/ProfileEdit';
 import profileAcronym from '@/utils/profileAcronym';
@@ -38,32 +39,32 @@ function ProfilePage() {
             </span>
             <ul>
               <li>
-                <button
+                <Button
                   type="button"
                   onClick={() => setView('comments')}
                   className={cx(
-                    'p-2 hover:bg-black hover:bg-opacity-10 block w-full text-left',
+                    'p-2my-1 block w-full text-center hover:bg-white hover:bg-opacity-10 hover:text-black hover:border-black hover:border-2',
                     view === 'comments' && 'font-bold',
                   )}
                 >
                   Mis comentarios
-                </button>
+                </Button>
               </li>
               <li>
-                <button
+                <Button
                   type="button"
                   onClick={() => setView('profile')}
                   className={cx(
-                    'p-2 hover:bg-black hover:bg-opacity-10 block w-full text-left',
+                    'p-2 my-1 block w-full text-center hover:bg-white hover:bg-opacity-10 hover:text-black hover:border-black hover:border-2',
                     view === 'profile' && 'font-bold',
                   )}
                 >
                   Editar perfil
-                </button>
+                </Button>
               </li>
             </ul>
           </div>
-          <div className="flex flex-col pl-10 w-full">
+          <div className="flex flex-col md:pl-10 w-full">
             {view === 'comments' && <ProfileCommentsList />}
             {view === 'profile' && <ProfileEdit />}
           </div>

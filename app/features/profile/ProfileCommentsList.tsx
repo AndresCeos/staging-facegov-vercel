@@ -20,12 +20,13 @@ function ProfileCommentsList() {
       {comments.data?.results?.length === 0 && (
         <h2 className="text-gray-500 text-2xl my-10">No has calificado a ningún político aún</h2>
       )}
+      <h1 className="text-2xl font-bold my-10 text-center">Mis comentarios</h1>
       {comments.data?.results?.map(async (comment) => (
         <div key={comment.id}>
           <div className="flex flex-col md:flex-row">
             <div className="flex flex-col items-center mb-5 mx-auto md:border-r-2 md:border-gray-300 w-full max-w-[13rem] md:min-h-64">
               <img
-                src={(comment.politicalFigure.media as any).find((media: { key: string; }) => media?.key === 'featured')?.url ? `${(comment.politicalFigure.media as any).find((media: { key: string; }) => media?.key === 'featured')?.url}` : 'https://placehold.co/375'}
+                src={(comment.politicalFigure.media as any).find((media: { key: string; }) => media?.key === 'featured')?.url ? `${process.env.MEDIA_URL}/${(comment.politicalFigure.media as any).find((media: { key: string; }) => media?.key === 'featured')?.url}` : 'https://placehold.co/375'}
                 alt="profile"
                 className="w-10 md:w-20 h-10 md:h-20 rounded-full object-cover"
               />
