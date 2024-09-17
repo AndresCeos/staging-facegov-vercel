@@ -1,4 +1,5 @@
 import { Bellota_Text } from 'next/font/google';
+import { Toaster } from 'react-hot-toast';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import ClientProvider from './context/ClientProvider';
@@ -33,6 +34,7 @@ export default function RootLayout({
           {children}
           <Footer />
         </ClientProvider>
+        <Toaster position="bottom-center" />
       </body>
     </html>
   );

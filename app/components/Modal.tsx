@@ -2,7 +2,7 @@
 import { HiCheckCircle, HiExclamationCircle } from 'react-icons/hi';
 import Button from './Button';
 
-type ProfileSetupModalProps = {
+type ModalProps = {
   title: string;
   message: string;
   button: string
@@ -12,7 +12,7 @@ type ProfileSetupModalProps = {
 
 function Modal({
   title, message, type, button, closeModal,
-}: ProfileSetupModalProps) {
+}: ModalProps) {
   return (
     <>
       <div

@@ -1,5 +1,7 @@
 import cx from 'classnames';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
+import { Md5 } from 'ts-md5';
 
 import {
   FaEnvelope,
@@ -29,14 +31,14 @@ function Share({
 
   const handleNavigatorShare = async () => {
     setIsLoading(true);
-    const shareData = await navigatorShare(politicalFigure, comment);
-    if (navigator.canShare && navigator.canShare(shareData)) {
-      try {
+    try {
+      const shareData = await navigatorShare(politicalFigure, comment);
+      if (navigator.canShare && navigator.canShare(shareData)) {
         await navigator.share(shareData);
-      } catch (error) {
-        console.error('Error sharing:', error);
-        setIsLoading(false);
       }
+    } catch (error) {
+      console.error('Error sharing:', error);
+      toast.error('Ocurrió un error al compartir, intenta de nuevo.');
     }
     setIsLoading(false);
   };
@@ -62,7 +64,7 @@ function Share({
     return <div className="fixed w-full bg-white bg-opacity-70 left-0 top-0 z-50"><Loader isFullHeight /></div>;
   }
 
-  const PoliticalFigureURL = new URL(`/politico/${politicalFigure.slug}${comment ? `/#comment-${comment.id}` : ''}`, process.env.APP_URL).toString();
+  const PoliticalFigureURL = new URL(`/politico/${politicalFigure.slug}${comment ? `/?comment=${Md5.hashStr(comment.id.toString())}` : ''}`, process.env.APP_URL).toString();
   const PoliticalFigureMsg = comment
     ? `Mira el comentario a ${politicalFigure.firstName} ${politicalFigure.lastName} en FACEGOV.`
     : `Mira a ${politicalFigure.firstName} ${politicalFigure.lastName} en FACEGOV.`;
