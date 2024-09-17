@@ -29,7 +29,7 @@ function ProfileUpdateForm({ initialUserInformation }: ProfileUpdateFormProps) {
     <form onSubmit={handleSendUserInformation}>
       <div className="mb-4 flex flex-col gap-y-3">
         <label htmlFor="firstName" className="uppercase text-center">
-          Tu Nombre
+          Tú Nombre
           <input
             id="firstName"
             name="firstName"
@@ -43,7 +43,7 @@ function ProfileUpdateForm({ initialUserInformation }: ProfileUpdateFormProps) {
       </div>
       <div className="mb-4 flex flex-col gap-y-3">
         <label htmlFor="lastName" className="uppercase text-center">
-          Tu Apellido
+          Tú Apellido
           <input
             id="lastName"
             name="lastName"
