@@ -4,7 +4,6 @@ import { Toaster } from 'react-hot-toast';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import ClientProvider from './context/ClientProvider';
-
 import './globals.css';
 
 export const metadata = {
@@ -25,20 +24,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={bellotaText.className}>
+
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-EKBGM9074E"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-EKBGM9074E" />
+        <Script id="google-analytics">
           {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-EKBGM9074E');
-        `}
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-EKBGM9074E');
+          `}
         </Script>
       </head>
       <body>
