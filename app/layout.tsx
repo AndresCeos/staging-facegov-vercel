@@ -28,7 +28,10 @@ export default function RootLayout({
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-EKBGM9074E" />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-EKBGM9074E"
+          strategy="afterInteractive"
+        />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
           window.dataLayer = window.dataLayer || [];

@@ -2,11 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "useDefineForClassFields": true,
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -27,9 +23,7 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"]
     }
   },
   "include": [
@@ -38,8 +32,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/**/*.ts",
+    "custom.d.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

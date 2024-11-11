@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState } from 'react';
 
+import { sendRatingEvent } from '@/analytics/raitingEvent';
 import { useIsSignedIn } from '@/api/authentication';
 import { mutateComment } from '@/api/comments';
 import Button from '@/components/Button';
@@ -33,6 +34,7 @@ function PoliticalFigureCommentForm({ politicalFigure }: PoliticalFigureCommentF
     }
     // eslint-disable-next-line no-alert
     mutate.mutate({ rating, text, politicalFigureSlug: politicalFigure.slug });
+    sendRatingEvent({ politicalFigureId: politicalFigure.id, name: politicalFigure.slug, rating });
     setText('');
   };
 
