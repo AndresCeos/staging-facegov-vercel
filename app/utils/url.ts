@@ -1,7 +1,7 @@
 const bases = {
-  api: process.env.API_URL ?? 'https://api.aquiestaelmenu.com',
-  webapp: process.env.APP_URL ?? 'https://aquiestaelmenu.com',
-  media: process.env.MEDIA_URL ?? 'https://media.aquiestaelmenu.com',
+  api: process.env.API_URL ?? 'https://api.facegov.org',
+  webapp: process.env.APP_URL ?? 'https://facegov.org',
+  media: process.env.MEDIA_URL ?? 'https://media.facegov.org',
 };
 
 const url = (path: string, base: 'api' | 'webapp' | 'media'): string => {

@@ -10,6 +10,8 @@ type Props = {
   };
 };
 
+const media = process.env.MEDIA_URL;
+
 export async function generateMetadata(context: any): Promise<Metadata> {
   const { slug } = context.params;
 
@@ -20,20 +22,20 @@ export async function generateMetadata(context: any): Promise<Metadata> {
 
     if (comment) {
       console.log('comment:', comment);
-      console.log('image:', `https://media.aquiestaelmenu.com/${slug}/comment/${comment}/comment.jpeg`);
+      console.log('image:', `${media}/${slug}/comment/${comment}/comment.jpeg`);
       return {
         title: `${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName} - FACEGOV`,
         openGraph: {
-          images: [`https://media.aquiestaelmenu.com/${slug}/comment/${comment}/comment.jpeg`],
+          images: [`${media}/${slug}/comment/${comment}/comment.jpeg`],
         },
       };
     }
 
-    console.log('image:', `https://media.aquiestaelmenu.com/${slug}/share/desktop.jpeg`);
+    console.log('image:', `${media}/${slug}/share/desktop.jpeg`);
     return {
       title: `${politicalFigure?.data?.results?.firstName} ${politicalFigure?.data?.results?.lastName} - FACEGOV`,
       openGraph: {
-        images: [`https://media.aquiestaelmenu.com/${slug}/share/desktop.jpeg`],
+        images: [`${media}/${slug}/share/desktop.jpeg`],
       },
     };
   } catch (error) {
@@ -42,7 +44,7 @@ export async function generateMetadata(context: any): Promise<Metadata> {
       title: 'FACEGOV',
       openGraph: {
         images: [
-          comment ? `https://media.aquiestaelmenu.com/${slug}/comment/${comment}/comment.jpeg` : `https://media.aquiestaelmenu.com/${slug}/share/desktop.jpeg`,
+          comment ? `${media}/${slug}/comment/${comment}/comment.jpeg` : `${media}/${slug}/share/desktop.jpeg`,
         ],
       },
     };
