@@ -8,7 +8,7 @@
     "dev": "next dev -p 3800",
     "build": "next build",
     "start": "next start",
-    "branchlint": "",
+    "branchlint": "./branchlint.js",
     "lint": "eslint --max-warnings=0 \"app/**/**.tsx\"",
     "lint:fix": "eslint --max-warnings=0 --fix \"app/**/**.tsx\""
   },
