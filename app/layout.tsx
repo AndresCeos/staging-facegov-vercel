@@ -39,7 +39,7 @@ export default function RootLayout({
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', 'G-EKBGM9074E', {
-                page_path: ${window.location.pathname},
+                page_path: ${window?.location?.pathname},
               });
             `,
           }}
