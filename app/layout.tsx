@@ -1,5 +1,4 @@
 import { Bellota_Text } from 'next/font/google';
-import Script from 'next/script';
 import { Toaster } from 'react-hot-toast';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
@@ -47,6 +46,21 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-WW786TDW');
           `}
         </Script>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-EKBGM9074E"
+        />
+        <script
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-EKBGM9074E');
+            `,
+          }}
+        />
       </head>
       <body>
         <noscript>
