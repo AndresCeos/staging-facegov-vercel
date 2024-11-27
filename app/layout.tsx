@@ -1,4 +1,5 @@
 import { Bellota_Text } from 'next/font/google';
+import Script from 'next/script';
 import { Toaster } from 'react-hot-toast';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
