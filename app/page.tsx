@@ -40,17 +40,8 @@ function Home() {
 
   return (
     <main>
+      <FormHome />
       <div>
-        <h2
-          className={cx(
-            'py-20 md:py-36 text-3xl tracking-tighter leading-8 text-center mx-auto',
-            bold.className,
-          )}
-        >
-          Bienvenido a la única red social para la
-          <br />
-          participación ciudadana dentro de la política.
-        </h2>
         <QueryResult query={politicalFigures} isFullScreenLoader={false}>
           <PoliticalFiguresList politicalFigures={initialData} />
           {politicalFigures.data?.pagination.hasNextPage && (
@@ -87,7 +78,7 @@ function Home() {
               de campaña.
             </p>
             <Button
-              className={cx(' text-base leading-6 mb-10 bg-green-h', bold.className)}
+              className={cx(' text-base leading-6 mb-10 bg-[#eab307]', bold.className)}
               onClick={() => setIsOpen(true)}
             >
               ¿Cómo funciona?
@@ -105,7 +96,7 @@ function Home() {
         </div>
       </div>
       <VideoModalHome />
-      <FormHome />
+
     </main>
   );
 }

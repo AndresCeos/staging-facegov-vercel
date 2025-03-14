@@ -10,7 +10,7 @@ function VideoModalHome() {
       <button type="button" className="w-full" onClick={() => setShowModal(true)}>
         <img src="/video.jpg" alt="video-modal" className="md:w-full w-12/12" />
       </button>
-      <VideoModal showModal={showModal} setShowModal={setShowModal} media="/video.jpg" />
+      <VideoModal showModal={showModal} setShowModal={setShowModal} media="https://www.youtube.com/embed/NpEaa2P7qZI?si=4XS0APpaKUOWJ_V8" />
     </div>
   );
 }
