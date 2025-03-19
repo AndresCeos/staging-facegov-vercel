@@ -3,7 +3,7 @@ import url from './url';
 
 const navigatorShare = async (politicalFigure: Api.PoliticalFigure, comment?: Api.Comment) => {
   const md5CommentId = comment?.id ? Md5.hashStr(comment.id.toString()) : '';
-  const politicalFigureUrl = url(`/politico/${politicalFigure.slug}`, 'api');
+  const politicalFigureUrl = url(`/politico/${politicalFigure.slug}`, 'webapp');
   const urlString = `${comment?.id ? `comment/${md5CommentId}/comment.jpeg` : 'nav/mobile.jpeg'}`;
   const imageUrl = url(`/${politicalFigure.slug}/${urlString}`, 'media');
   const fetchedImage = await fetch(imageUrl);

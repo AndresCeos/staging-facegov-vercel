@@ -31,7 +31,7 @@ function FormHome() {
   };
 
   return (
-    <div className="block w-full mb-10 mt-0 pt-0 md:flex justify-center  " style={{ backgroundImage: 'url(/bg_form.jpg)' }}>
+    <div className=" w-full mb-10 mt-0 pt-0 justify-center flex flex-col-reverse md:flex-row lg:flex-row" style={{ backgroundImage: 'url(/bg_form.jpg)' }}>
       <div className="md:w-2/5  text-justify ">
         <p className={cx('text-5xl mb-10 leading-10 text-white text-center py-20 ', extraBold.className)}>
           Sé parte de
@@ -66,7 +66,7 @@ function FormHome() {
               <div className="mt-10 mb-6 grid place-items-center">
                 <Button
                   type="submit"
-                  className="py-3 w-full !px-20 rounded-3xl !bg-red-700 !hover:bg-black"
+                  className="py-3 w-full !px-20 rounded-3xl bg-[#eab307] !hover:bg-black"
                 >
                   Continuar
                 </Button>
