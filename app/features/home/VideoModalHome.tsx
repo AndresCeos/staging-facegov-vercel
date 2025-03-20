@@ -6,7 +6,7 @@ function VideoModalHome() {
   const [showModal, setShowModal] = useState(false);
   return (
 
-    <div className="m-0 p-0 w-full">
+    <div className="m-0 p-0 w-full mb-10">
       <button type="button" className="w-full" onClick={() => setShowModal(true)}>
         <img src="/video.jpg" alt="video-modal" className="md:w-full w-12/12" />
       </button>

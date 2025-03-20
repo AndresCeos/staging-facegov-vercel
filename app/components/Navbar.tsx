@@ -68,6 +68,9 @@ function Navbar() {
             </button>
           </div>
         </div>
+        <div className="lg:hidden p-5">
+          <SearchForm />
+        </div>
       </header>
       {isMenuOpen && (
         <div className="fixed z-50 top-0 left-0 right-0">
