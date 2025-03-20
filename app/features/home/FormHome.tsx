@@ -66,7 +66,7 @@ function FormHome() {
               <div className="mt-10 mb-6 grid place-items-center">
                 <Button
                   type="submit"
-                  className="py-3 w-full !px-20 rounded-3xl bg-[#eab307] !hover:bg-black"
+                  className="py-3 w-full !px-20 rounded-3xl !bg-[#eab307] !hover:bg-black"
                 >
                   Continuar
                 </Button>
@@ -89,7 +89,7 @@ function FormHome() {
               <div className="mt-10 mb-6 grid place-items-center">
                 <Button
                   type="submit"
-                  className="py-3 w-full !px-20 rounded-3xl !bg-red-700 !hover:bg-black"
+                  className="py-3 w-full !px-20 rounded-3xl !bg-[#eab307] !hover:bg-black"
                 >
                   Validar
                 </Button>

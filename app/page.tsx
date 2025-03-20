@@ -78,7 +78,7 @@ function Home() {
               de campaña.
             </p>
             <Button
-              className={cx(' text-base leading-6 mb-10 bg-[#eab307]', bold.className)}
+              className={cx(' text-base leading-6 mb-10 !bg-[#eab307]', bold.className)}
               onClick={() => setIsOpen(true)}
             >
               ¿Cómo funciona?
@@ -86,7 +86,7 @@ function Home() {
           </div>
           <div>
             <Image
-              src="/Collage_Facegov.jpg"
+              src="/Collage_Facegov_Web.jpg"
               alt="Cómo funciona FaceGov"
               width={500}
               height={500}
