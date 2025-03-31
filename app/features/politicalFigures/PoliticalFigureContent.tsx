@@ -103,9 +103,17 @@ function PoliticalFigureContent({ slug }: PoliticalFigureContentProps) {
                   <b>Municipio: </b>
                   {politicalFigure?.data?.results?.city.state.name}
                 </p>
+                {isVerify && politicalFigure?.data?.results?.employmentHistory?.[0] && (
+                <p>
+                  <b>Salario:</b>
+                  $
+                  {politicalFigure?.data?.results?.employmentHistory?.[0]?.salary}
+                </p>
+                )}
               </div>
               { (politicalFigure?.data?.results?.scholarships?.[0] && isVerify) && (
                 <div className="col-span-2 md:col-span-1 text-xl text-gray-950">
+                  <b>Escolaridad: </b>
                   {politicalFigure?.data?.results?.scholarships?.[0]?.name}
                 </div>
               )}
