@@ -103,7 +103,7 @@ function PoliticalFigureContent({ slug }: PoliticalFigureContentProps) {
                   <b>Municipio: </b>
                   {politicalFigure?.data?.results?.city.state.name}
                 </p>
-                {isVerify && politicalFigure?.data?.results?.employmentHistory?.[0] && (
+                {isVerify && politicalFigure?.data?.results?.employmentHistory?.[0] && politicalFigure?.data?.results?.employmentHistory?.[0]?.salary !== 0 && (
                 <p>
                   <b>Salario:</b>
                   $
