@@ -112,7 +112,7 @@ function PoliticalFigureContent({ slug }: PoliticalFigureContentProps) {
                   {politicalFigure?.data?.results?.employmentHistory?.[0]?.salary}
                 </p>
                 )}
-                {birthDate && birthDate.getFullYear() !== 2025 && (
+                {birthDate && (
                   <div>
                     <b>Fecha de Nacimiento:</b>
                     <p>
