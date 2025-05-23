@@ -29,6 +29,8 @@ function PoliticalFigureContent({ slug }: PoliticalFigureContentProps) {
 
   const isVerify = politicalFigure?.data?.results?.verify;
 
+  const birthDate: Date = new Date(politicalFigure.data?.results?.birthDate ?? '01-01-2025');
+
   return (
     <>
       <QueryResult query={politicalFigure} isFullScreenLoader={false}>
@@ -109,6 +111,20 @@ function PoliticalFigureContent({ slug }: PoliticalFigureContentProps) {
                   $
                   {politicalFigure?.data?.results?.employmentHistory?.[0]?.salary}
                 </p>
+                )}
+                {birthDate.getFullYear() !== 2025 && (
+                  <div>
+                    <b>Fecha de Nacimiento:</b>
+                    <p>
+                      {birthDate.getDate()}
+                      {' '}
+                      de
+                      {birthDate.toLocaleString('es-ES', { month: 'long' })}
+                      {' '}
+                      del
+                      {birthDate.getFullYear()}
+                    </p>
+                  </div>
                 )}
               </div>
               { (politicalFigure?.data?.results?.scholarships?.[0] && isVerify) && (
