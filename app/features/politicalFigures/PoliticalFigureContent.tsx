@@ -105,26 +105,18 @@ function PoliticalFigureContent({ slug }: PoliticalFigureContentProps) {
                   <b>Municipio: </b>
                   {politicalFigure?.data?.results?.city.state.name}
                 </p>
+                {(birthDate !== false && birthDate.getFullYear() !== 2025) && (
+                  <p>
+                    <b>Fecha de Nacimiento:</b>
+                    {`${birthDate.getDate()} de ${birthDate.toLocaleString('es-ES', { month: 'long' })} de ${birthDate.getFullYear()}`}
+                  </p>
+                )}
                 {isVerify && politicalFigure?.data?.results?.employmentHistory?.[0] && politicalFigure?.data?.results?.employmentHistory?.[0]?.salary !== 0 && (
                 <p>
                   <b>Salario:</b>
                   $
                   {politicalFigure?.data?.results?.employmentHistory?.[0]?.salary}
                 </p>
-                )}
-                {birthDate && (
-                  <div>
-                    <b>Fecha de Nacimiento:</b>
-                    <p>
-                      {birthDate.getDate()}
-                      {' '}
-                      de
-                      {birthDate.toLocaleString('es-ES', { month: 'long' })}
-                      {' '}
-                      del
-                      {birthDate.getFullYear()}
-                    </p>
-                  </div>
                 )}
               </div>
               { (politicalFigure?.data?.results?.scholarships?.[0] && isVerify) && (
