@@ -73,7 +73,7 @@ function UserDropdown() {
 
       <div className="lg:hidden">
         <li className="p-4">
-          <Link href="/perfil" className="border-b-2 border-black">
+          <Link onClick={() => setIsOpen(!isOpen)} href="/perfil" className="border-b-2 border-black">
             Perfil
           </Link>
         </li>
