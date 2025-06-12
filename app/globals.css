@@ -61,6 +61,65 @@
   animation-fill-mode: forwards;
 }
 
+.ticker-container {
+  overflow: hidden;
+  background-color: #fff;
+  padding: 10px 0;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+}
+
+.ticker-track {
+  display: inline-flex;
+  white-space: nowrap;
+  gap: 10px;
+  animation: scroll 52s linear infinite;
+  animation-delay: 1s;
+}
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+.ticker-card {
+  display: inline-flex;
+  background-color: #f5f5f5;
+  align-items: center;
+  padding: 0 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  height: 40px;
+}
+
+.ticker-symbol {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.ticker-price {
+  margin-right: 10px;
+}
+
+.ticker-rating.positive {
+  color: green;
+}
+
+.ticker-rating.negative {
+  color: red;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  96.15% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
 @keyframes fadeInAnimation {
   0% {
     opacity: 0;
