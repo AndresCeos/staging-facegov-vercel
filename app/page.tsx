@@ -12,9 +12,10 @@ import { usePoliticalFigures } from '@/api/political-figures';
 import Button from './components/Button';
 import QueryResult from './components/QueryResult';
 import FormHome from './features/home/FormHome';
-import PoliticalFiguresList from './features/home/PoliticalFiguresList';
-import VideoModalHome from './features/home/VideoModalHome';
 import HowItWorkModal from './features/home/howItWork/HowItWorkModal';
+import PoliticalFiguresList from './features/home/PoliticalFiguresList';
+import TickerHome from './features/home/ticker/TickerHome';
+import VideoModalHome from './features/home/VideoModalHome';
 import { bold, extraBold, regular } from './fonts';
 
 function Home() {
@@ -40,6 +41,7 @@ function Home() {
 
   return (
     <main>
+      <TickerHome />
       <FormHome />
       <div>
         <QueryResult query={politicalFigures} isFullScreenLoader={false}>
