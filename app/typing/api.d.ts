@@ -115,4 +115,17 @@ declare namespace Api {
     politicalFigure: PoliticalFigure;
     createdAt: Date;
   }
+
+  interface Ticker {
+    id: number;
+    title: string;
+    slug: string;
+    politicalFiguresIds: number[];
+    news: News[];
+  }
+
+  interface News {
+    title:string;
+    url: string;
+  }
 }
