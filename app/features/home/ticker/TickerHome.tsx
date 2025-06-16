@@ -62,7 +62,7 @@ function TickerHome() {
     return [...figureItems, ...newsItems];
   }, [politicalFiguresInfo, newsData]);
 
-  const extendedData = [...combinedData, ...combinedData];
+  const extendedData = [...combinedData];
   const isLoading = isLoadingTickers || isLoadingPF;
 
   if (isLoading) {
