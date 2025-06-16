@@ -74,9 +74,10 @@
   display: inline-flex;
   white-space: nowrap;
   gap: 10px;
-  animation: scroll 50s linear infinite;
-  animation-delay: 1s;
+  animation: scroll 30s linear infinite;
+  will-change: transform;
 }
+
 .ticker-track:hover {
   animation-play-state: paused;
 }
@@ -110,10 +111,7 @@
 
 @keyframes scroll {
   0% {
-    transform: translateX(100%);
-  }
-  96.15% {
-    transform: translateX(-100%);
+    transform: translateX(30%);
   }
   100% {
     transform: translateX(-100%);
