@@ -1,6 +1,7 @@
 import axios from 'axios';
 import type { Metadata } from 'next';
 
+import TickerHome from '@/features/home/ticker/TickerHome';
 import PoliticalFigureContent from '@/features/politicalFigures/PoliticalFigureContent';
 import url from '@/utils/url';
 
@@ -56,6 +57,7 @@ function Page({ params }: Props) {
 
   return (
     <main>
+      <TickerHome />
       <PoliticalFigureContent slug={slug} />
     </main>
   );
