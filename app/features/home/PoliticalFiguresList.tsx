@@ -19,7 +19,7 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
   }
 
   return (
-    <ul className="grid gap-5 md:grid-cols-3 lg:grid-cols-4 sm:grid-cols-2">
+    <ul className="grid gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {politicalFigures.map((politicalFigure, index) => (
         <li className="card" key={politicalFigure.id}>
           <div
@@ -52,7 +52,7 @@ function PoliticalFiguresList({ politicalFigures }: PoliticalFiguresListProps) {
 
               <div className="p-6">
                 <div className="flex justify-between items-end">
-                  <div className="flex items-start justify-center h-5">
+                  <div className="flex flex-col md:flex-row ls:flex-row items-start justify-center h-5">
                     <RatingControl rating={politicalFigure.rating} className="text-xl" />
                     <div className={cx('text-sm ml-3 hover:font-semibold hover:scale-100', regular.className)}>CALIFICA</div>
                   </div>
